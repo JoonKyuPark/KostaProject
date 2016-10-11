@@ -1,7 +1,13 @@
 @CHARSET "UTF-8";
-
-body{
-	font-family : url('../fonts/SeoulNamsanM.ttf');
+@font-face{
+	font-family : NanumGothic;
+	src : url(../fonts/NanumGothic.ttf) format('truetype');
+}
+#ETP_Exam_Reg{
+	font-family : 나눔고딕;
+}
+#ETP_Exam_main{
+	font-family : 나눔고딕;
 }
 .examRegTitle{
 	text-align : center;
@@ -57,19 +63,31 @@ div {
 
 
 .Calendar{
-	width :90%;
-	cellspacing : 10px;
-	cellpadding : 10px;
+	border-collapse: separate;
+	width :100%;
+	margin : 0 auto;
+	border-spacing : 1px;
+	}
+.dateTd{
+	padding : 1%;
+	border : 1px solid #D3D3D3;
+	border-radius : 10%;
+	
+}
+.examTableOuter{
+	padding : 5%;
 	border : 1px solid #D3D3D3;
 	border-radius : 4%;
-	}
+	margin-top : 5%;
+}
 .weekName{
 	width : 14.28%;
 	font-weight : bold;
 	text-align : center;
 }
 a{
-	color : black;
-	font-decoration : none;	
-	
+	color : black;		
+}
+a:hover{
+	text-decoration : none;
 }

@@ -34,7 +34,7 @@
 <meta charset="UTF-8">
 <title>Registration Exam</title>
 </head>
-<body>
+<body id="ETP_Exam_Reg">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
@@ -47,7 +47,7 @@
 			<div class="inputExamForm col-md-8">
 				<form role="form" action="">
 					<div class="form-group col-md-12">
-						<label for="inputExamName" class="label col-md-12">시험 이름</label>
+						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>
 						<div class="col-md-12">
 							<input type="text" class="form-control col-md-12"
 								placeholder="내용을 입력하세요.">
@@ -59,9 +59,9 @@
 
 
 					<div class="form-group col-md-12">
-						<label for="inputExamName" class="label col-md-12">시험 기간</label>
+						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 기간</label>
 						<div class="col-md-12">
-							<label for="inputSDate" class="examTerm col-md-12">시작일</label> <select
+							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock-o"></i> 시작일</label> <select
 								class="selectpicker col-md-4">
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
@@ -81,7 +81,7 @@
 						<br> <br> <br>
 
 						<div class="col-md-12">
-							<label for="inputSDate" class="examTerm col-md-12">종료일</label> <select
+							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock"></i> 종료일</label> <select
 								class="selectpicker col-md-4">
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
@@ -100,16 +100,16 @@
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-						<label for="examNumberForm">응시인원</label><br>
+						<label for="examNumberForm" class="label col-md-12"><i class="xi-align-justify"></i>응시인원</label><br>
 						<div class="col-md-12">
-							<input type="text" class="examNumberForm form-control col-md-3">
+							<input type="number" class="examNumberForm form-control col-md-3" style = "padding-right : 0;">
 							<label class="examNumberFormText col-md-9">명</label>
 						</div>
 						<br><br>
 					</div>
 
 					<div class="form-group col-md-12">
-						<label for="examFieldForm" class="label col-md-12">시목과목</label><br>
+						<label for="examFieldForm" class="label col-md-12"><i class="xi-align-justify"></i>시험과목</label><br>
 						<div class="col-md-12">
 							<select class="selectpicker col-md-4">
 								<option>선택</option>
@@ -123,7 +123,7 @@
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-						<label for="examRefForm" class="label col-md-12">참고사항</label><br>
+						<label for="examRefForm" class="label col-md-12"><i class="xi-align-justify"></i>참고사항</label><br>
 						<div class="col-md-12">
 							<textarea class="examTextArea form-control"></textarea>
 						</div>					

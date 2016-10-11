@@ -16,9 +16,7 @@
 	if(strYear != null){
 		year = Integer.parseInt(strYear);
 		month = Integer.parseInt(strMonth);
-		System.out.println("strYear받음");
 	}else{
-		System.out.println("strYear 못받음");
 	}
 	cal.set(year, month, 1);
 	
@@ -56,13 +54,14 @@
 <meta charset="UTF-8">
 <title>Etp Exam Main</title>
 </head>
-<body>
+<body id="ETP_Exam_main">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
 		<div class="col-md-2"> Empty </div>
 		<div class="col-md-2">Left Menu(2)</div>
-		<div class="col-md-8">
+		<div class="examTableOuter col-md-8">
+			<div class="col-md-12">
 			<table class = "Calendar">
 				<tr>
 					<td align="center">
@@ -94,15 +93,17 @@
 					</td>
 				</tr>
 			</table>
+			<br>
+			<br>
 			<table class="Calendar">
-				<tr>
+				<tr style = "height : 30px">
 				<td class="weekName"><font color="red">일</font></td>
 				<td class="weekName">월</td>
 				<td class="weekName">화</td>
 				<td class="weekName">수</td>
 				<td class="weekName">목</td>
 				<td class="weekName">금</td>
-				<td class="weekName"><font color="#97AFFF">토</font></td>
+				<td class="weekName"><font color="#6173FF">토</font></td>
 				</tr>
 				<tr>
 				<%
@@ -115,7 +116,7 @@
 					if(newLine==0){
 						color = "red";
 					}else if(newLine==6){
-						color = "#97AFFF"; 
+						color = "#6173FF"; 
 					}else{
 						color = "black";
 					}
@@ -135,9 +136,9 @@
 					
 					String todayColor = "#FFFFFF";
 					if(intUseDate == intToday){
-						todayColor = "#CED99C";
+						todayColor = "#FFA4A4";
 					}
-					out.println("<td valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");
+					out.println("<td class = 'dateTd' valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");
 				%><font color='<%=color %>'>
 					<%=i %>
 				  </font>
@@ -153,13 +154,10 @@
 					}
 					newLine=0;
 				}
-/* 				while(newLine > 0 && newLine < 7){
-					out.println("<td>&nbsp;</td>");
-					newLine++;
-				} */
 				}%>
 				</tr>
 			</table>
+			</div>
 		</div>
 		<div class="col-md-2">Right Menu(3)</div>
 		<div class="col-me-1"></div>
