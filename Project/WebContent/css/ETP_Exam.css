@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+body{
+	font-family : url('../fonts/SeoulNamsanM.ttf');
+}
+.examRegTitle{
+	text-align : center;
+}
+.selectpicker {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	margin: 0;
+	padding: 0;
+}
+
+.btn-group {
+	width: 20%;
+	padding: 0;
+}
+
+.label {
+	padding: 0;
+	color: #434343;
+	font-size: 15px;
+	text-align: left;
+}
+
+.examTerm {
+	padding: 0;
+	color: #434343;
+	font-size: 12px;
+	text-align: left;
+}
+
+.examNumberForm {
+	width: 15%;
+}
+
+.examNumberFormText {
+	margin-top: 1%;
+}
+.examTextArea{
+	resize : none;
+}
+.examRegBtn input{
+	margin : 0 auto;
+}
+.inputExamForm{
+	padding : 3%;
+	border : 1px solid #D3D3D3;
+	border-radius : 4%;
+}
+
+
+
+.Calendar{
+	width :90%;
+	cellspacing : 10px;
+	cellpadding : 10px;
+	border : 1px solid #D3D3D3;
+	border-radius : 4%;
+	}
+.weekName{
+	width : 14.28%;
+	font-weight : bold;
+	text-align : center;
+}
+a{
+	color : black;
+	font-decoration : none;	
+	
+}

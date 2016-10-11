@@ -28,75 +28,17 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
+<link rel="stylesheet" href="../css/ETP_Exam.css">
+<script src="../js/Exam.js"></script>
 <head>
-<script>
-	function multiSending(X,y){
-		X.action = y;
-		X.method = "post";
-		X.encoding = "multipart/form-data";
-		X.submit();	
-	}
-</script>
-<style type="text/css">
-body{
-	font-family : 서울남산체;
-}
-.examRegTitle{
-	text-align : center;
-}
-.selectpicker {
-	margin: 0;
-	padding: 0;
-}
-
-div {
-	margin: 0;
-	padding: 0;
-}
-
-.btn-group {
-	width: 20%;
-	padding: 0;
-}
-
-.label {
-	padding: 0;
-	color: #434343;
-	font-size: 15px;
-	text-align: left;
-}
-
-.examTerm {
-	padding: 0;
-	color: #434343;
-	font-size: 12px;
-	text-align: left;
-}
-
-.examNumberForm {
-	width: 15%;
-}
-
-.examNumberFormText {
-	margin-top: 1%;
-}
-.examTextArea{
-	resize : none;
-}
-.examRegBtn input{
-	margin : 0 auto;
-}
-.inputExamForm{
-	padding : 3%;
-	border : 1px solid #D3D3D3;
-	border-radius : 4%;
-}
-</style>
 <meta charset="UTF-8">
 <title>Registration Exam</title>
 </head>
 <body>
 	<div>
+		<div class="col-md-2"> Logo </div>
+		<div class="col-md-8"> TopMenu </div>
+		<div class="col-md-2"> Empty </div>
 		<div class="col-md-2">Left Menu(2)</div>
 		<div class="col-md-8">
 			<h2 class="examRegTitle">시험 일정 등록</h2>
@@ -167,14 +109,14 @@ div {
 					</div>
 
 					<div class="form-group col-md-12">
-						<label for="examFieldForm" class="label col-md-12">시험과목</label><br>
+						<label for="examFieldForm" class="label col-md-12">시목과목</label><br>
 						<div class="col-md-12">
 							<select class="selectpicker col-md-4">
-								<option>시험과목</option>
+								<option>선택</option>
 								<option value="Korean">문학</option>
-								<option value="English">영문학</option>
+								<option value="English">영어</option>
 								<option value="Math">수학</option>
-								<option value="Physics">물리학</option>
+								<option value="Physics">물리</option>
 								<option value="History">역사</option>
 								<option value="IT">IT</option>
 							</select>
@@ -203,6 +145,9 @@ div {
 			<div class="col-md-2"></div>
 		</div>
 		<div class="col-md-2">Right Menu(3)</div>
+		<div class="col-me-1"></div>
+		<div class="footer col-md-10"> footer </div>
+		<div class="col-me-1"></div>
 	</div>
 </body>
 </html>
