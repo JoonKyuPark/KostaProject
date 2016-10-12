@@ -27,15 +27,47 @@ public class ETP_Exam_Dao {
 		}
 		return new SqlSessionFactoryBuilder().build(input);
 	}
+	/****************시험정보입력****************/
 	public int inputExamSchedule(ETP_Exam_Info examInfo){
 		int re  = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			
+			re=sqlSession.getMapper(ETP_Exam_Mapper.class).insertExamInfo(examInfo);
+			if(re>0){
+				sqlSession.commit();
+			}else{
+				sqlSession.rollback();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			sqlSession.close();
 		}
 		
 		return re;
+	}
+	public int countExamNo(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try{
+			if(sqlSession.getMapper(ETP_Exam_Mapper.class).countExamNo()==null){
+				return 0;
+			}else{
+				return sqlSession.getMapper(ETP_Exam_Mapper.class).countExamNo();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	public List<ETP_Exam_Info> examList(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try {
+			return sqlSession.getMapper(ETP_Exam_Mapper.class).examList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally{
+			sqlSession.close();
+		}
 	}
 }
