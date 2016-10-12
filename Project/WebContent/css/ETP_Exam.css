@@ -91,3 +91,12 @@ a{
 a:hover{
 	text-decoration : none;
 }
+.examListTr td{
+	text-align : center;
+}
+#examListTable th{
+	text-align : center;
+}
+#ETPexamListBody{
+	font-family : 나눔고딕;
+}
