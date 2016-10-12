@@ -61,17 +61,17 @@
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 기간</label>
 						<div class="col-md-12">
-							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock-o"></i> 시작일</label> <select
-								class="selectpicker col-md-4">
+							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock-o"></i> 시작일</label>
+							<select name="exam_syear" class="selectpicker col-md-4">
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
 								<option value="<%=year + 1%>"><%=year + 1%></option>
-							</select> <select class="selectpicker col-md-4">
+							</select> <select name="exam_smonth" class="selectpicker col-md-4">
 								<option>월</option>
 								<c:forEach var="i" begin="1" end="12">
-									<option value="${i }">${i }</option>
+									<option  value="${i }">${i }</option>
 								</c:forEach>
-							</select> <select class="selectpicker col-md-4">
+							</select> <select name="exam_sday" class="selectpicker col-md-4">
 								<option>일</option>
 								<c:forEach var="i" begin="1" end="31">
 									<option value="${i }">${i }</option>
@@ -81,17 +81,17 @@
 						<br> <br> <br>
 
 						<div class="col-md-12">
-							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock"></i> 종료일</label> <select
-								class="selectpicker col-md-4">
+							<label for="inputSDate" class="examTerm col-md-12"><i class="xi-clock"></i> 종료일</label>
+							<select name="exam_dyear" class="selectpicker col-md-4">
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
 								<option value="<%=year + 1%>"><%=year + 1%></option>
-							</select> <select class="selectpicker col-md-4">
+							</select> <select name="exam_dmonth" class="selectpicker col-md-4">
 								<option>월</option>
 								<c:forEach var="i" begin="1" end="12">
 									<option value="${i }">${i }</option>
 								</c:forEach>
-							</select> <select class="selectpicker col-md-4">
+							</select> <select name="exam_dday" class="selectpicker col-md-4">
 								<option>일</option>
 								<c:forEach var="i" begin="1" end="31">
 									<option value="${i }">${i }</option>
@@ -111,7 +111,7 @@
 					<div class="form-group col-md-12">
 						<label for="examFieldForm" class="label col-md-12"><i class="xi-align-justify"></i>시험과목</label><br>
 						<div class="col-md-12">
-							<select class="selectpicker col-md-4">
+							<select name="exam_field" class="selectpicker col-md-4">
 								<option>선택</option>
 								<option value="Korean">문학</option>
 								<option value="English">영어</option>
