@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ETP_Exam_Service {
 	private static ETP_Exam_Dao dao;
 	private static ETP_Exam_Service service = new ETP_Exam_Service();
+	private static final int PAGE_SIZE = 10;
 	public static ETP_Exam_Service getInstance(){
 		dao=ETP_Exam_Dao.getinstance();
 		return service;
@@ -47,6 +48,7 @@ public class ETP_Exam_Service {
 			exam_dday = request.getParameter("exam_dday");
 		}
 		String str_exam_ddate = exam_dyear+"/"+exam_dmonth+"/"+exam_dday;	
+
 		/*시험번호*/
 		examInfo.setExam_no(dao.countExamNo()+1);
 		/*시험시작일*/
@@ -73,7 +75,6 @@ public class ETP_Exam_Service {
 		if(sdate.compareTo(ddate)>-1){
 			response.setCharacterEncoding("utf-8");
 			PrintWriter writer;
-			System.out.println("12");
 			try {
 				writer = response.getWriter();
 				writer.println("<script>");
@@ -100,8 +101,20 @@ public class ETP_Exam_Service {
 		examInfo.setExam_number(Integer.parseInt(request.getParameter("exam_number")));
 		return dao.inputExamSchedule(examInfo);
 	}
-	public List<ETP_Exam_Info> examListService(){
-		return dao.examList();
+	public ETP_Exam_listModel examListService(int requestPage){
+		int totalCount = dao.countExam();
+		int totalPageCount = totalCount/PAGE_SIZE;
+		if(totalCount%PAGE_SIZE > 0){
+			totalPageCount++;
+		}
+		int startPage = requestPage-(requestPage-1)%5;
+		int endPage = startPage+4;
+		if(endPage>totalPageCount){
+			endPage=totalPageCount;
+		}
+		int startRow = (requestPage-1)*PAGE_SIZE;
+		List<ETP_Exam_Info> list = dao.examList(startRow);
+		return new ETP_Exam_listModel(list, requestPage, totalPageCount, startPage, endPage);
 	}
 	
 }

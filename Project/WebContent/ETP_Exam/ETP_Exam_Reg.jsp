@@ -132,7 +132,7 @@
 						<input type="submit" class="btn btn-info" value="등 록">
 						</div>
 						<div class="col-md-2">
-						<a href="ETP_Exam_main.jsp"><input type="button" class="btn btn-info" value="취 소" onclick = "href.location"></a>
+						<a href="ETP_Exam_main.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
 						</div>
 						<div class="col-md-4"></div>
 

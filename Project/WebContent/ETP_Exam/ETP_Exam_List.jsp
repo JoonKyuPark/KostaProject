@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
+<%@page import="job.exam.ETP_Exam_listModel"%>
 <%@page import="job.exam.ETP_Exam_Info"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -5,10 +8,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%
+	String pageNum = request.getParameter("pageNum");
+	ArrayList<String> sdateList = new ArrayList<String>();
+	ArrayList<String> ddateList = new ArrayList<String>();
+
+	if (pageNum == null) {
+		pageNum = "1";
+	}
+	int requestPage = Integer.parseInt(pageNum);
+	SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd");
 	ETP_Exam_Service service = ETP_Exam_Service.getInstance();
-	List<ETP_Exam_Info> list = service.examListService();
-	SimpleDateFormat format = new SimpleDateFormat("yy/MM/DD");
+	ETP_Exam_listModel listModel = service.examListService(requestPage);
+	request.setAttribute("listModel", listModel);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,66 +42,71 @@
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
 <script src="../js/exam.js"></script>
 <link rel="stylesheet" href="../css/ETP_Exam.css">
+<!------- XE FONT -------->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
 <title>ETP Exam List</title>
 </head>
 <body id=ETPexamListBody>
-	<div class="container">
-		<div class="body-1">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h2>시험 일정 관리</h2>
+		<br> <br>
+		<div id="examListOut">
+			<table id="examListTable" class="table table-bordred table-striped">
+				<tr>
+					<th><input type="checkbox" id="checkall" /></th>
+					<th>시험 번호</th>
+					<th>시험명</th>
+					<th>시험 시작일</th>
+					<th>시험 종료일</th>
+					<th>응시인원</th>
+					<th>시험과목</th>
+				</tr>
+				<%
+					for (int i = 0; i < listModel.getList().size(); i++) {
+				%>
+				<tr class="examListTr">
+					<td><input type="checkbox" value="${i.exam_no }">
+					<td><%=listModel.getList().get(i).getExam_no()%></td>
+					<td><%=listModel.getList().get(i).getExam_name()%></td>
+					<td><%=format.format(listModel.getList().get(i)
+						.getExam_sdate())%></td>
+					<td><%=format.format(listModel.getList().get(i)
+						.getExam_ddate())%></td>
+					<td><%=listModel.getList().get(i).getExam_number()%></td>
+					<td><%=listModel.getList().get(i).getExam_field()%></td>
+				</tr>
+				<%
+					}
+				%>
+			</table>
 
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<h2>시험 일정 관리</h2><br><br>
-				<table id="examListTable" class="table table-bordred table-striped">
-					<tr>
-						<th><input type="checkbox" id="checkall" /></th>
-						<th>시험 번호</th>
-						<th>시험명</th>
-						<th>시험 시작일</th>
-						<th>시험 종료일</th>
-						<th>응시인원</th>
-					</tr>
-					<%
-						for (int i = 0; i < list.size(); i++) {
-					%>
-					<tr class="examListTr">
-						<th align="center"><input type="checkbox" /></th>
-						<td><%=list.get(i).getExam_no()%></td>
-						<td><%=list.get(i).getExam_name()%></td>
-						<td><%=format.format(list.get(i).getExam_sdate())%></td>
-						<td><%=format.format(list.get(i).getExam_ddate())%></td>
-						<td><%=list.get(i).getExam_number()%></td>
-					</tr>
-					<%
-						}
-					%>
-				</table>
-				<!--table-->
-			</div>
-			<!--col_md_8-->
-			<div class="col-md-2"></div>
-		</div>
-		<!--body-1-->
-		<div class="body-2">
-			<div class="col-md-12" align="right">
-				<button type="button" class="btn btn-primary">삭제하기</button>
-
-				<div class="paging" align="center">
-					<ul class="pagination">
-						<li class="disabled"><a href="#"><span
-								class="glyphicon glyphicon-chevron-left"></span></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#"><span
-								class="glyphicon glyphicon-chevron-right"></span></a></li>
-					</ul>
+			<br> <br>
+			<!--table-->
+			<div align="center">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<c:if test="${listModel.startPage > 5 }">
+						<a href="ETP_Exam_List.jsp?pageNum=${listModel.startPage-5 }"><i
+							class="xi-angle-left-min"></i></a>
+					</c:if>
+					<c:forEach var="pageNo" begin="${listModel.startPage }"
+						end="${listModel.endPage }">
+						<a href="ETP_Exam_List.jsp?pageNum=${pageNo}">${pageNo }</a>
+					</c:forEach>
+					<c:if test="${listModel.endPage < listModel.totalPageCount }">
+						<a href="ETP_Exam_List.jsp?pageNum=${listModel.startPage+5 }"><i
+							class="xi-angle-right-min"></i></a>
+					</c:if>
+				</div>
+				<div class="col-md-2" align = "left">
+					<a href="#"><input type="button" class="btn btn-info"
+						value="수정하기"></a>
 				</div>
 			</div>
-			<!--col-md-12-->
 		</div>
+		<br>
 	</div>
-	<!-- list container -->
-</body>
+	<!--col_md_8-->
+	<div class="col-md-2"></div>
 </html>

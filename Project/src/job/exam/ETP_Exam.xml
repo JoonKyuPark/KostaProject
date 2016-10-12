@@ -14,8 +14,10 @@
 		select max(exam_no) from exam_infor
 	</select>
 	<select id="examList" resultType="ETP_Exam_Info">
-		select * from exam_infor
+		select * from exam_infor order by exam_no desc
 	</select>
-
+	<select id = "countExam" resultType="int">
+		select count(*) from exam_infor
+	</select>
 	
 </mapper>
