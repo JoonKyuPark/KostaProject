@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+.resume_h3{
+	border-top: 1px solid grey;
+	border-bottom : 1px solid grey;
+	padding-top:5px;
+	padding-bottom : 5px;
+}
+
+.left_aside{
+	float:left;
+}
+
+.aside_ul{
+	margin-top:20px;
+}
+
+
+
+
+
+
+
+
+
+
+

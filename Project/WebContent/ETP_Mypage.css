@@ -1,0 +1,56 @@
+.mypage_bar{
+	background-color: #46649B;
+}
+.mypage_bar li{
+	text-decoration: none;
+	list-style-type: none;
+	padding: 7px;
+	font-weight: bold;
+}
+.mypage_bar li a{
+	color:black;
+}
+.head{
+	color:black;
+	font-weight: bold;
+	border-bottom: 1px solid;
+	margin:3px 3px 20px 3px;
+}
+#headline{
+	border-style: groove; 
+	border: 5px solid;
+	border-color: #46649B;
+}
+#hires>span{
+	margin:	14px;
+}
+.recruits_radio>span{
+	margin:	14px;
+}
+#hire_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#hire_answer>div{
+	padding: 25px 25px 45px 25px;
+} 
+#recruit_main{
+	border-bottom: 1px solid;
+}
+#qualification_main{
+	border-bottom: 1px solid;
+}
+#qualification_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#qualification_answer>span{
+	margin-left: 14px;
+}
+#qualification_answer{
+	margin-top: 32px;
+}
+#career>div{
+	padding: 15px 0 35px 0;
+}
+#qualification_main{
+	border-bottom: 1px solid;
+}
