@@ -254,32 +254,32 @@
 		</div>
 	</div>
 
-
 	<div class="tab-content">
-		<div class="tab-pane active" id="person">
-			<form action="mainDisplay.jsp?id=1">
+		<div class="tab-pane active"  id="person">
+			<form action="mainDisplay.jsp">
+				<input type="hidden" name="id" value="1">
 				<div class="container">
 					<div class="col-md-2">이름</div>
 					<div class="col-md-3">
-						<input type="text" name="name" required="required">
+						<input type="text" name="member_name" required="required">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">아이디</div>
 					<div class="col-md-3">
-						<input type="text" name="id" required="required">
+						<input type="text" name="member_id" required="required">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">비밀번호</div>
 					<div class="col-md-3">
-						<input type="password" name="pass" required="required">
+						<input type="password" name="member_pwd" required="required">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">이메일</div>
 					<div class="col-md-3">
-						<input type="email" name="email" required="required">
+						<input type="email" name="member_email" required="required">
 					</div>
 				</div>
 				<div class="container">
@@ -292,10 +292,10 @@
 						</select>
 					</div>
 					<div class="col-md-1">
-						<input type="tel" required="required">
+						<input type="tel" required="required" name="tel2">
 					</div>
 					<div class="col-md-1">
-						<input type="tel" required="required">
+						<input type="tel" required="required" name="tel3">
 					</div>
 				</div>
 				<br>
@@ -306,73 +306,78 @@
 			</form>
 		</div>
 
+
+		<!-- 기업 -->
 		<div class="tab-pane" id="coper">
-			<form action="mainDisplay.jsp?id=2">
+			<form action="mainDisplay.jsp">
+				<input type="hidden" name="id" value="2">
 				<div class="container">
 					<div class="col-md-2">가입자명</div>
 					<div class="col-md-3">
-						<input type="text" name="name"  required="required">
+						<input type="text" name="etp_name" required="required">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">아이디</div>
 					<div class="col-md-3">
-						<input type="text" name="id">
+						<input type="text" name="etp_id">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">비밀번호</div>
 					<div class="col-md-3">
-						<input type="password" name="pass"  required="required">
+						<input type="password" name="etp_pass" required="required">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">이메일</div>
 					<div class="col-md-3">
-						<input type="email" name="email"  required="required">
+						<input type="email" name="etp_email" required="required">
 					</div>
 				</div>
 				<div class="container">
-					<div class="col-md-2">휴대폰번호</div>
+					<div class="col-md-2">회사전화번호</div>
 					<div class="col-md-1">
 						<select name="tel">
-							<option>010</option>
-							<option>011</option>
-							<option>016</option>
+							<option>02</option>
+							<option>031</option>
+							<option>054</option>
 						</select>
 					</div>
 					<div class="col-md-1">
-						<input type="tel"  required="required">
+						<input type="tel2" required="required">
 					</div>
 					<div class="col-md-1">
-						<input type="tel"  required="required">
-					</div>
-
-
-					<div class="container">
-						<div class="col-md-2">기업형태</div>
-						<div class="col-md-3">
-							<input type="text" name="id" etp_field required="required">
-						</div>
+						<input type="tel3" required="required">
 					</div>
 				</div>
+
+				<div class="container">
+					<div class="col-md-2">기업형태</div>
+					<div class="col-md-3">
+						<input type="text" name="etp_kind" required="required">
+					</div>
+				</div>
+
 				<div class="container">
 					<div class="col-md-2">사업자등록번호</div>
 					<div class="col-md-3">
-						<input type="text" name="id"  required="required">
+						<input type="text" name="etp_registration_num" required="required">
 					</div>
+					</div>
+					
 					<div class="container">
 						<div class="col-md-2">대표자명</div>
 						<div class="col-md-3">
-							<input type="text" name="id"  required="required">
+							<input type="text" name="delegator_name" required="required">
+						</div>
 						</div>
 						<div class="container">
 							<div class="col-md-2">회사명</div>
 							<div class="col-md-3">
-								<input type="text" name="id" required="required">
+								<input type="text" name="etp_name" required="required">
 							</div>
-						</div>
-					</div>
+							</div>
 					<br>
 					<div class="container">
 						<input type="submit" value="회원가입" class="col-md-1"> <input
@@ -381,6 +386,5 @@
 				</div>
 			</form>
 		</div>
-	</div>
-</body>
+		</body>
 </html>

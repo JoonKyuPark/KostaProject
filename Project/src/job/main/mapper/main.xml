@@ -3,13 +3,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="job.main.MainMapper">
+<mapper namespace="job.main.mapper.MainMapper">
 	<cache />
 
-	<insert id="PMinsert" parameterType="PM" >
+	<insert id="Minsert" parameterType="M">
 		INSERT INTO
-		member_inform(member_name,member_birth,member_gender,member_phone,member_id)
-		VALUES(#{member_name#{member_birth}#{member_gender}#{member_phone,member_id});
-</insert>
+		member_infor(MEMBER_NO,member_name,member_id,member_pwd,member_email,member_telephone)
+		VALUES(2,#{member_name},#{member_id},#{member_pwd},#{member_email},#{member_telephone})
+	</insert>
+	<insert id="Einsert" parameterType="ETP">
+		INSERT INTO
+		etp_infor(delegator_name, etp_id, etp_pass, etp_email,etp_kind,
+		etp_tel, etp_registration_num, etp_name)
+		values(#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+	</insert>
 
+<select id="Mlist" resultType="M">
+select * from member_infor
+</select>
 </mapper>

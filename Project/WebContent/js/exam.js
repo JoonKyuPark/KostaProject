@@ -1,9 +1,0 @@
-$(document).ready(function(){
-	$("#checkall").click(function(){
-		if($("#checkall").prop("checked")){
-			$("input[type=checkbox]").prop("checked",true);
-	}else{
-		$("input[type=checkbox]").prop("checked",false);
-	}
-	})
-})
