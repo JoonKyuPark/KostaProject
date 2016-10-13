@@ -52,4 +52,9 @@
 >>>>>>> branch 'master' of https://github.com/JoonKyuPark/KostaProject
 	</mappers>
 	
+	<mappers>
+		<mapper resource="Etp/mapper/resume.xml"/>
+
+	</mappers>
+	
 </configuration>
