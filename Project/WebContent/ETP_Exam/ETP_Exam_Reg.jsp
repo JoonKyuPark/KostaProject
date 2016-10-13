@@ -45,12 +45,12 @@
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
-				<form role="form" action="">
+				<form role="form" action="ETP_Exam_insertOk.jsp" method="post" onsu>
+					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control col-md-12"
-								placeholder="내용을 입력하세요.">
+							<input type="text" class="form-control col-md-12" name = "exam_name" placeholder="내용을 입력하세요.">
 						</div>
 						<br>
 						<br>
@@ -66,12 +66,14 @@
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
 								<option value="<%=year + 1%>"><%=year + 1%></option>
-							</select> <select name="exam_smonth" class="selectpicker col-md-4">
+							</select>
+							<select name="exam_smonth" class="selectpicker col-md-4">
 								<option>월</option>
 								<c:forEach var="i" begin="1" end="12">
 									<option  value="${i }">${i }</option>
 								</c:forEach>
-							</select> <select name="exam_sday" class="selectpicker col-md-4">
+							</select>
+							<select name="exam_sday" class="selectpicker col-md-4">
 								<option>일</option>
 								<c:forEach var="i" begin="1" end="31">
 									<option value="${i }">${i }</option>
@@ -86,12 +88,14 @@
 								<option>년도</option>
 								<option value="<%=year%>"><%=year%></option>
 								<option value="<%=year + 1%>"><%=year + 1%></option>
-							</select> <select name="exam_dmonth" class="selectpicker col-md-4">
+							</select>
+							<select name="exam_dmonth" class="selectpicker col-md-4">
 								<option>월</option>
 								<c:forEach var="i" begin="1" end="12">
 									<option value="${i }">${i }</option>
 								</c:forEach>
-							</select> <select name="exam_dday" class="selectpicker col-md-4">
+							</select>
+							<select name="exam_dday" class="selectpicker col-md-4">
 								<option>일</option>
 								<c:forEach var="i" begin="1" end="31">
 									<option value="${i }">${i }</option>
@@ -102,7 +106,7 @@
 					<div class="form-group col-md-12">
 						<label for="examNumberForm" class="label col-md-12"><i class="xi-align-justify"></i>응시인원</label><br>
 						<div class="col-md-12">
-							<input type="number" class="examNumberForm form-control col-md-3" style = "padding-right : 0;">
+							<input type="number" class="examNumberForm form-control col-md-3" name="exam_number" style = "padding-right : 0;">
 							<label class="examNumberFormText col-md-9">명</label>
 						</div>
 						<br><br>
@@ -123,18 +127,12 @@
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-						<label for="examRefForm" class="label col-md-12"><i class="xi-align-justify"></i>참고사항</label><br>
-						<div class="col-md-12">
-							<textarea class="examTextArea form-control"></textarea>
-						</div>					
-					</div>
-					<div class="form-group col-md-12">
 						<div class="col-md-4"></div>
 						<div class="col-md-2">
-						<input type="submit" class="btn btn-info" value="등 록" onclick="javascript:multiSending(this.form,'calendar.jsp')">
+						<input type="submit" class="btn btn-info" value="등 록">
 						</div>
 						<div class="col-md-2">
-						<input type="button" class="btn btn-info" value="취 소">
+						<a href="ETP_Exam_main.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
 						</div>
 						<div class="col-md-4"></div>
 
@@ -145,9 +143,9 @@
 			<div class="col-md-2"></div>
 		</div>
 		<div class="col-md-2">Right Menu(3)</div>
-		<div class="col-me-1"></div>
+		<div class="col-md-1"></div>
 		<div class="footer col-md-10"> footer </div>
-		<div class="col-me-1"></div>
+		<div class="col-md-1"></div>
 	</div>
 </body>
 </html>
