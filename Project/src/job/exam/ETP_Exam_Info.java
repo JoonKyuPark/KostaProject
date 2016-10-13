@@ -1,19 +1,23 @@
 package job.exam;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ETP_Exam_Info implements Serializable{
 	private int exam_no;
 	private int exam_number;
-	private Date exam_sdate;
-	private Date exam_ddate;
+	private Timestamp exam_sdate;
+	private Timestamp exam_ddate;
 	private String exam_name;
 	private String exam_field;
+	
 	public ETP_Exam_Info(){}
 	
-	public ETP_Exam_Info(int exam_no, int exam_number, Date exam_sdate, Date exam_ddate,
-			String exam_name, String exam_field) {
+
+	public ETP_Exam_Info(int exam_no, int exam_number, Timestamp exam_sdate,
+			Timestamp exam_ddate, String exam_name, String exam_field) {
 		super();
 		this.exam_no = exam_no;
 		this.exam_number = exam_number;
@@ -22,6 +26,8 @@ public class ETP_Exam_Info implements Serializable{
 		this.exam_name = exam_name;
 		this.exam_field = exam_field;
 	}
+
+
 
 	public int getExam_no() {
 		return exam_no;
@@ -43,7 +49,7 @@ public class ETP_Exam_Info implements Serializable{
 		return exam_sdate;
 	}
 
-	public void setExam_sdate(Date exam_sdate) {
+	public void setExam_sdate(Timestamp exam_sdate) {
 		this.exam_sdate = exam_sdate;
 	}
 
@@ -51,7 +57,7 @@ public class ETP_Exam_Info implements Serializable{
 		return exam_ddate;
 	}
 
-	public void setExam_ddate(Date exam_ddate) {
+	public void setExam_ddate(Timestamp exam_ddate) {
 		this.exam_ddate = exam_ddate;
 	}
 
@@ -70,6 +76,8 @@ public class ETP_Exam_Info implements Serializable{
 	public void setExam_field(String exam_field) {
 		this.exam_field = exam_field;
 	}
+
+	
 	
 	
 	

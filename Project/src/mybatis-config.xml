@@ -5,51 +5,20 @@
 
 <configuration>
 	<typeAliases>
-<<<<<<< HEAD
-		<typeAlias type="job.main.PMember" alias="PM"/>
+		<typeAlias type="job.exam.ETP_Exam_Schedule" alias="ETP_Exam_Schedule"/>
 	</typeAliases>
 	
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
-			<dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-				<property name="username" value="kosta82"/>
-				<property name="password" value="1234"/>
-			</dataSource>
-		</environment>		
-	</environments>
-	
-	<mappers>
-		
-=======
-		<typeAlias type="job.resume.Resume" alias="Resume"/>
-		
-	</typeAliases>
-	
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC"/>
-			<!-- <dataSource type="POOLED">
-				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-				<property name="username" value="kosta127"/>
-				<property name="password" value="1234"/>
-			</dataSource> -->
-			
 			<dataSource type="JNDI">
 				<property name="data_source" value="java:comp/env/jdbc/oracle"/>
 			</dataSource>
-			
-			
 		</environment>		
 	</environments>
 	
-	
 	<mappers>
-		<mapper resource="job/resume/mapper/resume.xml"/>
->>>>>>> branch 'master' of https://github.com/JoonKyuPark/KostaProject
+		<mapper resource="/job/exam/ETP_Exam.xml"/>
 	</mappers>
 	
 	<mappers>
@@ -58,3 +27,13 @@
 	</mappers>
 	
 </configuration>
+
+
+
+
+
+
+
+
+
+
