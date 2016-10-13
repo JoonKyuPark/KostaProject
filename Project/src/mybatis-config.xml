@@ -4,8 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
 	<typeAliases>
 		<typeAlias type="job.exam.ETP_Exam_Schedule" alias="ETP_Exam_Schedule"/>
+		<typeAlias type="Etp.model.Etp" alias="Etp"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -22,8 +24,7 @@
 	</mappers>
 	
 	<mappers>
-		<mapper resource="Etp/mapper/resume.xml"/>
-
+		<mapper resource="/Etp/mapper/resume.xml"/>
 	</mappers>
 	
 </configuration>
