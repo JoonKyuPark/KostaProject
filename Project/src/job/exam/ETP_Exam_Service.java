@@ -99,7 +99,10 @@ public class ETP_Exam_Service {
 		examInfo.setExam_field(request.getParameter("exam_field"));
 		/*응시인원*/
 		examInfo.setExam_number(Integer.parseInt(request.getParameter("exam_number")));
+		/* 기업번호 넣는 곳 */
+		examInfo.setEtp_no(1);
 		return dao.inputExamSchedule(examInfo);
+
 	}
 	public ETP_Exam_listModel examListService(int requestPage){
 		int totalCount = dao.countExam();
@@ -116,5 +119,7 @@ public class ETP_Exam_Service {
 		List<ETP_Exam_Info> list = dao.examList(startRow);
 		return new ETP_Exam_listModel(list, requestPage, totalPageCount, startPage, endPage);
 	}
-	
+	public List<ETP_Exam_Info> calendarListService(){
+		return dao.calendarList();
+	}
 }

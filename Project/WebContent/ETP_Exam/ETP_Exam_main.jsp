@@ -1,3 +1,8 @@
+<%@page import="com.sun.org.apache.bcel.internal.generic.INSTANCEOF"%>
+<%@page import="job.exam.ETP_Exam_Info"%>
+<%@page import="java.util.List"%>
+<%@page import="job.exam.ETP_Exam_Service"%>
+<%@page import="javax.swing.ListModel"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
@@ -27,7 +32,11 @@
 	
 	Calendar todayCal = Calendar.getInstance();
 	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	SimpleDateFormat format2 = new SimpleDateFormat("yyyy/MM/dd");
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
+	
+	ETP_Exam_Service service = ETP_Exam_Service.getInstance();
+	List<ETP_Exam_Info> list = service.calendarListService();
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -133,17 +142,52 @@
 						strUseDate += Integer.toString(i);
 					}
 					int intUseDate = Integer.parseInt(strUseDate);
+				
 					
+					String strCompareDate = Integer.toString(year) + "/";
+					if(Integer.toString(month+1).length() == 1){
+						strCompareDate += "0" + Integer.toString(month+1) + "/";
+					}else{
+						strCompareDate += Integer.toString(month+1) + "/";
+					}
+					if(Integer.toString(i).length()==1){
+						strCompareDate += "0" + Integer.toString(i);
+					}else{
+						strCompareDate += Integer.toString(i);
+					}
+
 					String todayColor = "#FFFFFF";
 					if(intUseDate == intToday){
 						todayColor = "#FFA4A4";
 					}
-					out.println("<td class = 'dateTd' valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");
+					out.println("<td class = 'dateTd' valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");	
 				%><font color='<%=color %>'>
 					<%=i %>
 				  </font>
 				<%
 					/*------------------내용입력------------------*/
+					
+				for(int j = 0; j<list.size(); j++){
+					String compareSDate = format2.format(list.get(j).getExam_sdate());
+					String compareDDate = format2.format(list.get(j).getExam_ddate());
+					
+						if(strCompareDate.equals(compareSDate)){
+							out.println("<br>");
+							out.println("<font color='black' size=1'>");
+							out.println(list.get(j).getExam_name()+" 시작");
+							out.println("</font>");
+						}
+						if(strCompareDate.equals(compareDDate)){
+							out.println("<br>");
+							out.println("<font color='black' size='1'>");
+							out.println(list.get(j).getExam_name()+" 종료");
+							out.println("</font>");
+						}
+
+						
+					}
+				
+				
 				out.println("</td>");
 				newLine++;
 				

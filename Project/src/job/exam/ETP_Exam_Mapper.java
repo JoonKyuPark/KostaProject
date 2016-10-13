@@ -9,6 +9,7 @@ public interface ETP_Exam_Mapper {
 	public Integer countExamNo();
 	public List<ETP_Exam_Info> examList(RowBounds row);
 	public int countExam();
+	public List<ETP_Exam_Info> calendarList();
 }
 
 

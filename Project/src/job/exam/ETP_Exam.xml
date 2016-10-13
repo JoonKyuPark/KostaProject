@@ -19,5 +19,8 @@
 	<select id = "countExam" resultType="int">
 		select count(*) from exam_infor
 	</select>
+	<select id = "calendarList" resultType="ETP_Exam_Info">
+		select * from exam_infor
+	</select>
 	
 </mapper>
