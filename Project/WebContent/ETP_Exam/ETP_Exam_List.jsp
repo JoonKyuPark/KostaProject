@@ -49,9 +49,10 @@
 <body id=ETPexamListBody>
 	<div class="col-md-2"></div>
 	<div class="col-md-8">
-		<h2>시험 일정 관리</h2>
+		<h2>시험일정 관리</h2>
 		<br> <br>
 		<div id="examListOut">
+			<h3> &nbsp; &nbsp;시험일정 목록</h3>
 			<table id="examListTable" class="table table-bordred table-striped">
 				<tr>
 					<th><input type="checkbox" id="checkall" /></th>
@@ -83,9 +84,9 @@
 
 			<br> <br>
 			<!--table-->
-			<div align="center">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
+			<div align="center" style = "margin-bottom : 5%;">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
 					<c:if test="${listModel.startPage > 5 }">
 						<a href="ETP_Exam_List.jsp?pageNum=${listModel.startPage-5 }"><i
 							class="xi-angle-left-min"></i></a>
@@ -99,9 +100,11 @@
 							class="xi-angle-right-min"></i></a>
 					</c:if>
 				</div>
-				<div class="col-md-2" align = "left">
+				<div class="col-md-4" align = "left">
 					<a href="#"><input type="button" class="btn btn-info"
 						value="수정하기"></a>
+					<a href="#"><input type="button" class="btn btn-info"
+						value="삭제하기"></a>
 				</div>
 			</div>
 		</div>

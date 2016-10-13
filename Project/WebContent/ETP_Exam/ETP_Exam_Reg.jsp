@@ -45,7 +45,7 @@
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
-				<form role="form" action="ETP_Exam_insertOk.jsp" method="post">
+				<form role="form" action="ETP_Exam_insertOk.jsp" method="post" onsu>
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>
@@ -143,9 +143,9 @@
 			<div class="col-md-2"></div>
 		</div>
 		<div class="col-md-2">Right Menu(3)</div>
-		<div class="col-me-1"></div>
+		<div class="col-md-1"></div>
 		<div class="footer col-md-10"> footer </div>
-		<div class="col-me-1"></div>
+		<div class="col-md-1"></div>
 	</div>
 </body>
 </html>
