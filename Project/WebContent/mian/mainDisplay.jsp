@@ -39,6 +39,7 @@ LogginService log = LogginService.getInstance();
 		System.out.println("3e3de");
 		log.insert2(etp);
 	} else if (reg.equals("1")) {
+		int loginid=0;
 		int loggin = 1;
 		request.setAttribute("loggin", loggin);
 		String member_name = request.getParameter("member_name");
@@ -54,6 +55,8 @@ LogginService log = LogginService.getInstance();
 		log.insert(m);
 		session.setAttribute("login", true);
 		session.setAttribute("kind", false);
+		session.setAttribute("loginid",request.getAttribute("logginid"));
+	
 	}
 	else if(reg.equals("0")){
 		session.removeAttribute("login");
@@ -67,6 +70,7 @@ LogginService log = LogginService.getInstance();
 		request.setAttribute("loggin", loggin);
 		session.setAttribute("login", true);
 		session.setAttribute("kind", false);
+		session.setAttribute("loginid",request.getAttribute("logginid"));
 				}
 	else if(request.getParameter("kind").equals("2")){
 		log.Mlist(request, response);

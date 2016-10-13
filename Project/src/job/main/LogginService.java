@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sun.rmi.server.Dispatcher;
 
 public class LogginService {
 
@@ -42,6 +41,7 @@ public class LogginService {
 					loggin = 1;
 					System.out.println("aaa");
 					System.out.println("성공");
+					request.setAttribute("loginid", list.get(i).getMember_id());
 					request.setAttribute("loggin", loggin);
 					RequestDispatcher rd =
 							request.getRequestDispatcher("main/mainDisplay.jsp");
