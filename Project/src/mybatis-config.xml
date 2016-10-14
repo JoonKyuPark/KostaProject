@@ -5,7 +5,8 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias type="job.exam.ETP_Exam_Schedule" alias="ETP_Exam_Schedule"/>
+		<typeAlias type="recruit.infor.Recruit_Infor" alias="Recruit_infor"/>
+		<typeAlias type="recruit.clip.Recruit_Clip" alias="Recruit_Clip"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -18,10 +19,12 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="/job/exam/ETP_Exam.xml"/>
+		<mapper resource="recruit/mapper/Recruit_infor.xml"/>
+		<mapper resource="recruit/clip/mapper/Recruit_Clip.xml"/>
 	</mappers>
 	
 </configuration>
+
 
 
 

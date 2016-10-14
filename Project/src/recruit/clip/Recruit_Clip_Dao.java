@@ -1,21 +1,22 @@
-package recruit.infor;
+package recruit.clip;
 
 import java.io.InputStream;
-import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import recruit.clip.mapper.Recruit_Clip_Mapper;
+import recruit.infor.Recruit_infor_Dao;
 import recruit.mapper.Recruit_infor_Mapper;
 
-public class Recruit_infor_Dao {
-	
-	private static Recruit_infor_Dao riDao = new Recruit_infor_Dao();
+public class Recruit_Clip_Dao {
 
-	public static Recruit_infor_Dao getInstance() {
-		return riDao;
+	private static Recruit_Clip_Dao rcDao = new Recruit_Clip_Dao();
+
+	public static Recruit_Clip_Dao getInstance() {
+		return rcDao;
 	}
 
 	public SqlSessionFactory getSqlSessionFactory() {
@@ -34,27 +35,28 @@ public class Recruit_infor_Dao {
 		return new SqlSessionFactoryBuilder().build(input);
 	}
 	
-	public List<Recruit_Infor> recruitList() {
+	public int insertRecruitLike(int id) {
 		System.out.println("Dddd0");
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		System.out.println("Dddd99");
-		List<Recruit_Infor> list=null;
+		System.out.println("Dddd99 "+id);
+		int re=-1;
 		System.out.println("Dddd1");
 		try {
-			list= sqlSession.getMapper(Recruit_infor_Mapper.class).recruitList();
-			System.out.println(list.get(0).hire_type);
+			re= sqlSession.getMapper(Recruit_Clip_Mapper.class).insertRecruitLike(id);
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			
+			System.out.println("gggggggggggggggggggg"+re);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*finally {
-			System.out.println(list.get(0).hire_type+"1");
+		}finally {
 			sqlSession.close();
-			System.out.println(list.get(0).hire_type+"2");
-		}*/
+		}
 		
-		System.out.println("Dddd2"+list.get(0).hire_type);
-		System.out.println("Dddd3");
-		return list;
+		System.out.println("Dddd3"+re);
+		return re;
 	}
-
-
 }
