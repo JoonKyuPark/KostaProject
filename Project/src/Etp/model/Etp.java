@@ -8,7 +8,7 @@ public class Etp implements Serializable {
 	private String member_name;	//이름
 	private String member_img;		//사진 url
 	private String member_birth;	//생일
-	private String first_interview;
+	private String reading;
 
 
 	public Etp(){
@@ -17,13 +17,13 @@ public class Etp implements Serializable {
 
 
 	public Etp(int member_no, String member_name, String member_img,
-			String member_birth, String first_interview) {
+			String member_birth, String reading) {
 		super();
 		this.member_no = member_no;
 		this.member_name = member_name;
 		this.member_img = member_img;
 		this.member_birth = member_birth;
-		this.first_interview = first_interview;
+		this.reading = reading;
 	}
 
 
@@ -67,14 +67,16 @@ public class Etp implements Serializable {
 	}
 
 
-	public String getFirst_interview() {
-		return first_interview;
+	public String getReading() {
+		return reading;
 	}
 
 
-	public void setFirst_interview(String first_interview) {
-		this.first_interview = first_interview;
+	public void setReading(String reading) {
+		this.reading = reading;
 	}
+
+	
 	
 	
 	

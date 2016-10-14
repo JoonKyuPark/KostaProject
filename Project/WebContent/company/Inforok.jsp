@@ -15,17 +15,25 @@
 	String id = request.getParameter("b_id");
 	int b_id = Integer.parseInt(id);
 
+	//기업아이디 를 통해 기업번호를 불러온다.
+	String gid = "11";
+	session.setAttribute("giup", gid);
+	int gid2 = Integer.parseInt((String) session.getAttribute("giup"));
+	
 	ETP_Exam_Service service = ETP_Exam_Service.getInstance();
+	
+	
+	int gno = service.getGno(gid2);
+	
+	System.out.println("기업번호 입니다"+gno);
+	
+	
 	
 	List<Etp> list = service.getEtplist(b_id);
 	
-	
-	
-	
-	
 
-
-
+	
+	
 %>
 
 

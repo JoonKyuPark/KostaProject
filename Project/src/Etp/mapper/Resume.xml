@@ -4,22 +4,24 @@
 
 
 
-<mapper namespace="job.resume.mapper.BoardMapper">
+<mapper namespace="Etp.mapper.ResumeMapper">
 	<cache />
 
 	<select id="Etpselect" resultType="Etp" parameterType="int" >
 
-		select a.member_name,a.member_img,a.member_birth,b.reading 
-			from MEMBER_INFOR a
-			inner join JOIN_RECEIVE b
-			on a.member_no = b.member_no
-  		WHERE A.member_no =#{b_id};
+	 select a.member_no,a.member_name,a.member_img,a.member_birth,b.reading 
+	 from MEMBER_INFOR a inner join JOIN_RECEIVE b 
+	 on a.member_no = b.member_no
+  	WHERE a.member_no =#{b_id}
 	
-	
-	
+		
 	</select>
 	
+	<select id="selectGno"  parameterType="int" resultType="int">
 	
+		select etp_no from etp_infor where etp_id =#{gid2}
+	
+	</select>
 
 </mapper>
 

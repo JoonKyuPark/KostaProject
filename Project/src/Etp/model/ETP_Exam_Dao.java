@@ -21,12 +21,12 @@ public class ETP_Exam_Dao {
 	public SqlSessionFactory getSqlSessionFactory(){
 		String resource = "mybatis-config.xml";
 		InputStream input = null;
-		
 		try {
 			input = Resources.getResourceAsStream(resource);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return new SqlSessionFactoryBuilder().build(input);
 	}
 
@@ -34,32 +34,22 @@ public class ETP_Exam_Dao {
 	
 	
 	public List<Etp> selectEtp(int b_id){
-		List<Etp> list = null;
-		
-		SqlSession session = getSqlSessionFactory().openSession();
-	
-	
-		try {
-			
-			list = session.getMapper(ResumeMapper.class).Etpselect(b_id);
-			return list;
-			
-		} catch (Exception e) {
-			
-		} finally{
-			
-			if(list == null)			
-			session.close();
-		}
-		
-		
-		
-		
-
-		return list;
+			SqlSession session = getSqlSessionFactory().openSession();
+				return  session.getMapper(ResumeMapper.class).Etpselect(b_id);
 	}
 	
 	
+	
+	public int getGno(int gid2){
+		SqlSession session = getSqlSessionFactory().openSession();
+
+		
+		
+		return session.getMapper(ResumeMapper.class).selectGno(gid2);
+		
+		
+		
+	}
 	
 	
 }

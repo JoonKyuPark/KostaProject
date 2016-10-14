@@ -14,12 +14,17 @@ public class ETP_Exam_Service {
 	
 	
 	public List<Etp> getEtplist(int b_id){
-				
-		return dao.selectEtp(b_id);
-	
-	
 		
+		
+		return dao.selectEtp(b_id);
+			
 	}
+	
+	//기업번호 리턴
+	public int getGno(int gid2){
+			return dao.getGno(gid2);
+	}
+	
 	
 	
 	
