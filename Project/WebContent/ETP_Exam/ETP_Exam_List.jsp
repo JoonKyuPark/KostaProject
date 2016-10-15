@@ -10,10 +10,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 로그인 된 기업번호와 시험정보에 저장된 기업번호가 일치한것만 출력된다. -->
 <%
+	
 	String pageNum = request.getParameter("pageNum");
 	ArrayList<String> sdateList = new ArrayList<String>();
 	ArrayList<String> ddateList = new ArrayList<String>();
-
+	request.setAttribute("etp_no", 1);
 	if (pageNum == null) {
 		pageNum = "1";
 	}

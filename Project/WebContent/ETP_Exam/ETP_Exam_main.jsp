@@ -1,4 +1,3 @@
-<%@page import="com.sun.org.apache.bcel.internal.generic.INSTANCEOF"%>
 <%@page import="job.exam.ETP_Exam_Info"%>
 <%@page import="java.util.List"%>
 <%@page import="job.exam.ETP_Exam_Service"%>
@@ -36,7 +35,8 @@
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
 	
 	ETP_Exam_Service service = ETP_Exam_Service.getInstance();
-	List<ETP_Exam_Info> list = service.calendarListService();
+	int etp_no = 2; /* 여기에 기업회원 번호 들어가면 된다 */
+	List<ETP_Exam_Info> list = service.calendarListService(etp_no);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>

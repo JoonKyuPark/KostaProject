@@ -88,10 +88,10 @@ public class ETP_Exam_Dao {
 		}
 		return re;
 	}
-	public List<ETP_Exam_Info> calendarList(){
+	public List<ETP_Exam_Info> calendarList(int etp_no){
 		SqlSession sqlSession	= getSqlSessionFactory().openSession();
 				try {
-					return sqlSession.getMapper(ETP_Exam_Mapper.class).calendarList();
+					return sqlSession.getMapper(ETP_Exam_Mapper.class).calendarList(etp_no);
 				} catch (Exception e) {
 					e.printStackTrace();
 					return null;

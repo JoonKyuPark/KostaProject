@@ -13,9 +13,9 @@
 	</insert>
 	<insert id="Einsert" parameterType="ETP">
 		INSERT INTO
-		etp_infor(delegator_name, etp_id, etp_pass, etp_email,etp_kind,
+		etp_infor(etp_no, delegator_name, etp_id, etp_pass, etp_email,etp_kind,
 		etp_tel, etp_registration_num, etp_name)
-		values(#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+		values(2, #{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
 	</insert>
 
 <select id="Mlist" resultType="M">

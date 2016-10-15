@@ -119,7 +119,7 @@ public class ETP_Exam_Service {
 		List<ETP_Exam_Info> list = dao.examList(startRow);
 		return new ETP_Exam_listModel(list, requestPage, totalPageCount, startPage, endPage);
 	}
-	public List<ETP_Exam_Info> calendarListService(){
-		return dao.calendarList();
+	public List<ETP_Exam_Info> calendarListService(int etp_no){
+		return dao.calendarList(etp_no);
 	}
 }
