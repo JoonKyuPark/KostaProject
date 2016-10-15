@@ -27,15 +27,6 @@ public class Resume_Dao {
 		return new SqlSessionFactoryBuilder().build(input);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public int insertResume(Resume resume){
 		int re = 0;
 		
@@ -54,6 +45,8 @@ public class Resume_Dao {
 		}finally{
 			sqlSession.close();
 		}
+		
+		System.out.println(resume.getVolun_field());
 		return re;
 	}
 	
