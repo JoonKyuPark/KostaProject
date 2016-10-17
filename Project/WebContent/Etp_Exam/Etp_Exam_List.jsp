@@ -55,7 +55,7 @@
 		<br> <br>
 		<div id="examListOut">
 			<h3>&nbsp; &nbsp;시험일정 목록</h3>
-			<form action="Etp_exam_Update.jsp" method="get">
+			<form action="Etp_Exam_Update.jsp" method="get">
 				<table id="examListTable" class="table table-bordred table-striped">
 					<tr>
 						<th><input type="checkbox" id="checkall" /></th>

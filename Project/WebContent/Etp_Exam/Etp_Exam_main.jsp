@@ -1,6 +1,6 @@
-<%@page import="job.exam.ETP_Exam_Info"%>
+<%@page import="job.exam.Etp_Exam_Info"%>
 <%@page import="java.util.List"%>
-<%@page import="job.exam.ETP_Exam_Service"%>
+<%@page import="job.exam.Etp_Exam_Service"%>
 <%@page import="javax.swing.ListModel"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -34,9 +34,9 @@
 	SimpleDateFormat format2 = new SimpleDateFormat("yyyy/MM/dd");
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
 	
-	ETP_Exam_Service service = ETP_Exam_Service.getInstance();
+	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
 	int etp_no = 2; /* 여기에 기업회원 번호 들어가면 된다 */
-	List<ETP_Exam_Info> list = service.calendarListService(etp_no);
+	List<Etp_Exam_Info> list = service.calendarListService(etp_no);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>

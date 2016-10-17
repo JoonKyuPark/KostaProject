@@ -88,7 +88,7 @@ public class Etp_Exam_Service {
 			}
 		}else{
 			try {
-				response.sendRedirect("ETP_Exam_main.jsp");
+				response.sendRedirect("Etp_Exam_main.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
