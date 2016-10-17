@@ -337,7 +337,8 @@ var check = function(){
 <br>
 	<div class="tab-content">
 		<div class="tab-pane active" id="person">
-			<form action="mainDisplay.jsp" id="member">
+			<form action="mainDisplay.jsp" id="member" method="post">
+			
 				<input type="hidden" name="id" value="1">
 				<div class="container">
 					<div class="col-md-2">이름</div>
@@ -392,7 +393,7 @@ var check = function(){
 
 		<!-- 기업 -->
 		<div class="tab-pane" id="coper">
-			<form action="mainDisplay.jsp" id="etp">
+			<form action="mainDisplay.jsp" id="etp" method="post">
 				<input type="hidden" name="id" value="2">
 				<div class="container">
 					<div class="col-md-2">가입자명</div>

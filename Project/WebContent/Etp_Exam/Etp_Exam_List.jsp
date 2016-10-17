@@ -14,14 +14,14 @@
 	String pageNum = request.getParameter("pageNum");
 	ArrayList<String> sdateList = new ArrayList<String>();
 	ArrayList<String> ddateList = new ArrayList<String>();
-	request.setAttribute("etp_no", 1);
 	if (pageNum == null) {
 		pageNum = "1";
 	}
 	int requestPage = Integer.parseInt(pageNum);
 	SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd");
 	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
-	Etp_Exam_listModel listModel = service.examListService(requestPage);
+	int etp_no = 1; /*기업 번호 들어가면된다.*/
+	Etp_Exam_listModel listModel = service.examListService(requestPage, etp_no);
 	request.setAttribute("listModel", listModel);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -54,6 +54,7 @@
 		<br> <br>
 		<div id="examListOut">
 			<h3> &nbsp; &nbsp;시험일정 목록</h3>
+			<form id="boardForm" action="" method="post">
 			<table id="examListTable" class="table table-bordred table-striped">
 				<tr>
 					<th><input type="checkbox" id="checkall" /></th>
@@ -68,7 +69,7 @@
 					for (int i = 0; i < listModel.getList().size(); i++) {
 				%>
 				<tr class="examListTr">
-					<td><input type="checkbox" value="${i.exam_no }">
+					<td><input type="checkbox" class="chk" name = "exam_no" value="<%=listModel.getList().get(i).getExam_no()%>">
 					<td><%=listModel.getList().get(i).getExam_no()%></td>
 					<td><%=listModel.getList().get(i).getExam_name()%></td>
 					<td><%=format.format(listModel.getList().get(i)
@@ -82,6 +83,7 @@
 					}
 				%>
 			</table>
+			
 
 			<br> <br>
 			<!--table-->
@@ -102,12 +104,11 @@
 					</c:if>
 				</div>
 				<div class="col-md-4" align = "left">
-					<a href="#"><input type="button" class="btn btn-info"
-						value="수정하기"></a>
-					<a href="#"><input type="button" class="btn btn-info"
-						value="삭제하기"></a>
+					<input type="button" class="btn btn-info" onclick="check()" value="수 정">
+					<input type="button" class="btn btn-info" onclick="deleteExam()" value = "삭 제">
 				</div>
 			</div>
+			</form>
 		</div>
 		<br>
 	</div>
