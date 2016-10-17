@@ -26,7 +26,7 @@
 	<div class="container" align="center">
 		<form action="#">
 			<ul class="nav nav-pills">
-				<li><img>로고</img></li>
+				<li><img>로고</li>
 				<li><input type="text"></li>
 				<li><input type="submit" value="검색"></li>
 

@@ -28,7 +28,7 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
-<link rel="stylesheet" href="../css/Etp_exam.css">
+<link rel="stylesheet" href="../css/Etp_Exam.css">
 <script src="../js/Exam.js"></script>
 <head>
 <meta charset="UTF-8">
@@ -45,7 +45,7 @@
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
-				<form role="form" action="Etp_exam_insertOk.jsp" method="post">
+				<form role="form" action="Etp_Exam_insertOk.jsp" method="post">
 					<input type="hidden" name="etp_no" value = "2"> 
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">

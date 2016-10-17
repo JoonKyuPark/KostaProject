@@ -35,7 +35,7 @@
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
 	
 	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
-	int etp_no = 2; /* 여기에 기업회원 번호 들어가면 된다 */
+	int etp_no = 1; /* 여기에 기업회원 번호 들어가면 된다 */
 	List<Etp_Exam_Info> list = service.calendarListService(etp_no);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -57,7 +57,7 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
-<link rel="stylesheet" href="../css/ETP_Exam.css">
+<link rel="stylesheet" href="../css/Etp_Exam.css">
 <script src="../js/Exam.js"></script>
 <head>
 <meta charset="UTF-8">
