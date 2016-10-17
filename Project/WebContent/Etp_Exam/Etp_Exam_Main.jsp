@@ -63,7 +63,7 @@
 <meta charset="UTF-8">
 <title>Etp Exam Main</title>
 </head>
-<body id="ETP_Exam_main">
+<body id="Etp_Exam_main">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
@@ -74,11 +74,11 @@
 			<table class = "Calendar">
 				<tr>
 					<td align="center">
-						<a href="ETP_Exam_main.jsp?year=<%=year-1%>&month=<%=month%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year-1%>&month=<%=month%>">
 							<i class="xi-angle-left xi-x"></i>
 						</a>
 						<%if(month > 0){ %>
-						<a href="ETP_Exam_main.jsp?year=<%=year%>&month=<%=month-1%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year%>&month=<%=month-1%>">
 							<i class="xi-angle-left-min xi-x"></i>
 						</a>
 						<%}else{ %>
@@ -90,13 +90,13 @@
 						<%=month+1 %> &nbsp; &nbsp;
 						<i class="xi-ellipsis-h xi-x"></i>
 						<%if(month < 11){ %>
-						<a href="ETP_Exam_main.jsp?year=<%=year%>&month=<%=month+1%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year%>&month=<%=month+1%>">
 							<i class="xi-angle-right-min xi-x"></i>
 						</a>
 						<%}else{ %>
 							<i class="xi-angle-right-min xi-x"></i>
 						<%} %>
-						<a href="ETP_Exam_main.jsp?year=<%=year+1%>&month=<%=month%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year+1%>&month=<%=month%>">
 							<i class="xi-angle-right xi-x"></i>
 						</a>
 					</td>
