@@ -4,17 +4,18 @@
 
 
 
-<mapper namespace="job.exam.ETP_Exam_Mapper">
+<mapper namespace="job.exam.Etp_Exam_Mapper">
 	<cache />
-	<insert id="insertExamInfo" parameterType="ETP_Exam_Info">
+	<insert id="insertExamInfo" parameterType="Etp_Exam_Info">
 		insert into exam_infor(exam_no, exam_sdate, exam_ddate, exam_name, exam_number, exam_field, etp_no)
 			values(#{exam_no}, #{exam_sdate}, #{exam_ddate}, #{exam_name}, #{exam_number}, #{exam_field}, #{etp_no})
 	</insert>
 	<select id="countExamNo" resultType="Integer">
 		select max(exam_no) from exam_infor
 	</select>
-	<select id="examList" resultType="ETP_Exam_Info">
+	<select id="examList" resultType="Etp_Exam_Info" parameterType="int">
 		select * from exam_infor 
+			where etp_no=#{etp_no}
 		
 		
 		order by exam_no desc
@@ -22,9 +23,20 @@
 	<select id = "countExam" resultType="int">
 		select count(*) from exam_infor
 	</select>
-	<select id = "calendarList" resultType="ETP_Exam_Info" parameterType="int">
+	<select id = "calendarList" resultType="Etp_Exam_Info" parameterType="int">
 		select * from exam_infor
 			where etp_no = #{etp_no}
 	</select>
+	
+	<select id="selectExam" resultType="Etp_Exam_Info" parameterType="int">
+		select*from exam_infor
+			where exam_no=#{exam_no}
+	</select>
+	<update id="updateExam" parameterType="Etp_Exam_Info">
+		update exam_infor set(
+			exam_sdate = #{exam_sdate}, exam_ddate = #{exam_ddate}, exam_name = #{exam_name}, exam_number = #{exam_number}, exam_field = #{exam_field}
+				where exam_no=#{exam_no}
+		)
+	</update>
 	
 </mapper>

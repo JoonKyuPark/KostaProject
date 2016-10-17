@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ETP_Exam_Info implements Serializable{
+public class Etp_Exam_Info implements Serializable{
 	private int exam_no;
 	private int exam_number;
 	private Timestamp exam_sdate;
@@ -14,10 +14,10 @@ public class ETP_Exam_Info implements Serializable{
 	private String exam_field;
 	private int etp_no;
 	
-	public ETP_Exam_Info(){}
+	public Etp_Exam_Info(){}
 	
 
-	public ETP_Exam_Info(int exam_no, int exam_number, Timestamp exam_sdate,
+	public Etp_Exam_Info(int exam_no, int exam_number, Timestamp exam_sdate,
 			Timestamp exam_ddate, String exam_name, String exam_field, int etp_no) {
 		super();
 		this.exam_no = exam_no;
