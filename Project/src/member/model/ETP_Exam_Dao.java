@@ -1,4 +1,4 @@
-package Etp.model;
+package member.model;
 
 import java.io.InputStream;
 import java.util.List;
