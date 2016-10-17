@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="job.exam.ETP_Exam_Mapper">
+	<cache />
+	<insert id="insertExamInfo" parameterType="ETP_Exam_Info">
+		insert into exam_infor(exam_no, exam_sdate, exam_ddate, exam_name, exam_number, exam_field, etp_no)
+			values(#{exam_no}, #{exam_sdate}, #{exam_ddate}, #{exam_name}, #{exam_number}, #{exam_field}, #{etp_no})
+	</insert>
+	<select id="countExamNo" resultType="Integer">
+		select max(exam_no) from exam_infor
+	</select>
+	<select id="examList" resultType="ETP_Exam_Info">
+		select * from exam_infor 
+		
+		
+		order by exam_no desc
+	</select>
+	<select id = "countExam" resultType="int">
+		select count(*) from exam_infor
+	</select>
+	<select id = "calendarList" resultType="ETP_Exam_Info" parameterType="int">
+		select * from exam_infor
+			where etp_no = #{etp_no}
+	</select>
+	
+</mapper>

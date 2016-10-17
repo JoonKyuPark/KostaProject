@@ -15,11 +15,7 @@
 		INSERT INTO
 		etp_infor(etp_no, delegator_name, etp_id, etp_pass, etp_email,etp_kind,
 		etp_tel, etp_registration_num, etp_name)
-<<<<<<< HEAD
 		values(/'#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
-=======
-		values(2, #{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
->>>>>>> branch 'master' of https://github.com/JoonKyuPark/KostaProject
 	</insert>
 
 <select id="Mlist" resultType="M">
