@@ -137,7 +137,7 @@ public class Etp_Exam_Service {
 	}
 
 	public void updateExamService(HttpServletRequest request,
-			HttpServletResponse response) {
+		HttpServletResponse response) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		Etp_Exam_Info examInfo = new Etp_Exam_Info();
 		if (request.getParameter("exam_no").length() > 1) {
@@ -151,10 +151,9 @@ public class Etp_Exam_Service {
 				writer.println("</script>");
 				writer.flush();
 			} catch (Exception e) {
-				// TODO: handle exception
-
+				e.printStackTrace();
 			}
-
+		}
 		String exam_syear = request.getParameter("exam_syear");
 		String exam_smonth = "";
 		String exam_sday = "";
@@ -213,6 +212,7 @@ public class Etp_Exam_Service {
 		if (sdate.compareTo(ddate) > -1) {
 			response.setCharacterEncoding("utf-8");
 			try {
+				PrintWriter writer;
 				writer = response.getWriter();
 				writer.println("<script>");
 				writer.println("alert('종료일이 시작일보다 빠릅니다.');");
@@ -235,9 +235,7 @@ public class Etp_Exam_Service {
 				.getParameter("exam_number")));
 		examInfo.setExam_no(Integer.parseInt(request.getParameter("exam_no")));
 		examInfo.setEtp_no(Integer.parseInt(request.getParameter("etp_no")));
-
 			dao.updateExam(examInfo);
-		}
 	}
 	public void deleteExamService(int exam_no){
 		dao.deleteExam(exam_no);

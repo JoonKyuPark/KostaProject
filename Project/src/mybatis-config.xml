@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="job.exam.Etp_Exam_Info" alias="Etp_Exam_Info"/>
+		<typeAlias type="job.exam.Etp_Exam_Question" alias="Etp_Exam_Question"/>
 		<typeAlias type="job.main.Etp_infor" alias="ETP"/>
 		<typeAlias type="job.main.Member_info" alias="M"/>
 	</typeAliases>
@@ -22,6 +23,7 @@
 	<mappers>
 		<mapper resource="/job/exam/Etp_Exam.xml"/>
 		<mapper resource="/job/main/mapper/main.xml"/>
+		<mapper resource="/job/exam/Etp_Question.xml"/>
 	</mappers>
 	
 </configuration>

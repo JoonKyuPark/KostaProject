@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="job.main.mapper.MainMapper">
+	<cache />
+
+	<insert id="Minsert" parameterType="M">
+		INSERT INTO
+		member_infor(MEMBER_NO,member_name,member_id,member_pwd,member_email,member_telephone)
+		VALUES(2,#{member_name},#{member_id},#{member_pwd},#{member_email},#{member_telephone})
+	</insert>
+	<insert id="Einsert" parameterType="ETP">
+		INSERT INTO
+		etp_infor(etp_no, delegator_name, etp_id, etp_pass, etp_email,etp_kind,
+		etp_tel, etp_registration_num, etp_name)
+		values(1,#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+	</insert>
+
+<select id="Mlist" resultType="M">
+select * from member_infor
+</select>
+
+<select id="Elist" resultType="ETP">
+select*from etp_info
+</select>
+</mapper>
