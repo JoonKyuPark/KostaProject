@@ -4,37 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
 	<typeAliases>
-		<typeAlias type="job.exam.ETP_Exam_Schedule" alias="ETP_Exam_Schedule"/>
-		<typeAlias type="Etp.model.Etp" alias="Etp"/>
+
+		<typeAlias type="job.main.Member_info" alias="M" />
+		<typeAlias type="job.main.Etp_infor" alias="ETP" />
+<!-- 		<typeAlias type="job.resume.Resume" alias="Resume" /> -->
 	</typeAliases>
-	
+
 	<environments default="development">
 		<environment id="development">
-			<transactionManager type="JDBC"/>
-			<dataSource type="JNDI">
-				<property name="data_source" value="java:comp/env/jdbc/oracle"/>
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+				<property name="username" value="kosta127" />
+				<property name="password" value="1234" />
 			</dataSource>
-		</environment>		
+		</environment>
 	</environments>
-	
+
 	<mappers>
-		<mapper resource="/job/exam/ETP_Exam.xml"/>
+<!-- 		<mapper resource="job/resume/mapper/resume.xml" /> -->
+		<mapper resource="job/main/mapper/main.xml"/>
+		
 	</mappers>
-	
-	<mappers>
-		<mapper resource="/Etp/mapper/resume.xml"/>
-	</mappers>
-	
+
 </configuration>
-
-
-
-
-
-
-
-
-
-
