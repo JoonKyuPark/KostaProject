@@ -9,11 +9,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class ETP_Exam_Dao {
+public class Etp_Exam_Dao {
 	
-	private static ETP_Exam_Dao dao = new ETP_Exam_Dao();
+	private static Etp_Exam_Dao dao = new Etp_Exam_Dao();
 	
-	public static ETP_Exam_Dao getinstance(){
+	public static Etp_Exam_Dao getinstance(){
 		return dao;
 	}
 	
@@ -29,11 +29,11 @@ public class ETP_Exam_Dao {
 		return new SqlSessionFactoryBuilder().build(input);
 	}
 	/****************시험정보입력****************/
-	public int inputExamSchedule(ETP_Exam_Info examInfo){
+	public int inputExamSchedule(Etp_Exam_Info examInfo){
 		int re  = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			re=sqlSession.getMapper(ETP_Exam_Mapper.class).insertExamInfo(examInfo);
+			re=sqlSession.getMapper(Etp_Exam_Mapper.class).insertExamInfo(examInfo);
 			if(re>0){
 				sqlSession.commit();
 			}else{
@@ -50,20 +50,20 @@ public class ETP_Exam_Dao {
 	public int countExamNo(){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try{
-			if(sqlSession.getMapper(ETP_Exam_Mapper.class).countExamNo()==null){
+			if(sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo()==null){
 				return 0;
 			}else{
-				return sqlSession.getMapper(ETP_Exam_Mapper.class).countExamNo();
+				return sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo();
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 			return 0;
 		}
 	}
-	public List<ETP_Exam_Info> examList(int startRow){
+	public List<Etp_Exam_Info> examList(int startRow){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			return sqlSession.getMapper(ETP_Exam_Mapper.class).examList(new RowBounds(startRow,10));
+			return sqlSession.getMapper(Etp_Exam_Mapper.class).examList(new RowBounds(startRow,10));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -75,7 +75,7 @@ public class ETP_Exam_Dao {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
 		try{
-			re=sqlSession.getMapper(ETP_Exam_Mapper.class).countExam();
+			re=sqlSession.getMapper(Etp_Exam_Mapper.class).countExam();
 			if(re>0){
 				sqlSession.commit();
 			}else{
@@ -88,10 +88,10 @@ public class ETP_Exam_Dao {
 		}
 		return re;
 	}
-	public List<ETP_Exam_Info> calendarList(int etp_no){
+	public List<Etp_Exam_Info> calendarList(int etp_no){
 		SqlSession sqlSession	= getSqlSessionFactory().openSession();
 				try {
-					return sqlSession.getMapper(ETP_Exam_Mapper.class).calendarList(etp_no);
+					return sqlSession.getMapper(Etp_Exam_Mapper.class).calendarList(etp_no);
 				} catch (Exception e) {
 					e.printStackTrace();
 					return null;

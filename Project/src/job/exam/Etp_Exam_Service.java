@@ -9,17 +9,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ETP_Exam_Service {
-	private static ETP_Exam_Dao dao;
-	private static ETP_Exam_Service service = new ETP_Exam_Service();
+public class Etp_Exam_Service {
+	private static Etp_Exam_Dao dao;
+	private static Etp_Exam_Service service = new Etp_Exam_Service();
 	private static final int PAGE_SIZE = 10;
-	public static ETP_Exam_Service getInstance(){
-		dao=ETP_Exam_Dao.getinstance();
+	public static Etp_Exam_Service getInstance(){
+		dao=Etp_Exam_Dao.getinstance();
 		return service;
 	}
 	public int inputExamScheduleService(HttpServletRequest request, HttpServletResponse response){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-		ETP_Exam_Info examInfo = new ETP_Exam_Info();
+		Etp_Exam_Info examInfo = new Etp_Exam_Info();
 		String exam_syear = request.getParameter("exam_syear");
 		String exam_smonth = "";
 		if(request.getParameter("exam_smonth").length()==1){
@@ -104,7 +104,7 @@ public class ETP_Exam_Service {
 		return dao.inputExamSchedule(examInfo);
 
 	}
-	public ETP_Exam_listModel examListService(int requestPage){
+	public Etp_Exam_listModel examListService(int requestPage){
 		int totalCount = dao.countExam();
 		int totalPageCount = totalCount/PAGE_SIZE;
 		if(totalCount%PAGE_SIZE > 0){
@@ -116,10 +116,10 @@ public class ETP_Exam_Service {
 			endPage=totalPageCount;
 		}
 		int startRow = (requestPage-1)*PAGE_SIZE;
-		List<ETP_Exam_Info> list = dao.examList(startRow);
-		return new ETP_Exam_listModel(list, requestPage, totalPageCount, startPage, endPage);
+		List<Etp_Exam_Info> list = dao.examList(startRow);
+		return new Etp_Exam_listModel(list, requestPage, totalPageCount, startPage, endPage);
 	}
-	public List<ETP_Exam_Info> calendarListService(int etp_no){
+	public List<Etp_Exam_Info> calendarListService(int etp_no){
 		return dao.calendarList(etp_no);
 	}
 }

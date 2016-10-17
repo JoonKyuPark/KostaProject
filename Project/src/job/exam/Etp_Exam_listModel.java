@@ -2,17 +2,17 @@ package job.exam;
 
 import java.util.List;
 
-public class ETP_Exam_listModel {
+public class Etp_Exam_listModel {
 
-	private List<ETP_Exam_Info> list;
+	private List<Etp_Exam_Info> list;
 	private int requestPage;
 	private int totalPageCount;
 	private int startPage;
 	private int endPage;
 	
-	public ETP_Exam_listModel(){}
+	public Etp_Exam_listModel(){}
 
-	public ETP_Exam_listModel(List<ETP_Exam_Info> list, int requestPage,
+	public Etp_Exam_listModel(List<Etp_Exam_Info> list, int requestPage,
 			int totalPageCount, int startPage, int endPage) {
 		super();
 		this.list = list;
@@ -22,11 +22,11 @@ public class ETP_Exam_listModel {
 		this.endPage = endPage;
 	}
 
-	public List<ETP_Exam_Info> getList() {
+	public List<Etp_Exam_Info> getList() {
 		return list;
 	}
 
-	public void setList(List<ETP_Exam_Info> list) {
+	public void setList(List<Etp_Exam_Info> list) {
 		this.list = list;
 	}
 
