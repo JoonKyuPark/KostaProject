@@ -4,69 +4,21 @@
 
 
 
-<mapper namespace="Etp.mapper.ResumeMapper">
+<mapper namespace="job.resume.mapper.BoardMapper">
 	<cache />
 
 	<select id="Etpselect" resultType="Etp" parameterType="int" >
+
+		select a.member_name,a.member_img,a.member_birth,b.reading 
+			from MEMBER_INFOR a
+			inner join JOIN_RECEIVE b
+			on a.member_no = b.member_no
+  		WHERE A.member_no =#{b_id};
 	
-	select a.mem_logno,a.log_date , b.member_name ,b.member_img,c.etp_name
-	  from MEM_LOG a 
-	  inner join member_infor b
-	on a.member_no = b.member_no 
-	  inner join ETP_INFOR c
-	on a.ETP_NO = c.ETP_NO
-  	WHERE a.ETP_NO =#{gno}
-  	order by a.mem_logno
-	
-		
-	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<select id="selectGno"  parameterType="int" resultType="int">
-	
-		select etp_no from etp_infor where etp_id =#{gid2}
 	
 	
 	</select>
 	
-	<!-- 인재정보 로그번호 -->
-	
-	<select id="selectlog_id" resultType="Integer">
-		
-		select count(etp_no) from mem_log 
-	
-	</select>
-	
-	
-	
-	
-	
-	
-	<insert id="InsertEtp_log" parameterType="ETP_mem_log"  >
-	
-		insert into mem_log(
-			mem_logno,log_date,etp_no,member_no
-		)values(
-			#{mem_logno},sysdate,#{etp_no},#{member_no}
-		) 
-		
-	
-	</insert>
-	
-	
-	<delete id="deleted" parameterType="int">
-		delete mem_log 
-		where  mem_logno =#{log}
-      
-	
-	</delete>
 	
 
 </mapper>
