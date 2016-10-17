@@ -10,4 +10,5 @@ public interface MainMapper {
 	public int Minsert(Member_info member);
 	public int Einsert(Etp_infor etp);
 	public List<Member_info> Mlist();
+	public List<Etp_infor>Elist();
 }

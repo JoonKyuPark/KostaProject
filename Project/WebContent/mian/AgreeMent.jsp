@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -7,38 +7,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-<!------- BOOTSTRAP -------->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<!------- JQUERY -------->
-
-<script type="text/javascript">
-var check = function(){
+	<script type="text/javascript"> 
+	var check = function(){
 	  if(document.getElementById("agree").checked){
-		  if(document.getElementById("agree2").checked){	
-			  if(document.getElementById(member).checked){
-				  document.getElementById(member).submit
-			  }else if(document.getElementById(etp).checked)
-			  document.getElementById(etp).submit
+		  if(document.getElementById("agree2").checked){
+			  alert("회원가입 페이지로 이동합니다")
+			  location.href="join.jsp"
 		  }else{alert("개인정보이용 약관에 동의해주세요");
+			
 		  }
 	  }	else{
 		  alert("이용약관에 동의해주세요");
 	  }
 	}
-</script>
-<title>회원가입</title>
-</head>
+	</script>
+<title>약관동의</title>
 
+</head>
 <body>
-	<div class="container" align="center">
+
+<div class="container" align="center">
 		<form action="#">
 			<ul class="nav nav-pills">
-				<li><img>로고</li>
+				<li><img>로고</img></li>
 				<li><input type="text"></li>
 				<li><input type="submit" value="검색"></li>
 
@@ -60,18 +57,6 @@ var check = function(){
 	<br>
 	<br>
 	<br>
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="active" id="member"><a href="#person" data-toggle="tab">개인회원</a></li>
-			<li><a href="#coper" data-toggle="tab" id="etp">기업회원</a></li>
-		</ul>
-	</div>
-
-	
-	
-	</div>
-<br>
-<br>
 
 <div align="center">회원 약관</div>
 	<div>
@@ -331,147 +316,7 @@ var check = function(){
 
 </div>
 	개인정보 약관에 동의 합니다(필수)<input type="checkbox"   id="agree2" >
-	
-	</div>
-<br>
-<br>
-	<div class="tab-content">
-		<div class="tab-pane active" id="person">
-			<form action="mainDisplay.jsp" id="member">
-				<input type="hidden" name="id" value="1">
-				<div class="container">
-					<div class="col-md-2">이름</div>
-					<div class="col-md-3">
-						<input type="text" name="member_name" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">아이디</div>
-					<div class="col-md-3">
-						<input type="text" name="member_id" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">비밀번호</div>
-					<div class="col-md-3">
-						<input type="password" name="member_pwd" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">이메일</div>
-					<div class="col-md-3">
-						<input type="email" name="member_email" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">휴대폰번호</div>
-					<div class="col-md-1">
-						<select name="tel">
-							<option>010</option>
-							<option>011</option>
-							<option>016</option>
-						</select>
-					</div>
-					<div class="col-md-1">
-						<input type="tel" required="required" name="tel2"
-						style="ime-mode: disabled;"onkeyup="this.value=this.value.replace(/\D/,'')">
-					</div>
-					<div class="col-md-1">
-						<input type="tel" required="required" name="tel3"
-						style="ime-mode: disabled;"onkeyup="this.value=this.value.replace(/\D/,'')">
-					</div>
-				</div>
-				<br>
-				<div class="container">
-					<button  class="col-md-1" onclick="check()">회원가입</button><input
-						type="reset" value="다시쓰기" class="col-md-1">
-				</div>
-			</form>
-		</div>
-
-
-		<!-- 기업 -->
-		<div class="tab-pane" id="coper">
-			<form action="mainDisplay.jsp" id="etp">
-				<input type="hidden" name="id" value="2">
-				<div class="container">
-					<div class="col-md-2">가입자명</div>
-					<div class="col-md-3">
-						<input type="text" name="etp_name" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">아이디</div>
-					<div class="col-md-3">
-						<input type="text" name="etp_id" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">비밀번호</div>
-					<div class="col-md-3">
-						<input type="password" name="etp_pass" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">이메일</div>
-					<div class="col-md-3">
-						<input type="email" name="etp_email" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">회사전화번호</div>
-					<div class="col-md-1">
-						<select name="tel">
-							<option>02</option>
-							<option>031</option>
-							<option>054</option>
-						</select>
-					</div>
-					<div class="col-md-1">
-						<input type="tel2" required="required"
-							onkeyup="this.value=this.value.replace(/\D/,'')"
-							style="ime-mode: disabled;">
-					</div>
-					<div class="col-md-1">
-						<input type="tel3" required="required"
-							onkeyup="this.value=this.value.replace(/\D/,'')"
-							style="ime-mode: disabled;">
-					</div>
-				</div>
-
-				<div class="container">
-					<div class="col-md-2">기업형태</div>
-					<div class="col-md-3">
-						<input type="text" name="etp_kind" required="required">
-					</div>
-				</div>
-
-				<div class="container">
-					<div class="col-md-2">사업자등록번호</div>
-					<div class="col-md-3">
-						<input type="text" name="etp_registration_num" required="required">
-					</div>
-				</div>
-
-				<div class="container">
-					<div class="col-md-2">대표자명</div>
-					<div class="col-md-3">
-						<input type="text" name="delegator_name" required="required">
-					</div>
-				</div>
-				<div class="container">
-					<div class="col-md-2">회사명</div>
-					<div class="col-md-3">
-						<input type="text" name="etp_name" required="required">
-					</div>
-				</div>
-				<br>
-				<div class="container">
-						<button  class="col-md-1" onclick="check()">회원가입</button> <input
-						type="reset" value="다시쓰기" class="col-md-1">
-				</div>
-		</div>
-		</form>
-	</div>
+	<div class="container" align="center">
+	<input type="button"  value="회원가입 하러 가기 " onclick="check()"></div>
 </body>
 </html>
