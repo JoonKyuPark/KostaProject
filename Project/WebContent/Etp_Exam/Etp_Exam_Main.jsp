@@ -1,3 +1,7 @@
+<%@page import="job.exam.Etp_Exam_Info"%>
+<%@page import="java.util.List"%>
+<%@page import="job.exam.Etp_Exam_Service"%>
+<%@page import="javax.swing.ListModel"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
@@ -27,7 +31,12 @@
 	
 	Calendar todayCal = Calendar.getInstance();
 	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	SimpleDateFormat format2 = new SimpleDateFormat("yyyy/MM/dd");
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
+	
+	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
+	int etp_no = 1; /* 여기에 기업회원 번호 들어가면 된다 */
+	List<Etp_Exam_Info> list = service.calendarListService(etp_no);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -48,13 +57,13 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
-<link rel="stylesheet" href="../css/ETP_Exam.css">
+<link rel="stylesheet" href="../css/Etp_Exam.css">
 <script src="../js/Exam.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Etp Exam Main</title>
 </head>
-<body id="ETP_Exam_main">
+<body id="Etp_Exam_main">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
@@ -65,11 +74,11 @@
 			<table class = "Calendar">
 				<tr>
 					<td align="center">
-						<a href="ETP_Exam_main.jsp?year=<%=year-1%>&month=<%=month%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year-1%>&month=<%=month%>">
 							<i class="xi-angle-left xi-x"></i>
 						</a>
 						<%if(month > 0){ %>
-						<a href="ETP_Exam_main.jsp?year=<%=year%>&month=<%=month-1%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year%>&month=<%=month-1%>">
 							<i class="xi-angle-left-min xi-x"></i>
 						</a>
 						<%}else{ %>
@@ -81,13 +90,13 @@
 						<%=month+1 %> &nbsp; &nbsp;
 						<i class="xi-ellipsis-h xi-x"></i>
 						<%if(month < 11){ %>
-						<a href="ETP_Exam_main.jsp?year=<%=year%>&month=<%=month+1%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year%>&month=<%=month+1%>">
 							<i class="xi-angle-right-min xi-x"></i>
 						</a>
 						<%}else{ %>
 							<i class="xi-angle-right-min xi-x"></i>
 						<%} %>
-						<a href="ETP_Exam_main.jsp?year=<%=year+1%>&month=<%=month%>">
+						<a href="Etp_Exam_main.jsp?year=<%=year+1%>&month=<%=month%>">
 							<i class="xi-angle-right xi-x"></i>
 						</a>
 					</td>
@@ -133,17 +142,52 @@
 						strUseDate += Integer.toString(i);
 					}
 					int intUseDate = Integer.parseInt(strUseDate);
+				
 					
+					String strCompareDate = Integer.toString(year) + "/";
+					if(Integer.toString(month+1).length() == 1){
+						strCompareDate += "0" + Integer.toString(month+1) + "/";
+					}else{
+						strCompareDate += Integer.toString(month+1) + "/";
+					}
+					if(Integer.toString(i).length()==1){
+						strCompareDate += "0" + Integer.toString(i);
+					}else{
+						strCompareDate += Integer.toString(i);
+					}
+
 					String todayColor = "#FFFFFF";
 					if(intUseDate == intToday){
 						todayColor = "#FFA4A4";
 					}
-					out.println("<td class = 'dateTd' valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");
+					out.println("<td class = 'dateTd' valign='top' align='left' height = '100px' bgcolor='"+todayColor+"'nowrap>");	
 				%><font color='<%=color %>'>
 					<%=i %>
 				  </font>
 				<%
 					/*------------------내용입력------------------*/
+					
+				for(int j = 0; j<list.size(); j++){
+					String compareSDate = format2.format(list.get(j).getExam_sdate());
+					String compareDDate = format2.format(list.get(j).getExam_ddate());
+					
+						if(strCompareDate.equals(compareSDate)){
+							out.println("<br>");
+							out.println("<font color='black' size=1'>");
+							out.println(list.get(j).getExam_name()+" 시작");
+							out.println("</font>");
+						}
+						if(strCompareDate.equals(compareDDate)){
+							out.println("<br>");
+							out.println("<font color='black' size='1'>");
+							out.println(list.get(j).getExam_name()+" 종료");
+							out.println("</font>");
+						}
+
+						
+					}
+				
+				
 				out.println("</td>");
 				newLine++;
 				

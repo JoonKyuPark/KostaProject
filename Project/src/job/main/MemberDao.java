@@ -87,5 +87,20 @@ public class MemberDao {
 			sqlSession.close();
 		}
 	}
+	
+	public List<Etp_infor> Elist(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		List<Etp_infor> list=null;
+		try {
+			list= sqlSession.getMapper(MainMapper.class).Elist();
+		
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			sqlSession.close();
+		}
+	}
 
 }

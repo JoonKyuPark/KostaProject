@@ -5,9 +5,15 @@
 
 <configuration>
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="recruit.infor.Recruit_Infor" alias="Recruit_infor"/>
 		<typeAlias type="recruit.clip.Recruit_Clip" alias="Recruit_Clip"/>
 		<typeAlias type="infor.etp.model.Etp_Infor" alias="Etp_Infor"/>
+=======
+		<typeAlias type="job.exam.Etp_Exam_Info" alias="Etp_Exam_Info"/>
+		<typeAlias type="job.main.Etp_infor" alias="ETP"/>
+		<typeAlias type="job.main.Member_info" alias="M"/>
+>>>>>>> branch 'master' of https://github.com/JoonKyuPark/KostaProject
 	</typeAliases>
 	
 	<environments default="development">
@@ -20,9 +26,14 @@
 	</environments>
 	
 	<mappers>
+<<<<<<< HEAD
 		<mapper resource="recruit/mapper/Recruit_infor.xml"/>
 		<mapper resource="recruit/clip/mapper/Recruit_Clip.xml"/>
 		<mapper resource="infor/etp/mapper/Etp_Infor.xml"/>
+=======
+		<mapper resource="/job/exam/Etp_Exam.xml"/>
+		<mapper resource="/job/main/mapper/main.xml"/>
+>>>>>>> branch 'master' of https://github.com/JoonKyuPark/KostaProject
 	</mappers>
 	
 </configuration>

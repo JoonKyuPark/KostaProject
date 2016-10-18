@@ -28,13 +28,13 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
-<link rel="stylesheet" href="../css/ETP_Exam.css">
+<link rel="stylesheet" href="../css/Etp_Exam.css">
 <script src="../js/Exam.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Registration Exam</title>
 </head>
-<body id="ETP_Exam_Reg">
+<body id="Etp_Exam_Reg">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
@@ -45,7 +45,8 @@
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
-				<form role="form" action="ETP_Exam_insertOk.jsp" method="post" onsu>
+				<form role="form" action="Etp_Exam_InsertOk.jsp" method="post">
+					<input type="hidden" name="etp_no" value = "2"> 
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>
@@ -132,7 +133,7 @@
 						<input type="submit" class="btn btn-info" value="등 록">
 						</div>
 						<div class="col-md-2">
-						<a href="ETP_Exam_main.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
+						<a href="Etp_Exam_Main.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
 						</div>
 						<div class="col-md-4"></div>
 

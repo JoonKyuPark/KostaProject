@@ -65,19 +65,18 @@ LogginService log = LogginService.getInstance();
 	}
 	else{
 	if(request.getParameter("kind").equals("1")){
-		log.Mlist(request, response);
-		int loggin = 1;
+		int loggin = log.Mlist(request, response);
 		request.setAttribute("loggin", loggin);
 		session.setAttribute("login", true);
 		session.setAttribute("kind", false);
 		session.setAttribute("loginid",request.getAttribute("logginid"));
 				}
 	else if(request.getParameter("kind").equals("2")){
-		log.Mlist(request, response);
-		int loggin = 2;
+		int loggin =log.Elist(request, response); 
 		request.setAttribute("loggin", loggin);
 		session.setAttribute("login", true);
 		session.setAttribute("kind", true);
+		session.setAttribute("loginid",request.getAttribute("logginid"));
 	}
 	}
 %>
@@ -125,10 +124,10 @@ LogginService log = LogginService.getInstance();
 	<br>
 	<br>
 	<div class="container">
-		<div class="col-md-10">스마트매칭 들어갈 자리</div>
+		<div class="col-md-9">스마트매칭 들어갈 자리</div>
 		<c:choose>
 			<c:when test="${loggin==0}">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<ul class="row nav nav-tabs">
 						<li class="active"><a href="#person" data-toggle="tab">개인회원</a></li>
 						<li><a href="#coper" data-toggle="tab">기업회원</a></li>
@@ -149,12 +148,11 @@ LogginService log = LogginService.getInstance();
 								<input type="text" name="id" placeholder="아이디"
 									required="required"> <input type="text" name="pass"
 									placeholder="비밀번호"><br> <input type="submit"
-									value="로그인"> <a type="button" href="join.jsp">회원가입</a>
+									value="로그인"> <a type="button" href="AgreeMent.jsp">회원가입</a>
 							</form>
 						</div>
 					</div>
 			</c:when>
-
 			<c:when test="${loggin==1}">
 				<div class="col-md-3">
 					<div class="col-md-4">
@@ -180,12 +178,9 @@ LogginService log = LogginService.getInstance();
 						</form>
 						</div>
 						</div>
+							</div>
+							</c:when>
+						</c:choose>
 						</div>
-			</c:when>
-		</c:choose>
-
-	</div>
-
-
 </body>
 </html>
