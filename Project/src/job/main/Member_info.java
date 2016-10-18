@@ -1,21 +1,32 @@
 package job.main;
 
-public class PMember {
+import java.io.Serializable;
+
+public class Member_info  implements Serializable{
 
 private String member_name, member_img, member_birth,member_gender, member_email,member_phone,
-member_telephone, member_addr_no, member_addr, member_detail_addr,member_homepage,_member_id,
+member_telephone, member_addr_no, member_addr, member_detail_addr,member_homepage,member_id,
 member_pwd, license;
 
 
-public PMember(){
+public Member_info(){
 	
 }
 
 
-public PMember(String member_name, String member_img, String member_birth,
+public Member_info(String member_name, String member_email,
+		String member_phone, String member_id, String member_pwd) {
+	super();
+	this.member_name = member_name;
+	this.member_email = member_email;
+	this.member_telephone = member_phone;
+	this.member_id = member_id;
+	this.member_pwd = member_pwd;
+}
+public Member_info(String member_name, String member_img, String member_birth,
 		String member_gender, String member_email, String member_phone,
 		String member_telephone, String member_addr_no, String member_addr,
-		String member_detail_addr, String member_homepage, String _member_id,
+		String member_detail_addr, String member_homepage, String member_id,
 		String member_pwd, String license) {
 	super();
 	this.member_name = member_name;
@@ -29,10 +40,15 @@ public PMember(String member_name, String member_img, String member_birth,
 	this.member_addr = member_addr;
 	this.member_detail_addr = member_detail_addr;
 	this.member_homepage = member_homepage;
-	this._member_id = _member_id;
+	this.member_id = member_id;
 	this.member_pwd = member_pwd;
 	this.license = license;
 }
+
+
+
+
+
 
 
 public String getMember_name() {
@@ -145,13 +161,13 @@ public void setMember_homepage(String member_homepage) {
 }
 
 
-public String get_member_id() {
-	return _member_id;
+public String getMember_id() {
+	return member_id;
 }
 
 
-public void set_member_id(String _member_id) {
-	this._member_id = _member_id;
+public void setMember_id(String member_id) {
+	this.member_id = member_id;
 }
 
 
@@ -173,6 +189,23 @@ public String getLicense() {
 public void setLicense(String license) {
 	this.license = license;
 }
+
+
+@Override
+public String toString() {
+	return "Member_info [member_name=" + member_name + ", member_img="
+			+ member_img + ", member_birth=" + member_birth
+			+ ", member_gender=" + member_gender + ", member_email="
+			+ member_email + ", member_phone=" + member_phone
+			+ ", member_telephone=" + member_telephone + ", member_addr_no="
+			+ member_addr_no + ", member_addr=" + member_addr
+			+ ", member_detail_addr=" + member_detail_addr
+			+ ", member_homepage=" + member_homepage + ", member_id="
+			+ member_id + ", member_pwd=" + member_pwd + ", license=" + license
+			+ "]";
+}
+
+
 
 
 }

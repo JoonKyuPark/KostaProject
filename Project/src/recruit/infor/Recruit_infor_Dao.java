@@ -42,19 +42,53 @@ public class Recruit_infor_Dao {
 		System.out.println("Dddd1");
 		try {
 			list= sqlSession.getMapper(Recruit_infor_Mapper.class).recruitList();
-			System.out.println(list.get(0).hire_type);
+			System.out.println(list.get(0).etp_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} /*finally {
-			System.out.println(list.get(0).hire_type+"1");
 			sqlSession.close();
-			System.out.println(list.get(0).hire_type+"2");
 		}*/
 		
-		System.out.println("Dddd2"+list.get(0).hire_type);
 		System.out.println("Dddd3");
 		return list;
 	}
+	
+	
 
+	public Recruit_Infor deailRecruit(int id1){
+		SqlSession sqlSession=getSqlSessionFactory().openSession();
+		Recruit_Infor ri=null;
+		try{
+			System.out.println("dfdfdfseeeeeeeeee"+id1);
+			ri= sqlSession.getMapper(Recruit_infor_Mapper.class).deailRecruit(id1);
+			System.out.println("}}"+ri.getMax_pay());
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}/*finally {
+			sqlSession.close();
+		}*/
+		System.out.println(ri.getMax_pay());
+		return ri;
+	}
+
+	public List<Recruit_Infor> locRecruit(String location) {
+		System.out.println("Dddd0");
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		System.out.println("Dddd99");
+		List<Recruit_Infor> list=null;
+		System.out.println("Dddd1");
+		try {
+			list= sqlSession.getMapper(Recruit_infor_Mapper.class).locRecruit(location);
+			System.out.println("dfdfdfseeeeeeeeee"+list.get(0).etp_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} /*finally {
+			sqlSession.close();
+		}*/
+		
+		System.out.println("Dddd3");
+		return list;
+	}
 
 }

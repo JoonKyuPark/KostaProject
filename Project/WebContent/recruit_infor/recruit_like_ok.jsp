@@ -14,13 +14,9 @@
     int re=rcService.insertRecruitLikeService(id1);
     System.out.println("rerer"+re);
     
-    
-    
-  /*   
     if(re>0){
-    	response.sendRedirect("recruit_detail_infor.jsp");
-    }else{
-    } */
+    	response.sendRedirect("recruit_list.jsp");
+    }
     
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

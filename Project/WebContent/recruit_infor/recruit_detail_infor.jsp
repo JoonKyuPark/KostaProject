@@ -1,19 +1,28 @@
 <%@page import="recruit.infor.Recruit_Infor"%>
 <%@page import="java.util.List"%>
+<%@page import="infor.etp.model.Etp_Infor_Service"%>
+<%@page import="infor.etp.model.Etp_Infor"%>
 <%@page import="recruit.infor.Recruit_infor_Service"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
  <%
- 
+
+	String id = request.getParameter("id");
+ 	int id1=Integer.parseInt(id);
+ 	
+ 	
  	Recruit_infor_Service riService=Recruit_infor_Service.getInstance();
- 	System.out.println(riService);
- 	System.out.println("Ddddgg");
- 	List<Recruit_Infor> list=riService.listRecruitService();
-	request.setAttribute("list1", list);
- 	System.out.println("jhkjh"+list.get(0).getHire_type());
+ 	Recruit_Infor recruit=riService.deailRecruitService(id1);
+	request.setAttribute("recruit", recruit);
  
- %>   
+	Etp_Infor_Service eiService = Etp_Infor_Service.getInstance();
+	Etp_Infor ei = null;
+	ei = eiService.detailEtpService(recruit.getEtp_no());
+	request.setAttribute("ei", ei);
+	
+	System.out.println(ei.getEtp_location());
+%> 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko-kr">
@@ -23,7 +32,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>부트스트랩</title>
 
-        <link rel="stylesheet" type="text/css" href="recruit_detail_infor_style.css" />
+    <link rel="stylesheet" type="text/css" href="recruit_detail_infor_style.css" />
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/kfonts2.css" rel="stylesheet">
     <style>
@@ -43,8 +52,27 @@
 			    });
 			});
 	</script>
+	<style type="text/css">
+#titleImg {
+  max-width: 100px;
+  height: auto;
+}
+#logoImg {
+  max-width: 200px;
+  height: auto;
+}
+ table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .table td {
+    border: 1px solid #bcbcbc;
+    padding: 5px 10px;
+  }
+
+</style>
   </head>
-<body>
+<body onLoad="reverse_counter();">
 
 <div class="container">  
    <h2>채용상세페이지 </h2>
@@ -68,24 +96,29 @@
          <div class="tab-content">
         
       	<div class="tab-pane active" id="nav1"> 
-      							<table border="1" cellpadding="0" cellspacing="0">
-								 <tr height="30">
-									<th width="50">번호</th>
-									<th width="250">제목</th>
-									<th width="150">작성자</th>
-									<th width="150">작성일</th>
-								</tr>
-						      	<c:forEach var="list2" items="${list1}">
-								<tr height="30">
-									<td align="center">${list2.hire_type}</td>
-									<td align="left">bb</td>
-									<td align="center">${list2.career_check}</td>
-									<td align="center">${list2.ac_ability_no}</td>
-								</tr>	
-								</c:forEach>
-								</table> 
-								
-								
+      			<h3>${recruit.recruit_title}</h3>
+      			<h3>${ei.etp_name}<br></h3>	
+      			<b>${ei.etp_field}<br></b>
+      			<b>매출액    ${ei.etp_sales}<br></b>
+      			<b>직원수    ${ei.employee_number}<br></b>
+      			<b>기업형태    ${ei.etp_kind}<br></b>
+      			<b>기업주소  ${ei.etp_location}<br></b>
+      			<b>대표자명  ${ei.delegator_name}<br></b>
+      		
+      			<b>경력  ${recruit.career_check} ${recruit.career_period}<br></b>	
+      			<b>학력  ${recruit.ac_ability_no}<br></b>	
+      			<b>급여  ${recruit.min_pay} ~ ${recruit.max_pay}<br></b>	
+      			<b>직급  ${recruit.recruit_position}<br></b>	
+      			<b>근무요일  ${recruit.recruit_day}<br></b>	
+      								
+			<button> 지원 하기 </button>	
+				
+			<center>
+			<form name="counter">
+			<input type="text" name="counter_box" size="55" >
+			</form>
+			</center>
+			
 	<ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">채용정보</a></li>
       <li><a href="#tab2" data-toggle="tab">접수기간/방법</a></li>
@@ -109,24 +142,29 @@
 					            </div>
 					            <div id="collapseOne" class="panel-collapse collapse in">
 					               <div class="panel-body">
-									         <table border="1" cellpadding="0" cellspacing="0">
-											 <tr height="30">
-												<th width="50">번호</th>
-												<th width="250">제목</th>
-												<th width="150">작성자</th>
-												<th width="150">작성일</th>
-												<th width="150">작성일</th>
-											</tr>
-									      	<c:forEach var="list2" items="${list1}">
-											<tr height="30">
-												<td align="center">${list2.hire_type}</td>
-												<td align="left">bb</td>
-												<td align="center">${list2.career_check}</td>
-												<td align="center">${list2.ac_ability_no}</td>
-												<th width="150"><a href="recruit_like_ok.jsp?id=${list2.recruit_no}">좋아요</a></th><del></del>
-											</tr>	
-											</c:forEach>
-											</table> 
+									       <h4>모집요강</h4>
+											 <table class="table">
+											   <tr>
+											     <th>담당업무 </th>
+											     <td>${recruit.hire_type}</td>							     
+											   </tr>
+											   <tr>
+											     <th>근무형태</th>
+											     <td>${recruit.hire_type}</td>	
+											   </tr>
+											   <tr>
+											     <th>모집인원</th>
+											     <td>${recruit.recruit_number}</td>
+											   </tr>
+											   <tr>
+											     <th>급여</th>
+											     <td>${recruit.min_pay}만원  ~  ${recruit.max_pay}만원</td>
+											   </tr>   
+											    <tr>
+											     <th>지원자격</th>
+											     <td>${recruit.min_pay}</td>
+											   </tr>       
+											</table>
 					               </div>
 					            </div>
 					         </div>
@@ -143,9 +181,29 @@
 					            
 					            <div id="collapseTwo" class="panel-collapse collapse">
 					               <div class="panel-body">
-					                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
-					
-					                Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+					                 <h4>접수기간 및 방법</h4>
+											 <table class="table">
+											   <tr>
+											     <th>접수기간 </th>
+											     <td>${recruit.receive_sdate} ~ ${recruit.receive_ddate}</td>							     
+											   </tr>
+											   <tr>
+											     <th>접수방법</th>
+											     <td>${recruit.receive_way}</td>	
+											   </tr>
+											</table>
+									<h4>전형절차 및 제출서류</h4>	
+											<table class="table">
+											   <tr>
+											     <th>전형절차 </th>
+											     <td>${recruit.hire_type}</td>							     
+											   </tr>
+											   <tr>
+											     <th>제출서류</th>
+											     <td>${recruit.hire_type}</td>	
+											   </tr>
+											</table>
+					               
 					               </div>
 					            </div>
 					         </div>
@@ -161,9 +219,30 @@
 					            </div>
 					            <div id="collapseThree" class="panel-collapse collapse">
 					               <div class="panel-body">
-					                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
-					
-					                Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
+					               	       <h4>근무환경</h4>
+											 <table class="table">
+											   <tr>
+											     <th>근무지역</th>
+											     <td>${recruit.recruit_addr}</td>							     
+											   </tr>
+											   <tr>
+											     <th>근무요일</th>
+											     <td>${recruit.recruit_day}</td>	
+											   </tr>
+											   <tr>
+											     <th>근무부서</th>
+											     <td>${recruit.recruit_number}</td>
+											   </tr>
+											   <tr>
+											     <th>복리후생</th>
+											     <td>${recruit.min_pay}만원  ~  ${recruit.max_pay}만원</td>
+											   </tr>   
+											    <tr>
+											     <th>기타 급여조건</th>
+											     <td>${recruit.min_pay}</td>
+											   </tr>       
+											</table>
+					               
 					               </div>
 					            </div>
 					         </div>
@@ -178,36 +257,139 @@
 					            </div>
 					            <div id="collapseFour"  class="panel-collapse collapse" >
 					               <div class="panel-body">
-					                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc suscipit velit sit amet tristique tincidunt. Fusce dapibus tortor ut est ornare porttitor. Aliquam auctor bibendum posuere. Fusce laoreet tincidunt lacinia. Aliquam posuere pharetra auctor. Pellentesque et eleifend nibh, a bibendum lacus. Pellentesque sit amet dignissim mauris. Suspendisse a erat congue nunc auctor malesuada. Mauris ultricies magna quis neque egestas, eu vehicula sapien luctus. Aenean id condimentum mauris.
-					
-					                Integer urna enim, vehicula non nunc non, feugiat imperdiet eros. Morbi vitae est at erat tristique facilisis. Mauris pulvinar vel arcu vel ultrices. Mauris a nisi sit amet urna elementum semper. Etiam dignissim pharetra mauris. Donec rhoncus nisl sem, ut ultrices odio porttitor sed. Donec consequat facilisis velit. Cras feugiat tincidunt fermentum. Duis interdum nec quam id eleifend.
-					               </div>
+					                      <h4>문의처</h4>
+											 <table class="table">
+											   <tr>
+											     <th>담당자 정보</th>
+											     <td>${recruit.hire_type}</td>							     
+											   </tr>
+											   <tr>
+											     <th>전화및 FAX</th>
+											     <td>${ei.etp_tel}</td>	
+											   </tr>
+											   <tr>
+											     <th>회사주소</th>
+											     <td>${ei.etp_location}
+											    
+											    </td>
+											   </tr>
+											</table>
+					               
+					             </div>
 					            </div>
 					         </div>
 			      </div>
 	  		</div>
 	    
 	<!-- ----------------------------------------------아코디언--------------------------------------------- -->
+	  		 <div id="map" style="width:100%;height:350px;"></div>
+											     <p style="margin-top:5px">
+												    <em class="link">
+												        <a href="javascript:void(0);" onclick="window.open('http://fiy.daum.net/fiy/map/CsGeneral.daum', '_blank', 'width=981, height=650')">
+												            혹시 주소 결과가 잘못 나오는 경우에는 여기에 제보해주세요.
+												        </a>
+												    </em>
+												</p>
+	  		 
 	  		</div>
 		  		
 		      <div class="tab-pane" id="tab2">
-		      <h3>탭 2</h3>
-		      dfdf
+		      <h4>접수기간/방법</h4>
+		   
+											 <table class="table">
+											   <tr>
+											     <th>접수기간</th>
+											     <td>${recruit.receive_sdate}  ~  ${recruit.receive_ddate}<br>
+											      주의! 마감시간은 기업의 사정, 조기마감 등 다양한 원인으로 언제든지 변경 될 수 있으며, 우리잡의 마감시간이 100% 정확하지 않을 수 있으니, <b>반드시 마감일 하루 전 까지 입사지원 하시기를 권장</b>합니다. 						     
+											     </td>	
+											    
+											   </tr>
+											   <tr>
+											     <th>우편지원</th>
+											     <td>${ei.etp_location}</td>	
+											   </tr>
+											   <tr>
+											     <th>내사지원</th>
+											     <td>${ei.etp_location}</td>
+											   </tr>
+											    <tr>
+											     <th>전화지원</th>
+											     <td>${ei.etp_tel}</td>
+											   </tr>
+											</table>
 		      </div>
     </div>
      </div>
-	    <div class="tab-pane" id="nav2"> 
-	   dfdfdd
-	    </div>
+	   				<div class="tab-pane" id="nav2"> 
+	 				 
+											<table class="table">
+											   <tr>
+											     <td><center><img src="../images/people.png" alt="..." class="img-responsive img-rounded" id="logoImg"> 
+											     	<br><center>로고 <br> ${ei.etp_kind}   </center>  </td>
+											     <td><center><img src="../images/people.png" alt="..." class="img-responsive img-rounded" id="titleImg">
+											   	<br>매출액  <br> ${ei.etp_sales} </center> </td>
+											     <td><center><img src="../images/people.png" alt="..." class="img-responsive img-rounded" id="titleImg"> 
+											    <br> 설립년차<br> ${ei.etp_sales} </center></td>
+											     <td><center><img src="../images/people.png" alt="..." class="img-responsive img-rounded" id="titleImg"> 
+											   <br>  사원수<br> ${ei.employee_number}  </center></td>
+											     <td><center><img src="../images/people.png" alt="..." class="img-responsive img-rounded" id="titleImg">
+											    <br> 기업형태 <br> ${ei.etp_kind}   </center></td>
+											   </tr>
+											</table>
+	   
+						<h4> ${ei.etp_name} 이 기업에 입사해야 하는 이유</h4>	
+
+	    			</div>
     </div>
     
    
    
 
 </div>
+
+	<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=7f371f73f647744ce5b5552611d68ab9&libraries=services"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script type="text/javascript">
+    
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+	        center: new daum.maps.LatLng(37.4969117,127.03292), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };  
+	
+	// 지도를 생성합니다    
+	var map = new daum.maps.Map(mapContainer, mapOption); 
+	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new daum.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다
+	geocoder.addr2coord("<%=ei.getEtp_location()%>", function(status, result) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === daum.maps.services.Status.OK) {
+	
+	        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new daum.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	        
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new daum.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:1px 0 ;">우리회사</div>'
+	        });
+	        infowindow.open(map, marker);
+			
+	    } 
+	}); 
+    
+    
          $(function () { $('#collapseFour').collapse({
             toggle: false
          })});
@@ -220,7 +402,29 @@
          $(function () { $('#collapseOne').collapse({
             toggle: false
          })});
-    </script>
-    
+         
+         function reverse_counter(){
+        	 today = new Date();
+        	 d_day = new Date("<%=recruit.getReceive_ddate()%> 00:00:00");
+        	 days = (d_day - today) / 1000 / 60 / 60 / 24;
+        	 daysRound = Math.floor(days);
+        	 hours = (d_day - today) / 1000 / 60 / 60 - (24 * daysRound);
+        	 hoursRound = Math.floor(hours);
+        	 minutes = (d_day - today) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound);
+        	 minutesRound = Math.floor(minutes);
+        	 seconds = (d_day - today) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) -
+        	 (60 * minutesRound);
+        	 secondsRound = Math.round(seconds);
+        	 sec = " 초."
+        	 min = " 분, "
+        	 hr = " 시간, "
+        	 dy = " 일, "
+        	 document.counter.counter_box.value = " 남은 시간 : " + daysRound + 
+        	 dy + hoursRound + hr + minutesRound + min + secondsRound + sec;
+        	 newtime = window.setTimeout("reverse_counter();", 1000);
+       }
+  
+            
+	</script>
 </body>
 </html>

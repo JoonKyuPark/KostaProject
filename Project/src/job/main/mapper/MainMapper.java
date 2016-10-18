@@ -1,9 +1,13 @@
 package job.main.mapper;
 
-import job.main.PMember;
+import java.util.List;
+
+import job.main.Etp_infor;
+import job.main.Member_info;
 
 public interface MainMapper {
 
-	public int PMinsert(PMember pMember);
-	
+	public int Minsert(Member_info member);
+	public int Einsert(Etp_infor etp);
+	public List<Member_info> Mlist();
 }

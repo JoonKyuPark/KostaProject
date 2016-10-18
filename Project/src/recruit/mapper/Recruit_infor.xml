@@ -6,8 +6,15 @@
 <cache/>
 
 	<select id="recruitList" resultType="Recruit_Infor">
-		select * from rec_infor
+		select * from recruit_infor
 	</select>
 	
+	<select id="deailRecruit" resultType="Recruit_Infor" >
+		select * from recruit_infor where recruit_no=#{id1}
+	</select>
+	
+	<select id="locRecruit" resultType="Recruit_Infor">
+		select * from recruit_infor where recruit_addr=#{location}
+	</select>
 	
 </mapper>

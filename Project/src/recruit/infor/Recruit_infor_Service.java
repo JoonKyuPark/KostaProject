@@ -16,5 +16,14 @@ public class Recruit_infor_Service {
 		return riDao.recruitList();
 	}
 	
+	public Recruit_Infor deailRecruitService(int id1){
+		System.out.println("dfdfdfseeeeeeeeee"+id1);
+		return riDao.deailRecruit(id1);
+	}
+	
+	public List<Recruit_Infor> locRecruitService(String location){
+		System.out.println("gggg");
+		return riDao.locRecruit(location);
+	}
 
 }
