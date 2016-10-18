@@ -9,7 +9,9 @@
 
 </head>
 <body>
-	<a href="Inforok.jsp?b_id=1" name ="b_id">인재정보</a>
+	<a href="Inforok.jsp?b_id=2" name ="b_id">인재정보</a>
 		
 </body>
 </html>
+
+

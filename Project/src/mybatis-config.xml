@@ -7,6 +7,9 @@
 
 	<typeAliases>
 		<typeAlias type="Etp.model.Etp" alias="Etp"/>
+		<typeAlias type="Etp.model.ETP_mem_log" alias ="ETP_mem_log"/>
+	
+		
 	</typeAliases>
 	
 	<environments default="development">

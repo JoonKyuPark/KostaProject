@@ -1,4 +1,4 @@
-package Etp.mapper;
+package member.mapper;
 import java.util.List;
 
 

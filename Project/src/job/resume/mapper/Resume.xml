@@ -4,18 +4,29 @@
 
 
 
-<mapper namespace="job.resume.mapper.BoardMapper">
+<mapper namespace="job.resume.mapper.ResumeMapper">
 	<cache />
 	<insert id="insertResume" parameterType="Resume">
-		insert into board2( !!!!!수정필요
-			b_id, b_name, b_title, b_content, b_pwd, b_hit, b_date, b_ref, b_step, b_level, b_fname
-			) values(
-				#{b_id}, #{b_name}, #{b_title}, #{b_content}, #{b_pwd}, 0, SYSDATE, #{b_ref}, #{b_step}, #{b_level}, #{b_fname}
-			)		
+		insert into resume(
+		resume_title,
+		hope_income,
+		volun_field,
+		resume_date,
+ 	ac_ability_no,
+	self_intro_cont
+
+		) values(
+		#{resume_title},
+		#{hope_income},
+		#{volun_field}, 
+		SYSDATE,
+		#{ac_ability_no},
+		#{self_intro_cont}
+		)
 	</insert>
-	
-	
-	
+
+
+
 
 </mapper>
 
