@@ -9,20 +9,49 @@
 	<insert id="Minsert" parameterType="M">
 		INSERT INTO
 		member_infor(MEMBER_NO,member_name,member_id,member_pwd,member_email,member_telephone)
-		VALUES(2,#{member_name},#{member_id},#{member_pwd},#{member_email},#{member_telephone})
+		VALUES(#{member_no},#{member_name},#{member_id},#{member_pwd},#{member_email},#{member_telephone})
 	</insert>
 	<insert id="Einsert" parameterType="ETP">
 		INSERT INTO
+		etp_infor(etp_no,
+		delegator_name, etp_id, etp_pass, etp_email,etp_kind,
+		etp_tel,
+		etp_registration_num, etp_name)
+		values(/'#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+		values(2,
+		#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
 		etp_infor(etp_no, delegator_name, etp_id, etp_pass, etp_email,etp_kind,
 		etp_tel, etp_registration_num, etp_name)
 		values(2,#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
 	</insert>
 
-<select id="Mlist" resultType="M">
-select * from member_infor
-</select>
+	<select id="Mlist" resultType="M">
+		select * from member_infor
+	</select>
 
-<select id="Elist" resultType="ETP">
-select*from etp_info
-</select>
+	<select id="Msearch" resultType="M" parameterType="int">
+		select* from
+		member_infor
+		where member_id=#{member_id}
+	</select>
+
+	<select id="Elist" resultType="ETP">
+		select*from etp_infor
+	</select>
+
+	<update id="Mupdate" parameterType="M">
+		update member_infor set
+		member_birth=#{member_birth}, member_gender=#{member_gender},
+		member_email=#{member_email}, member_phone=#{member_phone},
+		member_telephone=#{member_telephone},
+		member_addr_no=#{member_addr_no}, member_addr=#{member_addr},
+		member_detail_addr=#{member_detail_addr},
+		member_homepage=#{member_homepage},
+		member_pwd =#{member_pwd}
+		where member_id=#{member_id}
+	</update>
+
+	<select id="Mcount" resultType="Integer">
+		select max(member_no) from member_infor
+	</select>
 </mapper>

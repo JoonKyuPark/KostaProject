@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Member_info  implements Serializable{
 
+	private int member_no=0;
+	
 private String member_name, member_img, member_birth,member_gender, member_email,member_phone,
 member_telephone, member_addr_no, member_addr, member_detail_addr,member_homepage,member_id,
 member_pwd, license;
@@ -191,19 +193,32 @@ public void setLicense(String license) {
 }
 
 
+public int getMember_no() {
+	return member_no;
+}
+
+
+public void setMember_no(int member_no) {
+	this.member_no = member_no;
+}
+
+
 @Override
 public String toString() {
-	return "Member_info [member_name=" + member_name + ", member_img="
-			+ member_img + ", member_birth=" + member_birth
-			+ ", member_gender=" + member_gender + ", member_email="
-			+ member_email + ", member_phone=" + member_phone
-			+ ", member_telephone=" + member_telephone + ", member_addr_no="
-			+ member_addr_no + ", member_addr=" + member_addr
-			+ ", member_detail_addr=" + member_detail_addr
+	return "Member_info [member_no=" + member_no + ", member_name="
+			+ member_name + ", member_img=" + member_img + ", member_birth="
+			+ member_birth + ", member_gender=" + member_gender
+			+ ", member_email=" + member_email + ", member_phone="
+			+ member_phone + ", member_telephone=" + member_telephone
+			+ ", member_addr_no=" + member_addr_no + ", member_addr="
+			+ member_addr + ", member_detail_addr=" + member_detail_addr
 			+ ", member_homepage=" + member_homepage + ", member_id="
 			+ member_id + ", member_pwd=" + member_pwd + ", license=" + license
 			+ "]";
 }
+
+
+
 
 
 

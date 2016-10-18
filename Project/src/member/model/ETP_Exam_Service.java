@@ -50,10 +50,12 @@ public class ETP_Exam_Service {
 		
 			return dao.getGno(gid2);
 	}
-	
+	/*	
 	public int Insertmem_log(int b_id,int gno ){
+	
+	
 		ETP_mem_log log = new ETP_mem_log();
-		
+	
 		log.setMem_logno(dao.selectlog_id()+1);  //로그번호
 		log.setEtp_no(gno);	// 기업번호
 		log.setMember_no(b_id); //개인 회원번호 
@@ -61,7 +63,7 @@ public class ETP_Exam_Service {
 		return dao.Insertmem_log(log);
 		
 	}
-	
+	*/
 	
 	public void deletedinfo(int log){
 		System.out.println("service 성공");

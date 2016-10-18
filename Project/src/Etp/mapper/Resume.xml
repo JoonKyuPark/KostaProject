@@ -21,14 +21,7 @@
 		
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	<select id="selectGno"  parameterType="int" resultType="int">
 	
 		select etp_no from etp_infor where etp_id =#{gid2}
@@ -43,12 +36,7 @@
 		select count(etp_no) from mem_log 
 	
 	</select>
-	
-	
-	
-	
-	
-	
+		
 	<insert id="InsertEtp_log" parameterType="ETP_mem_log"  >
 	
 		insert into mem_log(
@@ -64,9 +52,7 @@
 	<delete id="deleted" parameterType="int">
 		delete mem_log 
 		where  mem_logno =#{log}
-      
-	
-	</delete>
+    </delete>
 	
 
 </mapper>

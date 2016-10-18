@@ -1,6 +1,8 @@
 package job.main;
 
-public class Etp_infor {
+import java.io.Serializable;
+
+public class Etp_infor implements Serializable {
 	private int etp_no;
 	private String etp_name, etp_id, etp_pass, etp_tel, etp_email, etp_kind,
 			etp_registration_num, delegator_name, etp_field, employee_number,

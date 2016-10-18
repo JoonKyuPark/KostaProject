@@ -1,0 +1,91 @@
+.mypage_bar{
+	background-color: #46649B;
+}
+.mypage_bar li{
+	text-decoration: none;
+	list-style-type: none;
+	padding: 7px;
+	font-weight: bold;
+}
+.mypage_bar li a{
+	color:black;
+}
+.head{
+	color:black;
+	font-weight: bold;
+	border-bottom: 1px solid;
+	margin:3px 3px 20px 3px;
+}
+#headline{
+	border-style: groove; 
+	border: 5px solid;
+	border-color: #46649B;
+}
+#hires>span{
+	margin:	14px;
+}
+.recruits_radio>span{
+	margin:	14px;
+}
+#hire_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#hire_answer>div{
+	padding: 25px 25px 45px 25px;
+} 
+#recruit_main{
+	border-bottom: 1px solid;
+}
+#qualification_main{
+	border-bottom: 1px solid;
+}
+#qualification_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#qualification_answer>span{
+	margin-left: 14px;
+}
+/* #qualification_answer{
+	margin-top: 32px;
+} */
+#career>div{
+	padding: 15px 0 35px 0;
+}
+#qualification_main{
+	border-bottom: 1px solid;
+}
+#recruit_fied>div{
+	padding-right: 0;
+}
+.position_list>span{
+	margin-left: 30px;
+}
+#receive_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#receive_answer>.row{
+	padding: 30px 25px 45px 25px;
+}
+#receive_main{
+	border-bottom: 1px solid;
+}
+#service_area_list>*{
+	padding: 25px 10px 55px 10px;
+}
+#service_area_answer>.recruit_addr{
+	padding: 30px 25px 0 25px;
+}
+#service_area_answer>.row{
+	padding: 30px 25px 45px 25px;
+}
+#service_area_main{
+	border-bottom: 1px solid;
+}
+.recruitment_save{
+	margin: 30px 0 0 250px;
+}
+
+/* ETP_recruit_clip */
+.clip_list{
+	background-color: #d2d2d2;
+}

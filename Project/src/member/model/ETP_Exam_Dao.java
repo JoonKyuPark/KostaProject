@@ -45,7 +45,10 @@ public class ETP_Exam_Dao {
 			
 			SqlSession session = getSqlSessionFactory().openSession();
 			try{
+			
+				/*
 				list =  session.getMapper(ResumeMapper.class).Etpselect(new RowBounds(startRow,page_size),gno);
+			*/	
 			}catch(Exception e){
 				
 			}finally{
@@ -96,7 +99,7 @@ public class ETP_Exam_Dao {
 	}
 	
 	
-	
+	/*
 	
 	
 	public int Insertmem_log(ETP_mem_log etp){
@@ -121,7 +124,7 @@ public class ETP_Exam_Dao {
 		return re;
 	}
 	
-	
+	*/
 	public void deleted(int log){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re=0;

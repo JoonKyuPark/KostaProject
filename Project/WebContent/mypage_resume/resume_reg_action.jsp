@@ -20,13 +20,37 @@
 <jsp:useBean id="resume" class="job.resume.Resume">
    <jsp:setProperty property="*" name="resume"/>
 </jsp:useBean>
+<jsp:useBean id="resumeAbility" class="job.resume.ResumeAbility">
+   <jsp:setProperty property="*" name="resumeAbility"/>
+</jsp:useBean>
+<jsp:useBean id="resumeCareer" class="job.resume.ResumeCareer">
+   <jsp:setProperty property="*" name="resumeCareer"/>
+</jsp:useBean>
 <%
 	request.setAttribute("resume", resume);
-	Resume_Dao dao = Resume_Dao.getInstance();
-	int re = dao.insertResume(resume);
+	request.setAttribute("resumeAbility", resumeAbility);
+	request.setAttribute("resumeCareer", resumeCareer);
+	String career_radio_btn = request.getParameter("career_radio_btn");
 	
-	System.out.println("액션에 있는 re는?? :" + re);
+	Resume_Dao dao = Resume_Dao.getInstance();
+	int re;
+	
+	re = dao.insertResumeAbility(resumeAbility);
+	System.out.println("1.ability insert re ?? :" + re);
+	
+
+	re = dao.insertResumeCareer(resumeCareer);
+	
+	System.out.println("2.career insert re ?? :" + re);
+	
+	String career_year = request.getParameter("career_year");
+	System.out.println("career_year :" + career_year);
+	
+	re = dao.insertResume(resume,request);
+	System.out.println("3.resume insert re?? :" + re);
+	
 %>
 ${resume.volun_field}
+
 </body>
 </html>

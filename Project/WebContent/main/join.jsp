@@ -17,18 +17,19 @@
 <!------- JQUERY -------->
 
 <script type="text/javascript">
-var check = function(){
-	  if(document.getElementById("agree").checked){
-		  if(document.getElementById("agree2").checked){	
-			  if(document.getElementById(member).checked){
-				  document.getElementById(member).submit
-			  }else if(document.getElementById(etp).checked)
-			  document.getElementById(etp).submit
-		  }else{alert("개인정보이용 약관에 동의해주세요");
-		  }
-	  }	else{
-		  alert("이용약관에 동의해주세요");
-	  }
+	var check = function() {
+		if (document.getElementById("agree").checked) {
+			if (document.getElementById("agree2").checked) {
+				if (document.getElementById(member).checked) {
+					document.getElementById(member).submit
+				} else if (document.getElementById(etp).checked)
+					document.getElementById(etp).submit
+			} else {
+				alert("개인정보이용 약관에 동의해주세요");
+			}
+		} else {
+			alert("이용약관에 동의해주세요");
+		}
 	}
 </script>
 <title>회원가입</title>
@@ -48,8 +49,9 @@ var check = function(){
 
 	<div name="main_menu" class="container">
 		<ul class="nav nav-pills">
-			<li><a>홈</a></li>
-			<li><a>마이페이지</a></li>
+			<li><a href="mainDisplay.jsp">홈</a></li>
+			<li><a href="update.jsp">마이페이지</a></li>
+			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
 			<li><a>채용정보검색</a></li>
 			<li><a>스마트매칭</a></li>
 			<li><a>맞춤채용정보</a></li>
@@ -62,21 +64,23 @@ var check = function(){
 	<br>
 	<div class="container">
 		<ul class="nav nav-tabs">
-			<li class="active" id="member"><a href="#person" data-toggle="tab">개인회원</a></li>
+			<li class="active" id="member"><a href="#person"
+				data-toggle="tab">개인회원</a></li>
 			<li><a href="#coper" data-toggle="tab" id="etp">기업회원</a></li>
 		</ul>
 	</div>
 
-	
-	
-	</div>
-<br>
-<br>
 
-<div align="center">회원 약관</div>
+
+	</div>
+	<br>
+	<br>
+
+	<div align="center">회원 약관</div>
 	<div>
 		<div class="container">
-			<textarea rows="20" cols="50" class="col-md-12" readonly="readonly" disabled="disabled">
+			<textarea rows="20" cols="50" class="col-md-12" readonly="readonly"
+				disabled="disabled">
 	제 1 조 (목적)
 본 약관은 잡코리아 유한회사 (이하 "회사")가 운영하는 "서비스"를 이용함에 있어 "회사"와 회원간의 이용 조건 및 제반 절차, 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 한다.
 제 2 조 (용어의 정의)
@@ -272,12 +276,13 @@ var check = function(){
 		</div>
 	</div>
 	<div class="container">
-	위 약관에 동의 합니다(필수)<input type="checkbox"   id="agree">
-	<br><br>
-<div class="container">
-<div align="center">개인정보 약관</div>
+		위 약관에 동의 합니다(필수)<input type="checkbox" id="agree"> <br>
+		<br>
+		<div class="container">
+			<div align="center">개인정보 약관</div>
 
-<textarea rows="20" cols="50" class="col-md-12" readonly="readonly" disabled="disabled" class="row">
+			<textarea rows="20" cols="50" class="col-md-12" readonly="readonly"
+				disabled="disabled" class="row">
 1. 개인정보의 수집 및 이용목적
 
 회원의 취업과 인재채용 활동을 매개하는 온라인 리크루팅 사이트인 잡코리아, 알바몬, HR파트너스, 데브잡, 캠퍼스몬, 잡부산(이하 "사이트")은 효과적인 취업지원 · 인재채용 · 경력개발에 적합한 서비스를 제공하기 위하여 개인정보를 수집하고 있으며 수집된 정보를 아래와 같이 이용하고 있습니다. 이용자가 제공한 모든 정보는 하기 목적에 필요한 용도 이외로는 사용되지 않으며 이용 목적이 변경될 시에는 사전 동의를 구할 것입니다.
@@ -329,27 +334,29 @@ var check = function(){
 3) 개인정보보호를 위하여 이용자가 1년 동안 "사이트"를 이용하지 않은 경우, "아이디"를 "휴면계정"로 분리하여 해당 계정의 이용을 중지할 수 있습니다. 이 경우 "회사"는 "휴면계정 처리 예정일"로부터 30일 이전에 해당사실을 전자메일, 서면, SMS 중 하나의 방법으로 사전통지하며 이용자가 직접 본인확인을 거쳐, 다시 "사이트" 이용 의사표시를 한 경우에는 "사이트" 이용이 가능합니다.
 </textarea>
 
-</div>
-	개인정보 약관에 동의 합니다(필수)<input type="checkbox"   id="agree2" >
-	
+		</div>
+		개인정보 약관에 동의 합니다(필수)<input type="checkbox" id="agree2">
+
 	</div>
-<br>
-<br>
+	<br>
+	<br>
 	<div class="tab-content">
 		<div class="tab-pane active" id="person">
 			<form action="mainDisplay.jsp" id="member" method="post">
-			
+
 				<input type="hidden" name="id" value="1">
 				<div class="container">
 					<div class="col-md-2">이름</div>
 					<div class="col-md-3">
-						<input type="text" name="member_name" required="required">
+						<input type="text" name="member_name" required="required"
+							onkeyup="this.value=this.value.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/,'')">
 					</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">아이디</div>
 					<div class="col-md-3">
-						<input type="text" name="member_id" required="required">
+						<input type="text" name="member_id" required="required"   ^[a-zA-Z]*$
+						>
 					</div>
 				</div>
 				<div class="container">
@@ -375,17 +382,19 @@ var check = function(){
 					</div>
 					<div class="col-md-1">
 						<input type="tel" required="required" name="tel2"
-						style="ime-mode: disabled;"onkeyup="this.value=this.value.replace(/\D/,'')">
+							style="ime-mode: disabled;"
+							onkeyup="this.value=this.value.replace(/\D/,'')">
 					</div>
 					<div class="col-md-1">
 						<input type="tel" required="required" name="tel3"
-						style="ime-mode: disabled;"onkeyup="this.value=this.value.replace(/\D/,'')">
+							style="ime-mode: disabled;"
+							onkeyup="this.value=this.value.replace(/\D/,'')">
 					</div>
 				</div>
 				<br>
 				<div class="container">
-					<button  class="col-md-1" onclick="check()">회원가입</button><input
-						type="reset" value="다시쓰기" class="col-md-1">
+					<button class="col-md-1" onclick="check()">회원가입</button>
+					<input type="reset" value="다시쓰기" class="col-md-1">
 				</div>
 			</form>
 		</div>
@@ -398,7 +407,7 @@ var check = function(){
 				<div class="container">
 					<div class="col-md-2">가입자명</div>
 					<div class="col-md-3">
-						<input type="text" name="etp_name" required="required">
+						<input type="text" name="etp_name" required="required" onkeyup="this.value=this.value.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/,'')">
 					</div>
 				</div>
 				<div class="container">
@@ -410,8 +419,8 @@ var check = function(){
 				<div class="container">
 					<div class="col-md-2">비밀번호</div>
 					<div class="col-md-3">
-						<input type="password" name="etp_pass" required="required">
-					</div>
+							<input type="password" name="etp_pass" required="required">
+						</div>
 				</div>
 				<div class="container">
 					<div class="col-md-2">이메일</div>
@@ -468,8 +477,8 @@ var check = function(){
 				</div>
 				<br>
 				<div class="container">
-						<button  class="col-md-1" onclick="check()">회원가입</button> <input
-						type="reset" value="다시쓰기" class="col-md-1">
+					<button class="col-md-1" onclick="check()">회원가입</button>
+					<input type="reset" value="다시쓰기" class="col-md-1">
 				</div>
 		</div>
 		</form>

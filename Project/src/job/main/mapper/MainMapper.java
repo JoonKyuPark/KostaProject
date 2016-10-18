@@ -11,4 +11,7 @@ public interface MainMapper {
 	public int Einsert(Etp_infor etp);
 	public List<Member_info> Mlist();
 	public List<Etp_infor>Elist();
+	public Member_info Msearch(int loginId);
+	public int Mupdate(Member_info m);
+	public int Mcount();
 }

@@ -73,6 +73,21 @@ public class MemberDao {
 			sqlSession.close();
 		}
 	}
+	
+	public int mIdCount(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+         int re=0;
+		try {
+			re= sqlSession.getMapper(MainMapper.class).Mcount();
+		
+			return re;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return re;
+		} finally {
+			sqlSession.close();
+		}
+	}
 	public List<Member_info> Mlist(){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		List<Member_info> list=null;
@@ -80,6 +95,57 @@ public class MemberDao {
 			list= sqlSession.getMapper(MainMapper.class).Mlist();
 		
 			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public int Mupdate(Member_info m){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			
+			re = sqlSession.getMapper(MainMapper.class).Mupdate(m);
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+			return re;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return re;
+		} finally {
+			sqlSession.close();
+		}
+		
+	}
+	
+	public int Mcount(){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re =-1;
+		try {
+			re= sqlSession.getMapper(MainMapper.class).Mcount();
+			sqlSession.commit();
+			return re;
+		} catch (Exception e) {
+			e.printStackTrace();
+			sqlSession.rollback();
+			return re;
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	public Member_info Msearch (int loginId){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		Member_info m=null;
+		try {
+			m= sqlSession.getMapper(MainMapper.class).Msearch(loginId);
+			return m;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

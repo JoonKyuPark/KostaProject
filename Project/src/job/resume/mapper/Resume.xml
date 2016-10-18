@@ -8,22 +8,187 @@
 	<cache />
 	<insert id="insertResume" parameterType="Resume">
 		insert into resume(
+		resume_no,
 		resume_title,
 		hope_income,
 		volun_field,
 		resume_date,
- 	ac_ability_no,
-	self_intro_cont
+		career_no,
+		ac_ability_no,
+		self_intro_cont,
+		resume_img
 
 		) values(
-		#{resume_title},
-		#{hope_income},
-		#{volun_field}, 
+		#{resume_no, jdbcType=VARCHAR},
+		#{resume_title, jdbcType=VARCHAR},
+		#{hope_income, jdbcType=VARCHAR},
+		#{volun_field, jdbcType=VARCHAR},
 		SYSDATE,
-		#{ac_ability_no},
-		#{self_intro_cont}
+		#{career_no, jdbcType=VARCHAR},
+		#{ac_ability_no, jdbcType=VARCHAR},
+		#{self_intro_cont, jdbcType=VARCHAR},
+		#{resume_img, jdbcType=VARCHAR}
 		)
 	</insert>
+
+	<insert id="insertResumeAbility" parameterType="ResumeAbility">
+		insert into ac_ability(
+		ac_ability_no,			<!-- 학력사항 번호 -->
+		enter_date,			<!-- 입학연월 -->
+		graduation_date,			<!-- 졸업연월 -->
+		school_name,			<!-- 학교명 -->
+		major_1,			<!-- 전공1 -->
+		major_2, 			<!-- 전공2 -->
+		grade			<!-- 학점 -->
+
+		)values(
+		#{ac_ability_no, jdbcType=VARCHAR},
+		#{enter_date, jdbcType=VARCHAR},
+		#{graduation_date, jdbcType=VARCHAR},
+		#{school_name, jdbcType=VARCHAR},
+		#{major_1, jdbcType=VARCHAR},
+		#{major_2, jdbcType=VARCHAR},
+		#{grade, jdbcType=VARCHAR}
+		)
+
+
+
+
+	</insert>
+
+
+	<select id="selectAbilityNo" resultType="Integer">
+		select
+		max(AC_ABILITY_NO) from ac_ability
+	</select>
+
+
+
+	<insert id="insertResumeCareer" parameterType="resumeCareer">
+		insert into career(
+		career_no,			<!-- 경력사항 번호 -->
+		important_ability,				<!-- 핵심역량 -->
+		join_date,			<!-- 입사일 -->
+		retire_date,			<!-- 퇴사일 -->
+		career_work_state,			<!-- 경력 상태(퇴사/재직중) -->
+		career_etp_name,			<!-- 경력회사명 -->
+		career_field,			<!-- 경력 직종 -->
+		work_dept,			<!-- 근무부서 -->
+		work_rank,			<!-- 경력 직급 -->
+		work_year,			<!-- 경력 년차 -->
+		work_location,			<!-- 경력 근무지역 -->
+		work_income,			<!-- 경력 연봉 -->
+		responibility_field,			<!-- 경력 담당업무 -->
+		retire_reasion,			<!-- 퇴사사유 -->
+
+		career_year		<!-- 총경력 -->
+
+		)values(
+		#{career_no, jdbcType=VARCHAR},			<!-- 경력사항 번호 -->
+		#{important_ability, jdbcType=VARCHAR},				<!-- 핵심역량 -->
+		#{join_date, jdbcType=VARCHAR},			<!-- 입사일 -->
+		#{retire_date, jdbcType=VARCHAR},			<!-- 퇴사일 -->
+		#{career_work_state, jdbcType=VARCHAR},			<!-- 경력 상태(퇴사/재직중) -->
+		#{career_etp_name, jdbcType=VARCHAR},			<!-- 경력회사명 -->
+		#{career_field, jdbcType=VARCHAR},			<!-- 경력 직종 -->
+		#{work_dept, jdbcType=VARCHAR},			<!-- 근무부서 -->
+		#{work_rank, jdbcType=VARCHAR},			<!-- 경력 직급 -->
+		#{work_year, jdbcType=VARCHAR},			<!-- 경력 년차 -->
+		#{work_location, jdbcType=VARCHAR},			<!-- 경력 근무지역 -->
+		#{work_income, jdbcType=VARCHAR},			<!-- 경력 연봉 -->
+		#{responibility_field, jdbcType=VARCHAR},			<!-- 경력 담당업무 -->
+		#{retire_reasion, jdbcType=VARCHAR},			<!-- 퇴사사유 -->
+
+		#{career_year, jdbcType=VARCHAR}	<!-- 총 경력 -->
+
+		)
+
+	</insert>
+
+
+
+
+	<select id="selectCareerNo" resultType="Integer">
+		select max(CAREER_NO)
+		from career
+	</select>
+
+
+	<select id="selectResumeNo" resultType="Integer">
+		select max(RESUME_NO)
+		from resume
+	</select>
+
+
+
+	<select id="ResumeList" resultType="ResumeAll">
+		select DISTINCT * 
+		from resume re, career ca, AC_ABILITY ac
+		where re.CAREER_NO = ca.CAREER_NO AND re.AC_ABILITY_NO = ac.AC_ABILITY_NO
+		order by re.resume_no ASC
+	
+	</select>
+
+	<select id="ResumeDetail" parameterType="int" resultType="ResumeAll">
+		select * 
+		from resume re, career ca, AC_ABILITY ac
+		where re.CAREER_NO = ca.CAREER_NO AND re.AC_ABILITY_NO = ac.AC_ABILITY_NO AND re.resume_no= #{resume_no}
+		order by re.resume_no ASC
+	
+	</select>
+
+
+
+
+	<update id="UpdateResume" parameterType="Resume">
+		update resume
+		set
+			resume_title=#{resume_title},
+			hope_income=#{hope_income},
+			volun_field=#{volun_field},
+			resume_date=SYSDATE,
+			career_no=#{career_no},
+			ac_ability_no=#{ac_ability_no},
+			self_intro_cont=#{self_intro_cont}
+			
+		where resume_no=#{resume_no}
+	</update>
+
+	<update id="UpdateResumeAbility" parameterType="ResumeAbility">
+		update ac_ability
+		set 
+			enter_date=#{enter_date},
+			graduation_date=#{graduation_date},
+			school_name=#{school_name},
+			major_1	=#{major_1},
+			major_2=#{major_2},
+			grade=#{grade}
+
+		where ac_ability_no = #{ac_ability_no}
+	</update>
+
+
+	<update id="UpdateResumeCareer" parameterType="resumeCareer">
+	update career
+	set
+		important_ability=#{important_ability},
+		join_date=#{join_date},
+		retire_date=#{retire_date},
+		career_work_state=#{career_work_state},
+		career_etp_name=#{career_etp_name},
+		career_field=#{career_field},
+		work_dept=#{work_dept},
+		work_rank=#{work_rank},
+		work_year=#{work_year},
+		work_location=#{work_location},
+		work_income=#{work_income},
+		responibility_field=#{responibility_field},
+		retire_reasion=#{retire_reasion},
+		career_year=#{career_year}
+		
+	where career_no=#{career_no}
+	</update>
+
 
 
 

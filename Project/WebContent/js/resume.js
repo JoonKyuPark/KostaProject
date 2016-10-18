@@ -5,12 +5,12 @@ $(function() {
 	var start_date = moment().subtract(29, 'days');
 	var end_date = moment();
 	function cb(start, end) {
-		$('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+		$('.reportrange span').html(start.format('YYYY/MM/DD') + ' ~ ' + end.format('YYYY/MM/DD'));
 		work_year_up();
 	}
 	cb(start_date, end_date);
 
-	$('#reportrange').daterangepicker({
+	$('.reportrange').daterangepicker({
 		ranges : {
 			'오늘' : [ moment(), moment() ],
 			'어제' : [ moment().subtract(1, 'days'), moment().subtract(1, 'days') ],
@@ -47,6 +47,10 @@ function work_year_up() {
 
 	career_year2 = parseInt(career_year2);
 
+	$('.resume_career_join_date_hidden').val(career_year1+"/"+career_mon1);
+	$('.resume_career_retire_date_hidden').val(career_year2+"/"+career_mon2);
+	
+	
 	career_year = career_year2 - career_year1;
 
 	if (career_mon2 >= career_mon1)
@@ -58,14 +62,19 @@ function work_year_up() {
 		career_result++;
 	}
 
-	$('.resume_carrer_work_year').html(career_result + "년차");
-
+	$('.resume_carrer_work_year_h6').html(career_result + "년차");
+	$('.resume_carrer_work_year').val(career_result);
+	
+	
+	var careerYear = $('.resume_carrer_work_year').val();
+	$('#resume_career_year_input').val(careerYear);
+	$('.resume_career_year_h6').html(careerYear+"년");
 }
 $(function() {
 	// 실제로 보여지는 날짜를 정의.
 	$('.txt-work-month').text(new Date().getFullYear() + '년 ' + (new Date().getMonth() + 1) + '월');
 	// monthpicker 에서 사용할 초기 날짜 정의
-	$('.monthpicker').val(new Date().getFullYear() + '-' + (new Date().getMonth() + 1));
+	$('.monthpicker').val(new Date().getFullYear() + '/' + (new Date().getMonth() + 1));
 
 	// monthpicker 적용
 	$('.monthpicker').bootstrapMonthpicker({
@@ -77,7 +86,7 @@ $(function() {
 			/*******************************************************************
 			 * monthpicker 라이브러리에서 기본으로 "-" 를 사용
 			 ******************************************************************/
-			var splitDate = $.trim(value).split("-");
+			var splitDate = $.trim(value).split("/");
 
 			// 표한하고 싶으신 포맷으로 알아서 정의하시면 됩니다.
 			$.each(splitDate, function(_idx, _date) {
@@ -92,8 +101,8 @@ $(function() {
 		}
 	});
 	// #choice-work-month 에 monthpicker 이벤트 정의
-	$('.choice-work-month').click(function() {
-		$('.monthpicker').click();
+	$('.choice-work-month').on('click',function() {
+		$('.monthpicker').on(click());
 	});
 });
 
@@ -115,4 +124,5 @@ function career_radio_fn() { /* 신입경력 버튼클릭시 디스플레이 토
 function career_add_btn_fn() {
 
 	$('#career').after($career_clone);
+	$(document).find(".reportrange").removeClass('hasDatepicker').cb();
 }

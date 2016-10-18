@@ -64,9 +64,9 @@ table.ui-datepicker-calendar {
 		</div>
 
 		<div class="content col-md-8">
-			<form class="resume_form form-horizontal col-md-12" action="resume_reg_action.jsp" method="post">
+			<form class="resume_form form-horizontal col-md-12" action="resume_reg_action.jsp" method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
-					<br> <br> <br> <br> <br> <br> <label for="resume_title_input" class="col-md-2 control-label">제목</label>
+					<br> <br> <br> <br> <br> <br> <label for="resume_title_input" class="glyphicon glyphicon-pencil col-md-2 control-label" aria-label="Left Align">제목</label>
 					<div class="col-md-10">
 						<input type="text" class="form-control" id="resume_title_input" placeholder="제목을 입력해주세요" name="resume_title" value="12311">
 					</div>
@@ -82,20 +82,30 @@ table.ui-datepicker-calendar {
 
 					<label class="resume_volun_field_label col-md-2 control-label">지원분야</label>
 					<div class="resume_volun_field_form col-md-10">
-						<input type="radio" value="정규직" name="volun_field">정규직&nbsp; 
-						<input type="radio" value="계약직" name="volun_field">계약직&nbsp;
-						<input type="radio" value="병역특례" name="volun_field">병역특례&nbsp; 
-						<input type="radio" value="인턴직" name="volun_field">인턴직&nbsp;
-						<input type="radio" value="프리랜서" name="volun_field">프리랜서&nbsp;
+
+						<select class="form-control" name="volun_field">
+						  <option value="웹개발자">웹개발자</option>
+						  <option value="웹디자이너">웹디자이너</option>
+						  <option value="서버관리자">서버관리자</option>
+						  <option value="db설계자">db설계자</option>
+						  <option value="db관리자">db관리자</option>
+						</select>
 					</div>
 					<!-- ~~~resume_volun_field_form 지원분야 체크박스 -->
-	
+					
+					<label class="col-md-2">증명사진</label>
+					<div class="col-md-2">
+						<input type="file" name="resume_img">
+					
+					
+					</div>
 
 					<br> <br> <br> <br> <br> <br>
 
 					<!-- 경력사항div 시작-->
-
-					<div id="career_radio" class="col-md-12">
+					<label for="career_radio_btn_new" class="col-md-2 control-label">경력사항</label>
+					<div id="career_radio" class="col-md-10 form-inline">
+						
 						<input type="radio" value="new" name="career_radio_btn" checked="checked" id="career_radio_btn_new">신입 &nbsp;&nbsp; <input type="radio"
 							value="old" name="career_radio_btn" id="career_radio_btn_old">경력
 					</div>
@@ -109,69 +119,87 @@ table.ui-datepicker-calendar {
 							</div>
 							<label for="resume_carrer_work_state_label" class="col-md-2 control-label" >재직여부</label>
 							<div class="form-inline">
-								<select name="resume_carrer_work_state" class="form-control col-md-4" name="career_work_state">
+								<select class="form-control col-md-4" name="career_work_state">
 									<option value="N">퇴사</option>
 									<option value="Y">재직</option>
 								</select>
 							</div>
 							<br> <br> <br> <label for="reportrange" class="resume_career_join_date_label col-md-2 control-label">입사·퇴사일</label>
-							<div id="reportrange" class="col-md-4 form-inline" style="background: #fff; cursor: pointer; padding-top: 5px">
+							<div id="reportrange" class="col-md-4 form-inline reportrange" style="background: #fff; cursor: pointer; padding-top: 5px" onclick="cb()">
 								<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span class="resume_career_join_date_input"></span> <b class="caret"></b>
+								
 							</div>
-
-							<label for="reportrange" class="resume_career_join_date_label col-md-2 control-label"> 경력기간</label>
+								<input type="hidden" class="resume_career_join_date_hidden" name="join_date">
+								<input type="hidden" class="resume_career_retire_date_hidden" name="retire_date">
+							<label for="reportrange" class="resume_carrer_work_year_label col-md-2 control-label"> 경력기간</label>
 							<div class="col-md-4">
-								<h6 class="resume_carrer_work_year"></h6>
+								<input type="hidden" class="resume_carrer_work_year" name="work_year">
+								<h6 class="resume_carrer_work_year_h6"></h6>
 							</div>
 
 							<br> <br> <br> <label for="resume_career_field_input" class="col-md-2 control-label">경력 직종</label>
 							<div class="resume_career_field_div col-md-4">
 								<input type="text" id="resume_career_field_input" class="form-control" name="career_field">
 							</div>
-
-
 							<label for="resume_work_dept_input" class="col-md-2 control-label">근무부서</label>
 							<div class="resume_work_dept_div col-md-4">
 								<input type="text" id="resume_work_dept_input" class="form-control" name="work_dept">
 							</div>
+							
+							
 							<br> <br> <label for="resume_work_rank_input" class="col-md-2 control-label">직급</label>
 							<div class="resume_work_rank_div col-md-4">
 								<input type="text" id="resume_work_rank_input" class="form-control" name="work_rank">
 							</div>
-
-
 							<label for="resume_responibility_field_input" class="col-md-2 control-label">핵심역량</label>
 							<div class="resume_responibility_field_div col-md-4">
 								<input type="text" id="resume_responibility_field_input" class="form-control" name="important_ability">
 							</div>
+							
+							
 							<br> <br> <label for="resume_retire_reasion_input" class="col-md-2 control-label">퇴사사유</label>
 							<div class="resume_retire_reasion_div col-md-4">
 								<input type="text" id="resume_retire_reasion_input" class="form-control" name="retire_reasion">
 							</div>
-
 							<label for="resume_work_location_input" class="col-md-2 control-label">근무지역</label>
 							<div class="resume_work_location_div col-md-4">
 								<input type="text" id="resume_work_location_input" class="form-control" name="work_location">
 							</div>
-							<br> <br> <label for="resume_work_income_input" class="col-md-2 control-label">경력연봉</label>
+							
+							
+							<br> <br> 
+							<label for="resume_work_income_input" class="col-md-2 control-label">경력연봉</label>
 							<div class="resume_work_income_div col-md-10">
 								<input type="text" id="resume_work_income_input" class="form-control" name="work_income"> &nbsp;만원
 							</div>
-							<br> <br>
-
+							
+							<label for="resume_responibility_field_input" class="col-md-2 control-label">경력업무</label>
+							<div class="resume_responibility_field_div col-md-4">
+								<input type="text" id="resume_responibility_field_input" class="form-control" name="responibility_field"> 
+							</div>
+							
+							
 
 						</div>
+				
+						
+						<label for="resume_career_year_input" class="col-md-2 control-label">총 경력</label>
+							<div class="resume_career_year_div col-md-4">
+								<input type="hidden" id="resume_career_year_input" name="career_year">
+								<h6 class="resume_career_year_h6"></h6>
+								<br>
+							</div>
 						<!-- ~~career 경력사항 -->
 
-						<h5 id="career_add_btn btn" onclick="career_add_btn_fn();" class="btn-info btn col-md-12">경력 추가</h5>
+						<!-- <h5 id="career_add_btn btn" onclick="career_add_btn_fn();" class="btn-info btn col-md-12">경력 추가</h5> -->
+						
+						<span class="career-border col-md-12"></span> <br> 
 					</div>
 					<!-- career_wrapper 경력사항모음 -->
 
 					<br> <br> <br> <br> <br>
 
-					<div class="form-inline">
-
-
+					<div class="form-inline">  <!-- 학력사항~~~ -->
 						<label for="monthpicker" class="col-md-2 control-label">입학연월</label>
 						<div class="resume_school_name_div col-md-4">
 							<input type="text" value="2014-10" class="monthpicker form-control" name="enter_date">
@@ -180,7 +208,6 @@ table.ui-datepicker-calendar {
 						<div class="resume_school_name_div col-md-4">
 							<input type="text" value="2014-10" class="monthpicker form-control col-md-4" name="graduation_date">
 						</div>
-
 					</div>
 					<br> <br>
 
@@ -217,7 +244,7 @@ table.ui-datepicker-calendar {
 									
 								</div>
 						</div>
-							<h5 id="license_add_btn btn" onclick="" class="btn-info btn col-md-12">자격증추가</h5>
+						<!-- 	<h5 id="license_add_btn btn" onclick="" class="btn-info btn col-md-12">자격증추가</h5> -->
 					</div>
 
 					<div class="form-horizontal col-md-12">
