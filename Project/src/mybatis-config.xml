@@ -4,11 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
 	<typeAliases>
+		<typeAlias type="Etp.model.Etp" alias="Etp"/>
+		<typeAlias type="Etp.model.ETP_mem_log" alias ="ETP_mem_log"/>
+		<typeAlias type="recruit.infor.Recruit_Infor" alias="Recruit_infor"/>
+		<typeAlias type="recruit.clip.Recruit_Clip" alias="Recruit_Clip"/>
+		<typeAlias type="infor.etp.model.Etp_Infor" alias="Etp_Infor"/>
 		<typeAlias type="job.exam.Etp_Exam_Info" alias="Etp_Exam_Info"/>
-		<typeAlias type="job.exam.Etp_Exam_Question" alias="Etp_Exam_Question"/>
 		<typeAlias type="job.main.Etp_infor" alias="ETP"/>
 		<typeAlias type="job.main.Member_info" alias="M"/>
+		
+	
+		
 	</typeAliases>
 	
 	<environments default="development">
@@ -20,13 +28,19 @@
 		</environment>		
 	</environments>
 	
+
 	<mappers>
+		<mapper resource="Etp/mapper/Resume.xml"/>
+		<mapper resource="recruit/mapper/Recruit_infor.xml"/>
+		<mapper resource="recruit/clip/mapper/Recruit_Clip.xml"/>
+		<mapper resource="infor/etp/mapper/Etp_Infor.xml"/>
 		<mapper resource="/job/exam/Etp_Exam.xml"/>
 		<mapper resource="/job/main/mapper/main.xml"/>
-		<mapper resource="/job/exam/Etp_Question.xml"/>
 	</mappers>
 	
+	
 </configuration>
+
 
 
 
