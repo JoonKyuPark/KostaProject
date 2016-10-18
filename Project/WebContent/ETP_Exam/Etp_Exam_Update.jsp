@@ -1,3 +1,5 @@
+<%@page import="job.exam.Etp_Exam_Info"%>
+<%@page import="job.exam.Etp_Exam_Service"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -8,8 +10,10 @@
 	Date date = new Date();
 	String strYear = format.format(date);
 	int year = Integer.parseInt(strYear);
+	int exam_no = Integer.parseInt(request.getParameter("exam_no"));
+	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
+	Etp_Exam_Info selectExam = service.selectExam(exam_no);
 %>
-
 <!DOCTYPE html>
 <html>
 <!------- JQUERY -------->
@@ -28,29 +32,30 @@
 	rel="stylesheet" type="text/css" />
 <!------- XE FONT -------->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/xeicon/2/xeicon.min.css">
-<link rel="stylesheet" href="../css/ETP_Exam.css">
+<link rel="stylesheet" href="../css/Etp_Exam.css">
 <script src="../js/Exam.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Registration Exam</title>
 </head>
-<body id="ETP_Exam_Reg">
+<body id="Etp_Exam_Reg">
 	<div>
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
 		<div class="col-md-2"> Empty </div>
 		<div class="col-md-2">Left Menu(2)</div>
 		<div class="col-md-8">
-			<h2 class="examRegTitle">시험 일정 등록</h2>
+			<h2 class="examRegTitle">시험 일정 수정</h2>
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
-				<form role="form" action="ETP_Exam_insertOk.jsp" method="post" onsu>
+				<form role="form" action="Etp_Exam_UpdateOk.jsp" method="post">
+					<input type="hidden" name="etp_no" value = "1"> 
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>
 						<div class="col-md-12">
-							<input type="text" class="form-control col-md-12" name = "exam_name" placeholder="내용을 입력하세요.">
+							<input type="text" class="form-control col-md-12" name = "exam_name" value = "<%=selectExam.getExam_name()%>">
 						</div>
 						<br>
 						<br>
@@ -106,7 +111,7 @@
 					<div class="form-group col-md-12">
 						<label for="examNumberForm" class="label col-md-12"><i class="xi-align-justify"></i>응시인원</label><br>
 						<div class="col-md-12">
-							<input type="number" class="examNumberForm form-control col-md-3" name="exam_number" style = "padding-right : 0;">
+							<input type="number" class="examNumberForm form-control col-md-3" name="exam_number" style = "padding-right : 0;" value="<%=selectExam.getExam_number()%>">
 							<label class="examNumberFormText col-md-9">명</label>
 						</div>
 						<br><br>
@@ -129,10 +134,10 @@
 					<div class="form-group col-md-12">
 						<div class="col-md-4"></div>
 						<div class="col-md-2">
-						<input type="submit" class="btn btn-info" value="등 록">
+						<input type="submit" class="btn btn-info" value="수 정">
 						</div>
 						<div class="col-md-2">
-						<a href="ETP_Exam_main.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
+						<a href="Etp_Exam_List.jsp"><input type="button" class="btn btn-info" value="취 소"></a>
 						</div>
 						<div class="col-md-4"></div>
 
