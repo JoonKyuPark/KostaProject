@@ -124,7 +124,7 @@
 			<li><a>스마트매칭</a></li>
 			<li><a>맞춤채용정보</a></li>
 			<li><a>이력서등록</a></li>
-			<li><a>채용등록</a></li>
+			<li><a href="../ETP_Mypage/ETP_recruit_infor.jsp">채용등록</a></li>
 		</ul>
 	</div>
 	<br>

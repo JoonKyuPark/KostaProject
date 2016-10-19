@@ -27,7 +27,7 @@ public class ETP_Info_Dao {
 	      return new SqlSessionFactoryBuilder().build(input);
 	   }
 	
-	public int etp_insert_info(ETP_Info etp_info){  //다음순서 - board.xml가서 작성해
+	public int etp_insert_info(ETP_Infor etp_info){  //다음순서 - board.xml가서 작성해
 		int re = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		
@@ -47,7 +47,7 @@ public class ETP_Info_Dao {
 		return re;
 	}
 	
-	public int etp_update_info(ETP_Info etp_info){
+	public int etp_update_info(ETP_Infor etp_info){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = -1; //트랜젝션처리
 		

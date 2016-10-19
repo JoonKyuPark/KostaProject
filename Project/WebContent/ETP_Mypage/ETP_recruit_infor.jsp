@@ -1,6 +1,18 @@
+<%@page import="Etp.mypage.ETP_Infor"%>
+<%@page import="Etp.mypage.ETP_Info_Dao"%>
+<%@page import="Etp.mypage.ETP_info_Service"%>
+<%@page import="job.main.LogginService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%
+	ETP_info_Service etp_info_s = ETP_info_Service.getInstance();
+	ETP_Infor etp_infor ;
+	
+	
+	int etp_no = (Integer)session.getAttribute("zz");
+	
+	
+%>
 <!DOCTYPE html>
 <html>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -17,7 +29,6 @@
 <!-- css -->
 <link rel="stylesheet" href="ETP_Mypage.css" type="text/css"
 	media="screen" />
-
 <head>
 <meta charset="UTF-8">
 <title>채용공고등록</title>
@@ -74,7 +85,18 @@
 <body>
 	<div class="container">
 		<header>
-			<h3>헤더</h3>
+			<div name="main_menu" class="container">
+				<ul class="nav nav-pills">
+					<li><a href="../main/mainDisplay.jsp">홈</a></li>
+					<li><a href="../main/update.jsp">마이페이지</a></li>
+					<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
+					<li><a>채용정보검색</a></li>
+					<li><a href="../main/smart.jsp">스마트매칭</a></li>
+					<li><a>맞춤채용정보</a></li>
+					<li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
+					<li><a>채용등록</a></li>
+				</ul>
+			</div>
 		</header>
 		<div class="row">
 			<div class="col-md-2">

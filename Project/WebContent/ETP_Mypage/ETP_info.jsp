@@ -15,8 +15,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <!------- JQUERY -------->
 <!-- css -->
-<!-- <link rel="stylesheet" href="ETP_Mypage.css" type="text/css"
-	media="screen" /> -->
+<link rel="stylesheet" href="ETP_Mypage.css" type="text/css"
+	media="screen" />
 
 <head>
 <meta charset="UTF-8">
@@ -86,6 +86,20 @@
 </head>
 <body>
   <div class="container">
+    <header>
+	  <div name="main_menu" class="container">
+      <ul class="nav nav-pills">
+         <li><a href="../main/mainDisplay.jsp">홈</a></li>
+         <li><a href="../main/update.jsp">마이페이지</a></li>
+         <li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
+         <li><a>채용정보검색</a></li>
+         <li><a href="../main/smart.jsp">스마트매칭</a></li>
+         <li><a>맞춤채용정보</a></li>
+         <li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
+         <li><a>채용등록</a></li>
+      </ul>
+   </div>
+	</header>
     <div class="row">
       <div class="col-md-2">
         <ul class="mypage_bar">
@@ -100,80 +114,101 @@
       <form action="ETP_info_insert.jsp" method="POST" id="actionForm">
       <div class="col-md-8">
         <div class="row">
-          <div class="col-md-2">
-            <h5>기업회원번호</h5>
-            <h5>기업이름</h5>
-            <h5>기업아이디</h5>
-            <h5>기업비밀번호 빼?</h5>
-            <h5>기업전화번호</h5>
-            <h5>기업이메일</h5>
-            <h5>기업형태? -> 주요사업내용</h5>
-            <h5>사업자등록번호</h5>
-            <h5>대표자명</h5>
-            <h5>기업업종(산업내용) ?</h5>
-            <h5>직원수</h5>
-            <h5>기업주소</h5>
-            <h5>자본금</h5>
-            <h5>매출액</h5>
-            <h5>관심인원</h5>
-          </div>
-          <div class="col-md-10">
-            <h5 name="etp_no">기업회원번호</h5>
-            <input type="text" class="form-control" name="etp_name">
-            <h5 name="etp_id">아이디받아와</h5> 
-            <h5 name="etp_pass">비밀번호받아와</h5>
-            <div class="row">
-              <div class="col-md-2">
-                <select class="form-control" name="etp_tel_location">
+			<div class="form-group">
+			  <label for="etp_name" class="col-md-3 control-label">기업회원번호</label>
+			  <div class="col-md-8">
+			    <input type="text" class="form-control" placeholder="기업 회원 번호" name="etp_name" id="etp_name">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_name" class="col-md-3 control-label">기업이름</label>
+			  <div>
+			    <label for="etp_name" class="col-md-9">기업이름받아와</label>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <div class="col-md-4">
+			    <label for="etp_id">기업아이디</label>
+			  </div>
+			  <div class="col-md-8">
+			    <label id="etp_id">아이디받아와</label>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_tel_location" class="col-md-3">기업전화번호</label>
+			  <div class="col-md-4">
+			    <select class="form-control" name="etp_tel_location" id="etp_tel_location">
 				  <option value="02">02</option>
 				  <option value="031">031</option>
 				  <option value="032">032</option>
 			 	  <option value="041">041</option>
 			   	  <option value="042">042</option>
 			    </select>
-              </div>
-              <div class="col-md-5">
-                <input type="text" class="form-control" name="etp_tel">
-              </div>
-              <div class="col-md-5"></div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <input type="text" class="form-control" name="etp_email_id" placeholder="아이디">
-              </div>
-              <div class="col-md-5">
-                <input type="text" class="form-control" name="etp_email" id="etp_email" placeholder="이메일주소">
-                <select class="form-control" name="etp_email" id="etp_email">
+			  </div>
+			  <div class="col-md-4">
+			    <input type="text" class="form-control" name="etp_tel" id="etp_tel_location">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_email_id" class="col-md-3 control-label">기업이메일</label>
+			  <div class="col-md-3">
+			    <input type="text" class="form-control" name="etp_email_id" id="etp_email_id" placeholder="아이디">
+			  </div>
+			  <div class="col-md-3">
+			    <input type="text" class="form-control" name="etp_email" id="etp_email" placeholder="이메일주소">
+			  </div>
+			  <div class="col-md-3">
+			    <select class="form-control" name="etp_email" id="etp_email">
 				  <option value="naver.com">naver.com</option>
 				  <option value="nate.com">nate.com</option>
 				  <option value="daum.net">daum.net</option>
 			 	  <option value="hanmail.net">hanmail.net</option>
 			 	  <option value="직접입력">직접입력</option>
 			    </select>
-              </div>
-              <div class="col-md-3"></div>
-            </div>
-            <select class="form-control" name="etp_kind">
-			  <option value="중소기업">중소기업(300명이하)</option>
-			  <option value="중견기업">중견기업(300명이상)</option>
-			  <option value="대기업">대기업</option>
-			</select>
-            <input type="text" class="form-control" name="etp_registration_num" placeholder="사업자등록번호">
-            <input type="text" class="form-control" name="delegator_name" placeholder="대표자명">
-            <select class="form-control" name="etp_field">
-			  <option value="IT">IT</option>
-			  <option value="웹">웹</option>
-			  <option value="자바개발자">자바개발자</option>
-			  <option value="디비관리자">디비관리자</option>
-			</select>
-            <div class="row">
-              <div class="col-md-3">
-                <input type="text" class="form-control" name="employee_number">
-              </div>
-              <div class="col-md-9">명</div>
-            </div>
-            <input type="text" class="form-control" name="etp_location">
-            <div class="row">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_kind" class="col-md-3 control-label">기업형태</label>
+			  <div class="col-md-9">
+			    <select class="form-control" name="etp_kind" id="etp_kind">
+			      <option value="중소기업">중소기업(300명이하)</option>
+			      <option value="중견기업">중견기업(300명이상)</option>
+			      <option value="대기업">대기업</option>
+			    </select>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_registration_num" class="col-md-3 control-label">사업자등록번호</label>
+			  <div class="col-md-9">
+			    <input type="text" class="form-control" name="etp_registration_num" placeholder="사업자등록번호" id="etp_registration_num">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="delegator_name" class="col-md-3 control-label">대표자명</label>
+			  <div class="col-md-9">
+			    <input type="text" class="form-control" name="delegator_name" placeholder="대표자명" id="delegator_name">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_field" class="col-md-3 control-label">기업업종(산업내용)</label>
+			  <div class="col-md-9">
+			    <select class="form-control" name="etp_field" id="etp_field">
+			  	  <option value="IT">IT</option>
+			  	  <option value="웹">웹</option>
+			 	  <option value="자바개발자">자바개발자</option>
+			 	  <option value="디비관리자">디비관리자</option>
+				</select>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="employee_number" class="col-md-3 control-label">직원수</label>
+			  <div class="col-md-8">
+			    <input type="text" class="form-control" name="employee_number" id="employee_number">
+			  </div>
+			  <div class="col-md-1">명</div>
+			</div>
+			<div class="form-group">
+			  <label class="col-md-3 control-label">기업주소</label>
 			  <div class="row">
 				<div class="col-md-3">
 				  <input type="text" id="sample4_postcode" name="recruit_addr" class="form-control" placeholder="우편번호">
@@ -184,21 +219,35 @@
 			  <div class="col-md-7"></div>
 			  </div>
 			  <div class="row">
-			  <div class="col-md-5">
+			  <div class="col-md-3"></div>
+			  <div class="col-md-4">
 			    <input type="text" id="sample4_roadAddress" name="etp_location" class="form-control" placeholder="도로명주소">
 			  </div>
-			  <div class="col-md-5">
+			  <div class="col-md-4">
 			    <input type="text" id="sample4_jibunAddress" name="etp_location" class="form-control" placeholder="지번주소">
 			  </div>
-			  <div class="col-md-2"></div>
 			    </div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_capital" class="col-md-3 control-label">자본금</label>
+			  <div class="col-md-4">
+			    <input type="text" class="form-control" name="etp_capital" placeholder="자본금" id="etp_capital">
 			  </div>
-            <input type="text" class="form-control" name="etp_capital" placeholder="자본금">만원
-            <input type="text" class="form-control" name="etp_sales" placeholder="매출액">
-            <input type="text" class="form-control" name="clip_number" placeholder="괸심인원">
-            <h5 name="clip_number">관심인원받아와?</h5>
+			  <div class="nol-md-5">만원</div>
+			</div>
+			<div class="form-group">
+			  <label for="etp_sales" class="col-md-3 control-label">매출액</label>
+			  <div class="col-md-9">
+			    <input type="text" class="form-control" name="etp_sales" placeholder="매출액" id="etp_sales">
+			  </div>
+			</div>
+			<div class="form-group">
+			  <label for="clip_number" class="col-md-3 control-label">관심인원</label>
+			  <div class="col-md-9">
+			    <input type="text" class="form-control" name="clip_number" placeholder="괸심인원" id="clip_number">
+			  </div>
+			</div>
             <input type="submit" value="ㅇㅋ">
-          </div>
         </div>
       </div>
       </form>

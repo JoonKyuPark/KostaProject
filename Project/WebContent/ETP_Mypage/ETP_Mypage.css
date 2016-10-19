@@ -89,3 +89,8 @@
 .clip_list{
 	background-color: #d2d2d2;
 }
+
+/* ETP_info.jsp */
+.form-group{
+	padding-bottom: 40px;
+}

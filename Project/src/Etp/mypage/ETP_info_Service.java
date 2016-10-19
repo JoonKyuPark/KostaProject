@@ -11,11 +11,11 @@ public class ETP_info_Service {
 	public static ETP_info_Service getInstance(){
 		return etp_info_service;
 	}
-	public int insert_etp_info(ETP_Info etp_info){
+	public int insert_etp_info(ETP_Infor etp_info){
 		return etp_info_dao.etp_insert_info(etp_info);
 	}
 	
-	public int update_etp_info(ETP_Info etp_info){
+	public int update_etp_info(ETP_Infor etp_info){
 		return etp_info_dao.etp_update_info(etp_info);
 	}
 }
