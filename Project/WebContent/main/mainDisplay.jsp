@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
 <%@page import="job.main.Etp_infor"%>
-<%@page import="job.main.Member_info"%>
+<%@page import="job.main.Member_info"%> 
 <%@page import="job.main.LogginService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -57,11 +57,13 @@
 			session.removeAttribute("login");
 			session.removeAttribute("kind");
 			session.removeAttribute("loggin");
+			session.removeAttribute("etp_no");
 		}
 	}
 
 	else {
 		if (request.getParameter("kind") != null) {
+			System.out.println(request.getParameter("kind"));
 			if (request.getParameter("kind").equals("1")) { //일반회원
 				int loggin = log.Mlist(request, response);
 				System.out.print(loggin);
@@ -73,13 +75,16 @@
 						request.getParameter("logid"));
 			} else if (request.getParameter("kind").equals("2")) { //기업회원
 				int loggin = log.Elist(request, response);
-				System.out.print(loggin);
-				request.setAttribute("loggin", loggin);
+				System.out.print(log.Elist(request, response));
+			int etp_no=log.Esearch(request.getParameter("logid"));
+				
+				request.setAttribute("loggin", 2);
 				session.setAttribute("loggin", loggin);
 				session.setAttribute("login", true);
 				session.setAttribute("kind", true);
 				session.setAttribute("loginid",
 						request.getParameter("logid"));
+				session.setAttribute("etp_no", etp_no);
 			}
 		}
 	}
@@ -117,13 +122,13 @@
 
 	<div name="main_menu" class="container">
 		<ul class="nav nav-pills">
-			<li><a href="mainDisplay.jsp">홈</a></li>
-			<li><a href="update.jsp">마이페이지</a></li>
+			<li><a href="../main/mainDisplay.jsp">홈</a></li>
+			<li><a href="../main/update.jsp">마이페이지</a></li>
 			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
 			<li><a>채용정보검색</a></li>
-			<li><a>스마트매칭</a></li>
+			<li><a href="../main/smart.jsp">스마트매칭</a></li>
 			<li><a>맞춤채용정보</a></li>
-			<li><a>이력서등록</a></li>
+			<li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
 			<li><a>채용등록</a></li>
 		</ul>
 	</div>

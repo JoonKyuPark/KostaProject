@@ -12,17 +12,13 @@
 		VALUES(#{member_no},#{member_name},#{member_id},#{member_pwd},#{member_email},#{member_telephone})
 	</insert>
 	<insert id="Einsert" parameterType="ETP">
-		INSERT INTO
-		etp_infor(etp_no,
+		INSERT INTO etp_infor(etp_no,
 		delegator_name, etp_id, etp_pass, etp_email,etp_kind,
 		etp_tel,
 		etp_registration_num, etp_name)
-		values(/'#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
-		values(2,
-		#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
-		etp_infor(etp_no, delegator_name, etp_id, etp_pass, etp_email,etp_kind,
-		etp_tel, etp_registration_num, etp_name)
-		values(2,#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+		values(#{etp_no},#{delegator_name},#{etp_id},#{etp_pass},#{etp_email},#{etp_kind},#{etp_tel},#{etp_registration_num},#{etp_name})
+		
+		
 	</insert>
 
 	<select id="Mlist" resultType="M">
@@ -48,10 +44,32 @@
 		member_detail_addr=#{member_detail_addr},
 		member_homepage=#{member_homepage},
 		member_pwd =#{member_pwd}
-		where member_id=#{member_id}
+		where
+		member_id=#{member_id}
 	</update>
 
 	<select id="Mcount" resultType="Integer">
-		select max(member_no) from member_infor
+		select max(member_no) from
+		member_infor
+	</select>
+
+	<select id="Msmart" parameterType="String" resultType="Recruit_infor">
+		 select * from recruit_infor 
+		where recruit_addr in(select recruit_addr from RECRUIT_INFOR r ,MEMBER_INFOR
+		m, resume re
+		where r.recruit_addr= ( select substr(member_addr,1,2) from member_infor
+		where member_id=#{member_id}))
+		and (select hope_income from resume r,member_infor m where m.member_id=#{member_id})
+    between  min_pay and  max_pay
+	</select>
+	
+	<select id="Esearch" parameterType="String" resultType="Integer">
+	select Etp_no from etp_infor
+	where etp_id=#{login_id}
+	</select>
+	
+	<select id="Ecount" resultType="Integer">
+		select max(etp_no) from
+		Etp_infor
 	</select>
 </mapper>

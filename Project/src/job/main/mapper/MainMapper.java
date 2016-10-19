@@ -2,6 +2,7 @@ package job.main.mapper;
 
 import java.util.List;
 
+import recruit.infor.Recruit_Infor;
 import job.main.Etp_infor;
 import job.main.Member_info;
 
@@ -14,4 +15,8 @@ public interface MainMapper {
 	public Member_info Msearch(int loginId);
 	public int Mupdate(Member_info m);
 	public int Mcount();
+	public List<Recruit_Infor> Msmart(String logginid);
+	public Integer Esearch(String login_id);
+	public int Ecount();
+	
 }

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.el.lang.ELSupport;
 
+import recruit.infor.Recruit_Infor;
+
 public class LogginService {
 
 	private static LogginService log = new LogginService();
@@ -65,6 +67,7 @@ public class LogginService {
 		Etp_infor etp = new Etp_infor(etp_id, etp_pass, etp_email, etp_tel
 				+ etp_tel2 + etp_tel3, etp_kind, etp_registration_num,
 				delegator_name, etp_name);
+		etp.setEtp_no(dao.Ecount()+1);
 		System.out.println("????");
 		dao.insertEtpMember(etp);
 	}
@@ -106,7 +109,7 @@ public class LogginService {
 		Member_info m = new Member_info();
 		HttpSession request2 = request.getSession();
 
-		m.setMember_no((int) (request2.getAttribute("loginid")));
+		m.setMember_no((Integer.parseInt((String)(request2.getAttribute("loginid")))));
 		System.out.println(m.getMember_no());
 		m.setMember_addr((String) request.getParameter("member_addr"));
 		m.setMember_addr_no((String) request.getParameter("member_addr_no"));
@@ -121,12 +124,20 @@ public class LogginService {
 		m.setMember_phone((String) request.getParameter("member_phone"));
 		m.setMember_pwd((String) request.getParameter("member_pwd"));
 		m.setMember_telephone((String) request.getParameter("member_telephone"));
+		System.out.println("d2d2d");
 		System.out.println(m);
 		re = dao.Mupdate(m);
 
 		return re;
 	}
 
+	public List<Recruit_Infor> Msmart(String loginId){
+		List<Recruit_Infor> list= dao.Msmart(loginId);
+		 System.out.println("222222");
+	return list;
+	}
+	
+	
 	public int Elist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Etp_infor> list = log.dao.Elist();
@@ -140,11 +151,20 @@ public class LogginService {
 					request.setAttribute("loggin", loggin);
 					RequestDispatcher rd = request
 							.getRequestDispatcher("mian/mainDisplay.jsp");
-					return loggin;
+					return 2;
 				}
 			}
 		}
 		return loggin;
 	}
 
+	
+	public int Esearch(String login_id){
+		int re=0;
+				re=dao.Esearch(login_id);
+				return re;
+	}
+	
+
+	
 }
