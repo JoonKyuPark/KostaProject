@@ -240,4 +240,5 @@ public class Etp_Exam_Service {
 	public void deleteExamService(int exam_no){
 		dao.deleteExam(exam_no);
 	}
+
 }
