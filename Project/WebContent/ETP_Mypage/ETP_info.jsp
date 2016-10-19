@@ -54,7 +54,7 @@
                 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode; //5자리 새우편번호 사용
-                document.getElementById('sample4_roadAddress').value = fullRoadAddr;
+                document.getElementById('sample4_jibunAddress').value = fullRoadAddr;
                 document.getElementById('sample4_jibunAddress').value = data.jibunAddress;
             }
         }).open();
@@ -186,9 +186,6 @@
 			  <div class="row">
 			  <div class="col-md-5">
 			    <input type="text" id="sample4_roadAddress" name="etp_location" class="form-control" placeholder="도로명주소">
-			  </div>
-			  <div class="col-md-5">
-			    <input type="text" id="sample4_jibunAddress" name="etp_location" class="form-control" placeholder="지번주소">
 			  </div>
 			  <div class="col-md-2"></div>
 			    </div>

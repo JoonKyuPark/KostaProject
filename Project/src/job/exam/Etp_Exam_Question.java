@@ -7,6 +7,7 @@ public class Etp_Exam_Question {
 	private int question_minute;
 	private int question_second;
 	private int etp_no;
+	private int exam_no;
 	
 	private String question_content;
 	private String question_name;
@@ -14,7 +15,7 @@ public class Etp_Exam_Question {
 	public Etp_Exam_Question(){}
 
 	public Etp_Exam_Question(int exam_question_no, int question_no, int question_hour, int question_minute,
-			int question_second, String question_content, String question_name, int etp_no) {
+			int question_second, String question_content, String question_name, int etp_no, int exam_no) {
 		super();
 		this.exam_question_no = exam_question_no;
 		this.question_no = question_no;
@@ -24,6 +25,7 @@ public class Etp_Exam_Question {
 		this.question_content = question_content;
 		this.question_name = question_name;
 		this.etp_no = etp_no;
+		this.exam_no = exam_no;
 	}
 
 	public int getExam_question_no() {
@@ -74,13 +76,6 @@ public class Etp_Exam_Question {
 		this.question_content = question_content;
 	}
 
-	public String getquestion_name() {
-		return question_name;
-	}
-
-	public void setquestion_name(String question_name) {
-		this.question_name = question_name;
-	}
 
 	public int getEtp_no() {
 		return etp_no;
@@ -89,6 +84,23 @@ public class Etp_Exam_Question {
 	public void setEtp_no(int etp_no) {
 		this.etp_no = etp_no;
 	}
+
+	public int getExam_no() {
+		return exam_no;
+	}
+
+	public void setExam_no(int exam_no) {
+		this.exam_no = exam_no;
+	}
+
+	public String getQuestion_name() {
+		return question_name;
+	}
+
+	public void setQuestion_name(String question_name) {
+		this.question_name = question_name;
+	}
+	
 	
 	
 }
