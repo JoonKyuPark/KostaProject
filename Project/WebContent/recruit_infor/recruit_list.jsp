@@ -1,3 +1,4 @@
+<%@page import="job.main.LogginService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="infor.etp.model.Etp_Infor"%>
 <%@page import="infor.etp.model.Etp_Infor_Service"%>
@@ -9,10 +10,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-	session.setAttribute("login", true);//TRUE가 로그인 0 FALSE가 로그인 X
-	session.setAttribute("kind", false);//TRUE가 기업 FALSE가 회원
-	session.setAttribute("loginid",request.getAttribute("logginid"));//로그인 아이디, 로그인 번호
-
+	
+	String loginid = (String)session.getAttribute("loginid");
+	System.out.println(loginid+"Ddddddddddddd");
+	System.out.println(loginid+"Ddddddddddddd");
+	
+	
 	Recruit_infor_Service riService = Recruit_infor_Service.getInstance();
 	System.out.println(riService);
 	System.out.println("Ddddgg");
@@ -59,7 +62,7 @@
          <li><a href="../main/mainDisplay.jsp">홈</a></li>
          <li><a href="../main/update.jsp">마이페이지</a></li>
          <li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
-        <li><a href="recruit_list.jsp">전체채용정보</a></li>
+         <li><a href="recruit_list.jsp">전체채용정보</a></li>
          <li><a href="../main/smart.jsp">스마트매칭</a></li>
          <li><a>맞춤채용정보</a></li>
          <li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>

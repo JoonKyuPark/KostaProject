@@ -80,9 +80,9 @@ public class Join_Receive_Dao {
 			list= sqlSession.getMapper(Join_Receive_Mapper.class).listJoin();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*finally {
+		} finally {
 			sqlSession.close();
-		}*/
+		}
 		
 		System.out.println("Dddd3");
 		return list;

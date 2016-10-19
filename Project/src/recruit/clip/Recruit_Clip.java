@@ -1,6 +1,8 @@
 package recruit.clip;
 
-public class Recruit_Clip {
+import java.io.Serializable;
+
+public class Recruit_Clip implements Serializable{
 	
 	int recruit_clip_no;
 	String recruit_clip_name;

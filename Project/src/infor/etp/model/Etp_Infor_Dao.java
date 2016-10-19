@@ -43,10 +43,9 @@ public class Etp_Infor_Dao {
 			ri= sqlSession.getMapper(Etp_Infor_Mapper.class).detailEtp(id1);
 		}catch (Exception e) {
 			e.printStackTrace();
-			return null;
-		}/*finally {
+		}finally {
 			sqlSession.close();
-		}*/
+		}
 		return ri;
 	}
 

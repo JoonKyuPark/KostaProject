@@ -1,6 +1,8 @@
 package join.receive;
 
-public class Join_Receive {
+import java.io.Serializable;
+
+public class Join_Receive implements Serializable{
 	int join_receive_no ;
 	int recruit_no ;
 	String receive_date ;

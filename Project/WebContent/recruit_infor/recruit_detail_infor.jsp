@@ -7,6 +7,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	String loginid = (String)session.getAttribute("loginid");
+	System.out.println(loginid+"Ddddddddddddd11");
+	System.out.println(loginid+"Ddddddddddddd11");
+	
+	
+	
 	String id = request.getParameter("id");
 	int id1 = Integer.parseInt(id);
 
@@ -84,6 +90,7 @@ hr{
 <body onLoad="reverse_counter();">
 
 	<div class="container">
+		<h3>${loginid}님 반갑습니다. </h3>
 		<h2>채용상세페이지</h2>
 		<nav class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">

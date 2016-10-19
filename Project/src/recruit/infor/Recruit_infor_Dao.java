@@ -45,9 +45,9 @@ public class Recruit_infor_Dao {
 			System.out.println(list.get(0).etp_no);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*finally {
+		} finally {
 			sqlSession.close();
-		}*/
+		}
 		
 		System.out.println("Dddd3");
 		return list;
@@ -65,9 +65,9 @@ public class Recruit_infor_Dao {
 		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}/*finally {
+		}finally {
 			sqlSession.close();
-		}*/
+		}
 		System.out.println(ri.getMax_pay());
 		return ri;
 	}
@@ -83,9 +83,9 @@ public class Recruit_infor_Dao {
 			System.out.println("dfdfdfseeeeeeeeee"+list.get(0).etp_no);
 		} catch (Exception e) {
 			e.printStackTrace();
-		} /*finally {
+		} finally {
 			sqlSession.close();
-		}*/
+		}
 		
 		System.out.println("Dddd3");
 		return list;
