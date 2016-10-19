@@ -9,6 +9,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+	session.setAttribute("login", true);//TRUE가 로그인 0 FALSE가 로그인 X
+	session.setAttribute("kind", false);//TRUE가 기업 FALSE가 회원
+	session.setAttribute("loginid",request.getAttribute("logginid"));//로그인 아이디, 로그인 번호
+
 	Recruit_infor_Service riService = Recruit_infor_Service.getInstance();
 	System.out.println(riService);
 	System.out.println("Ddddgg");
@@ -50,15 +54,28 @@
 	 </script>
 </head>
 <body>
+<div name="main_menu" class="container">
+      <ul class="nav nav-pills">
+         <li><a href="../main/mainDisplay.jsp">홈</a></li>
+         <li><a href="../main/update.jsp">마이페이지</a></li>
+         <li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
+         <li><a>채용정보검색</a></li>
+         <li><a href="../main/smart.jsp">스마트매칭</a></li>
+         <li><a>맞춤채용정보</a></li>
+         <li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
+         <li><a>채용등록</a></li>
+         <li><a href="recruit_list.jsp">전체채용정보</a></li>
+      </ul>
+   </div>
 <a href="seoul_recruit_list.jsp?id=seoul">서울시</a><a href="seoul_recruit_list.jsp?id=gg">경기도</a>
 	<table class="table table-hover">
 	<thead>
 		<tr height="30">
-			<th align="center" width="100"><div class="checks etrans"><input type="checkbox" id="allCheck"><label for="allCheck"></label></div></th>
-			<th align="center" width="50">회사명</th>
-			<th align="center" width="250">채용제목</th>
-			<th align="center" width="150">근무조건</th>
-			<th align="center" width="150">등록일마감일</th>
+			<th width="50"><center><div class="checks etrans"><input type="checkbox" id="allCheck"><label for="allCheck"></label></div></center></th>
+			<th width="100"><center>회사명</center></th>
+			<th width="250"><center>채용제목</center></th>
+			<th width="150"><center>근무조건</center></th>
+			<th width="100"><center>등록일마감일</center></th>
 		</tr>
 	</thead>
 	<tbody>		
@@ -66,8 +83,8 @@
 		<tr height="30">
 			<td align="center">
 			<div class="checks etrans"> <input type="checkbox" id="${list1[i].recruit_no}" name="box">  <label for="${list1[i].recruit_no}"></label> </div></td>
-				<td align="center">${etList[i].etp_name}</td>
-				<td align="left"><a href="recruit_detail_infor.jsp?id=${list1[i].recruit_no}">${list1[i].recruit_title}</a>
+				<td align="center"><h4>${etList[i].etp_name}</h4></td>
+				<td align="left"><h4><a href="recruit_detail_infor.jsp?id=${list1[i].recruit_no}">${list1[i].recruit_title}</a></h4>
 				<a href="recruit_like_ok.jsp?id=${list1[i].recruit_no}">좋아요</a></td>
 				<td align="center">${list1[i].hire_type}<br>${list1[i].ac_ability_no}<br>봉급&nbsp ${list1[i].income_qualification}<br>근무요일&nbsp${list1[i].recruit_day}</td>
 				<td align="center">${list1[i].receive_ddate}</td>

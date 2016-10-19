@@ -29,7 +29,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>부트스트랩</title>
-
+<link rel="stylesheet" href="../css/sweetalert.css">
 <link rel="stylesheet" type="text/css"
 	href="recruit_detail_infor_style.css" />
 <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -120,7 +120,8 @@ hr{
 					${recruit.recruit_day}<br>
 				</b>
 
-				<button>지원 하기</button>
+		<input type="button" id="button1" onclick="button1_click();" value="지원하기" />
+		<input type="button" id="button2" onclick="button2_click();" value="입사 지원 현황" />
 
 				<center>
 					<form name="counter">
@@ -357,17 +358,26 @@ hr{
 
 				<h4>${ei.etp_name} 기업에 입사해야 하는 이유</h4>
 				<hr class="one">
+				<b>관심기업으로 명 이상 찜한 선망 받는 기업<br></b>
+				<b> ${ei.etp_kind}</b>
+				<hr class="one">
 				<h3>기본정보</h3>
+				<hr class="one">
 				<hr class="one">
 				<h3>고용현황</h3>
 				<hr class="one">
+				<hr class="one">
 				<h3>근무환경</h3>
+				<hr class="one">
 				<hr class="one">
 				<h3>취업가이드</h3>
 				<hr class="one">
+				<hr class="one">
 				<h3>기업 History</h3>
 				<hr class="one">
+				<hr class="one">
 				<h3>기업위치</h3>
+				<hr class="one">
 				<hr class="one">
 				<div id="map" style="width: 100%; height: 350px;"></div>
 				<p style="margin-top: 5px">
@@ -389,9 +399,25 @@ hr{
 		src="//apis.daum.net/maps/maps3.js?apikey=7f371f73f647744ce5b5552611d68ab9&libraries=services"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.1.3.min.js"></script>
+	<script src="../js/sweetalert.min.js"></script>
+	 
 	<script src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-    
+	 function button1_click() {
+		 swal({   title: " ",   text: "님의 우리잡 기본 이력서로 온라인 지원 됩니다. ",   type: "warning",
+	 			showCancelButton: true,   confirmButtonText: "지원하기",   closeOnConfirm: false }, 
+	 				 function(){  
+	 				location.href="../join_receive/join_receive_insert.jsp?id=<%=recruit.getRecruit_no()%>";
+	 				
+	 				swal("지원 성공!", "님의 우리잡 이력서로 온라인 지원 성공 했습니다.", "success"); 
+	 				
+	 			});
+	 }
+	 
+	 function button2_click() {
+		 location.href="join_receive_form.jsp";
+	 }
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
 	        center: new daum.maps.LatLng(37.4969117,127.03292), // 지도의 중심좌표
@@ -464,6 +490,7 @@ hr{
         	 newtime = window.setTimeout("reverse_counter();", 1000);
        }
   
+         
             
 	</script>
 </body>
