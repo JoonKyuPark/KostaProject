@@ -8,10 +8,17 @@
 	<insert id="insertQuestion" parameterType="Etp_Exam_Question">
 		insert into exam_question (
 			exam_question_no, question_no, question_hour, question_minute,
-			question_second, question_content, question_name, etp_no
-			)values(#{exam_question_no},#{question_no},#{question_hour},#{question_minute},#{question_second},#{question_content},#{question_name},#{etp_no})
+			question_second, question_content, question_name, etp_no, exam_no
+			)values(#{exam_question_no},#{question_no},#{question_hour},#{question_minute},#{question_second},#{question_content},#{question_name},#{etp_no},#{exam_no})
 	</insert>
 	<select id="countExamQuestion" resultType="Integer">
 		select max(exam_question_no) from exam_question
+	</select>
+	<select id="selectExamNo" resultType="Integer">
+		select exam_no from exam_infor
+	</select>
+	<select id="countQuestion" resultType="Integer">
+		select max(question_no) from exam_question
+			where exam_no=#{exam_no}
 	</select>
 </mapper>

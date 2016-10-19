@@ -17,9 +17,9 @@ window.onunload = function()
 var	timer		=	setInterval(function() {
 	d_timer()
 	}, 1000);
-var	hour	=	{$time['h']};    //    초기치(시간)
-var	minute	=	{$time['i']};    //    초기치(분)
-var	second	=	{$time['s']};    //    초기치(초)
+var	hour	=	0;    //    초기치(시간)
+var	minute	=	0;    //    초기치(분)
+var	second	=	0;    //    초기치(초)
 
 
 function d_timer()

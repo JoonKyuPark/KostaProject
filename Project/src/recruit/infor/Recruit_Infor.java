@@ -1,6 +1,8 @@
 package recruit.infor;
 
-public class Recruit_Infor {
+import java.io.Serializable;
+
+public class Recruit_Infor implements Serializable {
 
 	int recruit_no;
 	String recruit_title;
