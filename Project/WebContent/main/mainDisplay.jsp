@@ -1,6 +1,7 @@
+<%@page import="javax.xml.ws.soap.AddressingFeature.Responses"%>
 <%@page import="java.util.List"%>
 <%@page import="job.main.Etp_infor"%>
-<%@page import="job.main.Member_info"%> 
+<%@page import="job.main.Member_info"%>
 <%@page import="job.main.LogginService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -23,9 +24,7 @@
 				int loggin = 0;
 				request.setAttribute("loggin", loggin);
 				System.out.println("111111111");
-			}
-
-			else if (!(boolean) session.getAttribute("kind")) {
+			} else if (!(boolean) session.getAttribute("kind")) {
 				request.setAttribute("loggin", 1);
 			} else if (((boolean) session.getAttribute("kind"))) {
 				request.setAttribute("loggin", 2);
@@ -36,10 +35,9 @@
 			request.setAttribute("loggin", loggin); //현재상태
 			session.setAttribute("login", true); //로그인상태
 			session.setAttribute("kind", true); // 회원종류
-			System.out.println("3e3de");
-			session.setAttribute("loginid",
-					request.getParameter("logid"));
 			log.insert2(request);
+			Etp_infor etp = log.Esearch(request.getParameter("logid"));
+			session.setAttribute("etp", etp);
 		} else if (reg.equals("1")) {
 			int loginid = 0;
 			int loggin = 1;
@@ -48,8 +46,9 @@
 			session.setAttribute("loggin", loggin);
 			session.setAttribute("login", true);
 			session.setAttribute("kind", false);
-			session.setAttribute("loginid",
-					request.getParameter("logid"));
+			Member_info member = log.mSearch(request
+					.getParameter("logid"));
+			session.setAttribute("member", member);
 
 		} else if (reg.equals("0")) {
 			int loggin = 0;
@@ -57,7 +56,8 @@
 			session.removeAttribute("login");
 			session.removeAttribute("kind");
 			session.removeAttribute("loggin");
-			session.removeAttribute("etp_no");
+			session.removeAttribute("member");
+			session.removeAttribute("etp");
 		}
 	}
 
@@ -66,25 +66,32 @@
 			System.out.println(request.getParameter("kind"));
 			if (request.getParameter("kind").equals("1")) { //일반회원
 				int loggin = log.Mlist(request, response);
-				System.out.print(loggin);
-				request.setAttribute("loggin", loggin);
-				session.setAttribute("loggin", loggin);
-				session.setAttribute("login", true);
-				session.setAttribute("kind", false);
-				session.setAttribute("loginid",
-						request.getParameter("logid"));
+				if (loggin <= 0) {
+					response.sendRedirect("../main/loginfail.jsp");
+				} else {
+					request.setAttribute("loggin", loggin);
+					session.setAttribute("loggin", loggin);
+					session.setAttribute("login", true);
+					session.setAttribute("kind", false);
+					Member_info member = log.mSearch(request
+							.getParameter("logid"));
+					session.setAttribute("member", member);
+				}
+
 			} else if (request.getParameter("kind").equals("2")) { //기업회원
 				int loggin = log.Elist(request, response);
-				System.out.print(log.Elist(request, response));
-			int etp_no=log.Esearch(request.getParameter("logid"));
-				
-				request.setAttribute("loggin", 2);
-				session.setAttribute("loggin", loggin);
-				session.setAttribute("login", true);
-				session.setAttribute("kind", true);
-				session.setAttribute("loginid",
-						request.getParameter("logid"));
-				session.setAttribute("etp_no", etp_no);
+				if (loggin <= 0) {
+					response.sendRedirect("../main/loginfail.jsp");
+				} else {
+					System.out.print(log.Elist(request, response));
+					Etp_infor etp = log.Esearch(request
+							.getParameter("logid"));
+					request.setAttribute("loggin", 2);
+					session.setAttribute("loggin", loggin);
+					session.setAttribute("login", true);
+					session.setAttribute("kind", true);
+					session.setAttribute("etp", etp);
+				}
 			}
 		}
 	}

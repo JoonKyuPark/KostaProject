@@ -11,22 +11,16 @@
 		boolean login = (boolean) session.getAttribute("login");
 		boolean kind = (boolean) session.getAttribute("kind");
 		System.out.println(kind);
-		System.out.println(session.getAttribute("loginid"));
-		int loginid = Integer.parseInt((String)session.getAttribute("loginid"));
-		System.out.print(loginid);
 		if (login) {
 			if (!kind) {
-				if (loginid != 0) {
-					System.out.println(loginid);
-					LogginService service = LogginService.getInstance();
-					Member_info m = service.mSearch(loginid);
+					//LogginService service = LogginService.getInstance();
+					Member_info m = (Member_info)session.getAttribute("member");
 					request.setAttribute("m", m);
-				}
-			} else {
+				}else {
 				response.sendRedirect("mainDisplay.jsp");
 			}
-
-		} else {
+		} 
+			else {
 			response.sendRedirect("mainDisplay.jsp");
 		}
 	}
@@ -99,7 +93,7 @@
 		</ul>
 	</div>
 
-	<form action="updateForm.jsp" method="post">
+	<form action="../main/updateForm.jsp" method="post">
 		<!-- 	<div class="container">
 			<div class="row col-md-1">사진:</div>
 			<input type="image" class="col-md-1" value="사진" name="member_img">
@@ -109,11 +103,11 @@
 				name="member_id">
 		</div>
 		<div class="container">
-		<input type="hidden" class=" col-md-2" value="${m.member_id}"
-				disabled="disabled" name="member_id">
+		<%-- <input type="hidden" class=" col-md-2" value="${m.member_id}"
+				disabled="disabled" name="member_id"> --%>
 			<div class="row col-md-1">아이디:</div>
 			<input type="text" class=" col-md-2" value="${m.member_id}"
-				disabled="disabled">
+				readonly="readonly">
 		</div>
 		<div class="container">
 			<div class="row col-md-1">비밀번호:</div>
@@ -121,11 +115,11 @@
 				required="required" name="member_pwd">
 		</div>
 		<div class="container">
-		<input type="hidden" class="col-md-2" value="${m.member_name}"
-				disabled="disabled" name="member_name">
+		<%-- <input type="hidden" class="col-md-2" value="${m.member_name}"
+				disabled="disabled" name="member_name"> --%>
 			<div class="row col-md-1">이름:</div>
 			<input type="text" class="col-md-2" value="${m.member_name}"
-				disabled="disabled" >
+				readonly="readonly" name="member_name" >
 		</div>
 		<div class="container">
 			<div class="row col-md-1">생년월일:</div>

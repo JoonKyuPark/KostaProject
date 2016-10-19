@@ -12,11 +12,11 @@ public interface MainMapper {
 	public int Einsert(Etp_infor etp);
 	public List<Member_info> Mlist();
 	public List<Etp_infor>Elist();
-	public Member_info Msearch(int loginId);
+	public Member_info Msearch(String loginId);
 	public int Mupdate(Member_info m);
 	public int Mcount();
 	public List<Recruit_Infor> Msmart(String logginid);
-	public Integer Esearch(String login_id);
 	public int Ecount();
+	public Etp_infor Esearch(String login_id);
 	
 }

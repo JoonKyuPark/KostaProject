@@ -25,7 +25,7 @@
 		select * from member_infor
 	</select>
 
-	<select id="Msearch" resultType="M" parameterType="int">
+	<select id="Msearch" resultType="M" parameterType="String">
 		select* from
 		member_infor
 		where member_id=#{member_id}
@@ -43,7 +43,7 @@
 		member_addr_no=#{member_addr_no}, member_addr=#{member_addr},
 		member_detail_addr=#{member_detail_addr},
 		member_homepage=#{member_homepage},
-		member_pwd =#{member_pwd}
+		member_pwd =#{member_pwd},member_lience
 		where
 		member_id=#{member_id}
 	</update>
@@ -63,8 +63,8 @@
     between  min_pay and  max_pay
 	</select>
 	
-	<select id="Esearch" parameterType="String" resultType="Integer">
-	select Etp_no from etp_infor
+	<select id="Esearch" parameterType="String" resultType="ETP">
+	select * from etp_infor
 	where etp_id=#{login_id}
 	</select>
 	

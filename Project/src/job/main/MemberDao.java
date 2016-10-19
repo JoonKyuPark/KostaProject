@@ -120,10 +120,10 @@ public class MemberDao {
 			return re;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return re;
+	
 		} finally {
 			sqlSession.close();
-		}
+		}		return re;
 
 	}
 
@@ -143,7 +143,7 @@ public class MemberDao {
 		}
 	}
 
-	public Member_info Msearch(int loginId) {
+	public Member_info Msearch(String loginId) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		Member_info m = null;
 		try {
@@ -187,21 +187,20 @@ public class MemberDao {
 		}
 	}
 
-	public int Esearch(String login_id){
+	public Etp_infor Esearch(String login_id){
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re = 0;
-		System.out.println(sqlSession.getMapper(MainMapper.class).Esearch(login_id));
-		System.out.println("wwssssssssss");
+		Etp_infor etp = null;
+	
 		try {
 			if(sqlSession.getMapper(MainMapper.class).Esearch(login_id)==null){
 				
-				return 0;
+				return etp;
 			}
-			re = sqlSession.getMapper(MainMapper.class).Esearch(login_id);
-			return re;
+			etp = sqlSession.getMapper(MainMapper.class).Esearch(login_id);
+			return etp;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return re;
+			return etp;
 		} finally {
 			sqlSession.close();
 		}

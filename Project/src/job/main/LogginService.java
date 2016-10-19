@@ -27,7 +27,7 @@ public class LogginService {
 	public void insert(Member_info member) {
 
 		int re = dao.insertPMember(member);
-		System.out.println(re);
+
 	}
 
 	public void insert(HttpServletRequest request) {
@@ -45,9 +45,7 @@ public class LogginService {
 		int re = dao.insertPMember(m);
 		System.out.println(re);
 	}
-
 	public void insert2(Etp_infor etp) {
-		System.out.println("????");
 		dao.insertEtpMember(etp);
 	}
 
@@ -84,8 +82,6 @@ public class LogginService {
 					System.out.println(list.get(i).getMember_pwd() + 100);
 					loggin = 1;
 					request.setAttribute("loginid", list.get(i).getMember_id());
-					RequestDispatcher rd = request
-							.getRequestDispatcher("mian/mainDisplay.jsp");
 					return loggin;
 				}
 			}
@@ -93,7 +89,7 @@ public class LogginService {
 		return loggin;
 	}
 
-	public Member_info mSearch(int loginid) {
+	public Member_info mSearch(String loginid) {
 		Member_info m = dao.Msearch(loginid);
 		return m;
 	}
@@ -107,9 +103,8 @@ public class LogginService {
 	public int mUpdate(HttpServletRequest request) {
 		int re = 0;
 		Member_info m = new Member_info();
-		HttpSession request2 = request.getSession();
 
-		m.setMember_no((Integer.parseInt((String)(request2.getAttribute("loginid")))));
+		m.setMember_no((Integer.parseInt((String)(request.getParameter("member_id")))));
 		System.out.println(m.getMember_no());
 		m.setMember_addr((String) request.getParameter("member_addr"));
 		m.setMember_addr_no((String) request.getParameter("member_addr_no"));
@@ -124,16 +119,13 @@ public class LogginService {
 		m.setMember_phone((String) request.getParameter("member_phone"));
 		m.setMember_pwd((String) request.getParameter("member_pwd"));
 		m.setMember_telephone((String) request.getParameter("member_telephone"));
-		System.out.println("d2d2d");
-		System.out.println(m);
 		re = dao.Mupdate(m);
 
-		return re;
+		return 1;
 	}
 
 	public List<Recruit_Infor> Msmart(String loginId){
 		List<Recruit_Infor> list= dao.Msmart(loginId);
-		 System.out.println("222222");
 	return list;
 	}
 	
@@ -149,9 +141,7 @@ public class LogginService {
 					loggin = 2;
 					request.setAttribute("loginid", list.get(i).getEtp_id());
 					request.setAttribute("loggin", loggin);
-					RequestDispatcher rd = request
-							.getRequestDispatcher("mian/mainDisplay.jsp");
-					return 2;
+					return loggin;
 				}
 			}
 		}
@@ -159,10 +149,10 @@ public class LogginService {
 	}
 
 	
-	public int Esearch(String login_id){
-		int re=0;
-				re=dao.Esearch(login_id);
-				return re;
+	public Etp_infor Esearch(String login_id){
+		Etp_infor etp=null;
+		etp=dao.Esearch(login_id);
+				return etp;
 	}
 	
 
