@@ -85,6 +85,7 @@
 					<li><a href="#">최근본인재정보</a></li>
 					<li><a href="ETP_info.jsp">기업정보확인</a></li>
 					<li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
+					<li><a href="../company/company_info.jsp">인재정보로그</a></li>
 				</ul>
 			</div>
 			<form id="ETP_recruit_insert_form" action="ETP_recruit_insert.jsp" method="POST">

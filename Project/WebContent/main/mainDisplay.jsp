@@ -46,10 +46,10 @@
 			request.setAttribute("loggin", loggin);
 			log.insert(request);
 			session.setAttribute("loggin", loggin);
-			session.setAttribute("login", true);
-			session.setAttribute("kind", false);
+			session.setAttribute("login", true);  //받아와
+			session.setAttribute("kind", false);  //받아와
 			session.setAttribute("loginid",
-					request.getParameter("logid"));
+					request.getParameter("logid"));  //받아와
 
 		} else if (reg.equals("0")) {
 			int loggin = 0;
@@ -116,7 +116,7 @@
 	</div>
 
 	<div name="main_menu" class="container">
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills">		
 			<li><a href="mainDisplay.jsp">홈</a></li>
 			<li><a href="update.jsp">마이페이지</a></li>
 			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
@@ -125,6 +125,7 @@
 			<li><a>맞춤채용정보</a></li>
 			<li><a>이력서등록</a></li>
 			<li><a>채용등록</a></li>
+			<li><a href="../ETP_Mypage/ETP_info.jsp">기업정보확인</a></li>
 		</ul>
 	</div>
 	<br>

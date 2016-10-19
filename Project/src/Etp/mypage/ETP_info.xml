@@ -5,7 +5,7 @@
 
 
 <mapper namespace="etp.mypage.ETP_Info_Mapper">
-	<insert id="etp_insert_info" parameterType="ETP_Info">
+	<insert id="etp_insert_info" parameterType="ETP_Infor">
 	  INSERT INTO etp_info
 	  		(etp_no,etp_name,etp_id,etp_pass,etp_tel,etp_email,etp_kind,etp_registration_num,delegator_name,
 	  		etp_field,employee_number,etp_location,etp_capital,etp_sales,clip_number)
@@ -16,7 +16,7 @@
 	  		</foreach>
 	  		,#{etp_capital},#{etp_sales},#{clip_number})
 	</insert>
-	<update id="etp_update_info" parameterType="ETP_Info">
+	<update id="etp_update_info" parameterType="ETP_Infor">
 	  update ETP_Info set etp_tel=#{etp_tel},etp_email=#{etp_email},etp_kind=#{etp_kind}
 	  ,delegator_name=#{delegator_name},etp_field=#{etp_field},employee_number=#{employee_number},
 	  etp_location=

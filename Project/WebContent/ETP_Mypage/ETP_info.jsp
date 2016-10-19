@@ -95,6 +95,7 @@
 		  <li><a href="#">최근본인재정보</a></li>
 		  <li><a href="ETP_info.jsp">기업정보확인</a></li>
 		  <li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
+		  <li><a href="../company/company_info.jsp">인재정보로그</a></li>
 		</ul>
       </div>
       <form action="ETP_info_insert.jsp" method="POST" id="actionForm">
@@ -107,7 +108,7 @@
             <h5>기업비밀번호 빼?</h5>
             <h5>기업전화번호</h5>
             <h5>기업이메일</h5>
-            <h5>기업형태? -> 주요사업내용</h5>
+            <h5>기업형태 뀨? -> 주요사업내용</h5>
             <h5>사업자등록번호</h5>
             <h5>대표자명</h5>
             <h5>기업업종(산업내용) ?</h5>
