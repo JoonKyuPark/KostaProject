@@ -1,6 +1,7 @@
 package job.exam;
 
 import java.io.InputStream;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +48,36 @@ public class Etp_Question_Dao {
 				return 0;
 			}else{
 				return sqlSession.getMapper(Etp_Question_Mapper.class).countExamQuestion();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	public List<Integer> selectExamNo(){
+			System.out.println("dao시작");
+			SqlSession sqlSession = getSqlSessionFactory().openSession();
+			try {
+				List<Integer> list = sqlSession.getMapper(Etp_Question_Mapper.class).selectExamNo();
+				System.out.println("dao 종료");
+				return list;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
+	
+	
+	
+	
+	public int countQuestionNo(int exam_no){
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try {
+			if(sqlSession.getMapper(Etp_Question_Mapper.class).countQuestion(exam_no)==null){
+				return 0;
+			}else{
+				return sqlSession.getMapper(Etp_Question_Mapper.class).countQuestion(exam_no);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
