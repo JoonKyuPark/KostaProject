@@ -146,7 +146,7 @@
 					if(Integer.toString(i).length()==1){
 						strUseDate += "0" + Integer.toString(i);
 					}else{
-						strUseDate += Integer.toString(i);
+						strUseDate += Integer.toString(i) ;
 					}
 					int intUseDate = Integer.parseInt(strUseDate);
 				

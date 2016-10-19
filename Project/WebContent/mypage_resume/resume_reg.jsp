@@ -51,6 +51,18 @@ table.ui-datepicker-calendar {
 <title>이력서 등록 페이지</title>
 </head>
 <body>
+<div name="main_menu" class="container">
+		<ul class="nav nav-pills">
+			<li><a href="../main/mainDisplay.jsp">홈</a></li>
+			<li><a href="../main/update.jsp">마이페이지</a></li>
+			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
+			<li><a>채용정보검색</a></li>
+			<li><a>스마트매칭</a></li>
+			<li><a>맞춤채용정보</a></li>
+			<li><a href="../mypage_resume/resume_reg.jsp">이력서등록</a></li>
+			<li><a>채용등록</a></li>
+		</ul>
+	</div>
 	<div id="container" class="col-md-12">
 		<div class="left_aside col-md-2">
 			<ul class="aside_ul">
