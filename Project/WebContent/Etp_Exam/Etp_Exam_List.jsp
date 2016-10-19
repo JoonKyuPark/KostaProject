@@ -48,7 +48,14 @@
 <title>ETP Exam List</title>
 </head>
 <body id=ETPexamListBody>
-	<div class="col-md-2"></div>
+	<div class="col-md-2">
+				<ul class="nav nav-pills">
+				<li><a href="Etp_Exam_Main.jsp">시험메인</a></li>
+				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
+				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
+				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+			</ul>
+	</div>
 	<div class="col-md-8">
 		<h2>시험일정 관리</h2>
 		<br> <br>

@@ -68,7 +68,14 @@
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
 		<div class="col-md-2"> Empty </div>
-		<div class="col-md-2">Left Menu(2)</div>
+		<div class="col-md-2">
+			<ul class="nav nav-pills">
+				<li><a href="Etp_Exam_Main.jsp">시험메인</a></li>
+				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
+				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
+				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+			</ul>
+		</div>
 		<div class="examTableOuter col-md-8">
 			<div class="col-md-12">
 			<table class = "Calendar">

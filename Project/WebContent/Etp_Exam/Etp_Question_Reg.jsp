@@ -13,6 +13,14 @@
 </head>
 <body>
 	<div>
+			<ul class="nav nav-pills">
+				<li><a href="Etp_Exam_Main.jsp">시험메인</a></li>
+				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
+				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
+				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+			</ul>
+	</div>
+	<div>
 		<form action="question_insertOk.jsp" method="post">
 			<label>문제명</label>
 			<input type="text" name="question_name" placeholder="내용을 입력해주세요.">
