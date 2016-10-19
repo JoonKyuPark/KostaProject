@@ -120,7 +120,7 @@
 			<li><a href="mainDisplay.jsp">홈</a></li>
 			<li><a href="update.jsp">마이페이지</a></li>
 			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
-			<li><a>채용정보검색</a></li>
+			<li><a href="../recruit_infor/recruit_list.jsp">채용정보검색</a></li>
 			<li><a>스마트매칭</a></li>
 			<li><a>맞춤채용정보</a></li>
 			<li><a>이력서등록</a></li>
@@ -165,6 +165,7 @@
 			<c:when test="${loggin==1}">
 				<div class="col-md-3">
 					<div class="col-md-4">
+					회원이야
 						<img src="images/javacan1.gif">
 						<div class="col-md-2">
 							<form action="mainDisplay.jsp">
