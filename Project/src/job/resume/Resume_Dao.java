@@ -36,72 +36,27 @@ public class Resume_Dao {
 		return new SqlSessionFactoryBuilder().build(input);
 	}
 
-	public int insertResume(Resume resume,HttpServletRequest request) throws Exception {
+	public int insertResume(Resume resume,String career_btn){
 		int re = 0;
 		Integer abilityNo=0;
-		Integer careerNo = 0;
+		Integer careerNo = null;
 		Integer resumeNo = 0;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		
-		
-		
-		
-		
-		
-		String uploadPath = request.getRealPath("resume_img");
-		   int size = 20 * 1024 * 1024 ; //20메가
-
-		   MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
-		   
-		  
-		   //파일업로드
-		   if(multi.getFilesystemName("resume_img") != null){
-			   String resume_img = multi.getFilesystemName("resume_img");
-			   resume.setResume_img(resume_img);
-			   
-			   //썸네읾 이미지(jpg gif) aaa.gif->aaa_small.gif
-			   String pattern =resume_img.substring(resume_img.lastIndexOf(".")+1); // gif
-			   String headName = resume_img.substring(0,resume_img.lastIndexOf(".")); // aaa
-			   
-			   
-			   //원본파일 이미지 => File객체화
-			   String imagePath = uploadPath + "\\" + resume_img;
-			   File src = new File(imagePath);
-			   
-			   
-			   //썸네일 이미지 객체화
-			   String thumImagePath = uploadPath + "\\" + headName + "_small." + pattern;
-			   File dest = new File(thumImagePath);
-			   
-			   //썸네일이미지 생성
-			   if(pattern.equals("jpg") || pattern.equals("gif")){
-				   ImageUtil.resize(src, dest, 100, ImageUtil.RATIO);
-			   }
-			   
-			   
-			   
-			   
-		   }else{
-			   resume.setResume_img("");
-		   }
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		try {
 			abilityNo = (sqlSession.getMapper(ResumeMapper.class).selectAbilityNo());
 			resume.setAc_ability_no(abilityNo);
-			careerNo = (sqlSession.getMapper(ResumeMapper.class).selectCareerNo());
 			
+			if (career_btn.equals("old")){
+			careerNo = (sqlSession.getMapper(ResumeMapper.class).selectCareerNo());
+			System.out.println("dao old");
+			}else if (career_btn.equals("new")){
+				System.out.println("dao new");
+				careerNo = null;
+			}
 			System.out.println("다오 캐리어 no??"+resume.getCareer_no());
-			resume.setCareer_no(careerNo);
+			resume.setCareer_no(careerNo+"");
 			System.out.println("다오 캐리어 no??"+resume.getCareer_no());
 			
 			System.out.println("1");
@@ -119,7 +74,6 @@ public class Resume_Dao {
 			
 			System.out.println("5");
 			resume.setResume_no(resumeNo);
-			
 			System.out.println("6");
 			
 			
@@ -178,7 +132,7 @@ public class Resume_Dao {
 		Integer careerNo=0;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 
-		System.out.println("@@@"+career.getCareer_work_state());
+
 		try {
 			careerNo = (sqlSession.getMapper(ResumeMapper.class).selectCareerNo());
 			if (careerNo==null)careerNo = 0;
@@ -266,16 +220,68 @@ public class Resume_Dao {
 	}
 	
 	
+	public int  UpdateResumeImg (HttpServletRequest request) throws Exception{
+		int re = 0;
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		
+		System.out.println("여기는 타나요 dao1!!!!!!!!:"+re);
+		 ResumeImg board = new ResumeImg();
+		   
+		   String uploadPath = request.getRealPath("resume_img");
+		   int size = 20 * 1024 * 1024 ; //20메가
+
+		   MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "utf-8", new DefaultFileRenamePolicy());
+		   
+		 
+		   board.setResume_no(Integer.parseInt(multi.getParameter("resume_no")));
+		 
+
+		   //파일업로드
+		   if(multi.getFilesystemName("resume_img") != null){
+			   String b_fname = multi.getFilesystemName("resume_img");
+			   board.setResume_img(b_fname);
+			   
+			   //썸네읾 이미지(jpg gif) aaa.gif->aaa_small.gif
+			   String pattern =b_fname.substring(b_fname.lastIndexOf(".")+1); // gif
+			   String headName = b_fname.substring(0,b_fname.lastIndexOf(".")); // aaa
+			   
+			   
+			   //원본파일 이미지 => File객체화
+			   String imagePath = uploadPath + "\\" + b_fname;
+			   File src = new File(imagePath);
+			   
+			   
+			   //썸네일 이미지 객체화
+			   String thumImagePath = uploadPath + "\\" + headName + "_small." + pattern;
+			   File dest = new File(thumImagePath);
+			   
+			   //썸네일이미지 생성
+			   if(pattern.equals("jpg") || pattern.equals("gif") || pattern.equals("png")|| pattern.equals("jpeg")){
+				   ImageUtil.resize(src, dest, 100, ImageUtil.RATIO);
+			   }
+			   
+			   
+			   
+			   
+		   }else{
+			   board.setResume_img("");
+		   }
+				   
+		try {
+			System.out.println("여기는 타나요 dao7:"+re);
+			re =  sqlSession.getMapper(ResumeMapper.class).UpdateImg(board);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			if (re>0) sqlSession.commit();
+			else sqlSession.rollback();
+			sqlSession.close();
+		}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
+		return re;
+	}
 	
 }

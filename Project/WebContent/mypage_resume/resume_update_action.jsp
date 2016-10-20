@@ -34,11 +34,11 @@
 	Resume_Service service = Resume_Service.getInstance();
 	
 	Resume_Dao dao = Resume_Dao.getInstance();
-	/* dao.UpdateResume(resume);
+	dao.UpdateResume(resume);
 	dao.UpdateResumeAbility(resumeAbility);
-	dao.UpdateResumeCareer(resumeCareer); */
-	String result = service.Resume_update(resume, resumeAbility, resumeCareer);
-	request.setAttribute("result", result);
+	dao.UpdateResumeCareer(resumeCareer);
+	//String result = service.Resume_update(resume, resumeAbility, resumeCareer);
+	//request.setAttribute("result", result);
 %>
 
 

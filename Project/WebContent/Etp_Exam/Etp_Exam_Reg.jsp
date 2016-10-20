@@ -8,6 +8,7 @@
 	Date date = new Date();
 	String strYear = format.format(date);
 	int year = Integer.parseInt(strYear);
+	int etp_no=(Integer)session.getAttribute("etp_no");
 %>
 
 <!DOCTYPE html>
@@ -39,14 +40,22 @@
 		<div class="col-md-2"> Logo </div>
 		<div class="col-md-8"> TopMenu </div>
 		<div class="col-md-2"> Empty </div>
-		<div class="col-md-2">Left Menu(2)</div>
+		<div class="col-md-2">
+			<ul class="nav nav-pills">
+				<li><a href="Etp_Exam_Main.jsp">시험메인</a></li>
+				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
+				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
+				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+				<li><a href="Etp_Question_List.jsp">시험문제목록</a>
+			</ul>
+		</div>
 		<div class="col-md-8">
 			<h2 class="examRegTitle">시험 일정 등록</h2>
 			<br>
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
 				<form role="form" action="Etp_Exam_InsertOk.jsp" method="post">
-					<input type="hidden" name="etp_no" value = "2"> 
+					<input type="hidden" name="etp_no" value = "<%=etp_no%>"> 
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>

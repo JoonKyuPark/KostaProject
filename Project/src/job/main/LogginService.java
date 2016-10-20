@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.el.lang.ELSupport;
 
+import recruit.infor.Recruit_Infor;
+
 public class LogginService {
 
 	private static LogginService log = new LogginService();
@@ -25,7 +27,7 @@ public class LogginService {
 	public void insert(Member_info member) {
 
 		int re = dao.insertPMember(member);
-		System.out.println(re);
+
 	}
 
 	public void insert(HttpServletRequest request) {
@@ -43,9 +45,7 @@ public class LogginService {
 		int re = dao.insertPMember(m);
 		System.out.println(re);
 	}
-
 	public void insert2(Etp_infor etp) {
-		System.out.println("????");
 		dao.insertEtpMember(etp);
 	}
 
@@ -65,6 +65,7 @@ public class LogginService {
 		Etp_infor etp = new Etp_infor(etp_id, etp_pass, etp_email, etp_tel
 				+ etp_tel2 + etp_tel3, etp_kind, etp_registration_num,
 				delegator_name, etp_name);
+		etp.setEtp_no(dao.Ecount()+1);
 		System.out.println("????");
 		dao.insertEtpMember(etp);
 	}
@@ -81,8 +82,6 @@ public class LogginService {
 					System.out.println(list.get(i).getMember_pwd() + 100);
 					loggin = 1;
 					request.setAttribute("loginid", list.get(i).getMember_id());
-					RequestDispatcher rd = request
-							.getRequestDispatcher("mian/mainDisplay.jsp");
 					return loggin;
 				}
 			}
@@ -90,7 +89,7 @@ public class LogginService {
 		return loggin;
 	}
 
-	public Member_info mSearch(int loginid) {
+	public Member_info mSearch(String loginid) {
 		Member_info m = dao.Msearch(loginid);
 		return m;
 	}
@@ -104,9 +103,8 @@ public class LogginService {
 	public int mUpdate(HttpServletRequest request) {
 		int re = 0;
 		Member_info m = new Member_info();
-		HttpSession request2 = request.getSession();
 
-		m.setMember_no((int) (request2.getAttribute("loginid")));
+		m.setMember_no((Integer.parseInt((String)(request.getParameter("member_id")))));
 		System.out.println(m.getMember_no());
 		m.setMember_addr((String) request.getParameter("member_addr"));
 		m.setMember_addr_no((String) request.getParameter("member_addr_no"));
@@ -121,25 +119,27 @@ public class LogginService {
 		m.setMember_phone((String) request.getParameter("member_phone"));
 		m.setMember_pwd((String) request.getParameter("member_pwd"));
 		m.setMember_telephone((String) request.getParameter("member_telephone"));
-		System.out.println(m);
 		re = dao.Mupdate(m);
 
-		return re;
+		return 1;
 	}
 
+	public List<Recruit_Infor> Msmart(String loginId){
+		List<Recruit_Infor> list= dao.Msmart(loginId);
+	return list;
+	}
+	
+	
 	public int Elist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Etp_infor> list = log.dao.Elist();
 		int loggin = 0;
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getEtp_id().equals(request.getParameter("logid"))) {
-				if (list.get(i).getEtp_pass()
-						.equals(request.getParameter("logpwd"))) {
+				if (list.get(i).getEtp_pass().equals(request.getParameter("logpwd"))) {
 					loggin = 2;
 					request.setAttribute("loginid", list.get(i).getEtp_id());
 					request.setAttribute("loggin", loggin);
-					RequestDispatcher rd = request
-							.getRequestDispatcher("mian/mainDisplay.jsp");
 					return loggin;
 				}
 			}
@@ -147,4 +147,13 @@ public class LogginService {
 		return loggin;
 	}
 
+	
+	public Etp_infor Esearch(String login_id){
+		Etp_infor etp=null;
+		etp=dao.Esearch(login_id);
+				return etp;
+	}
+	
+
+	
 }

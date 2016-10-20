@@ -11,22 +11,16 @@
 		boolean login = (boolean) session.getAttribute("login");
 		boolean kind = (boolean) session.getAttribute("kind");
 		System.out.println(kind);
-		System.out.println(session.getAttribute("loginid"));
-		int loginid = Integer.parseInt((String)session.getAttribute("loginid"));
-		System.out.print(loginid);
 		if (login) {
 			if (!kind) {
-				if (loginid != 0) {
-					System.out.println(loginid);
-					LogginService service = LogginService.getInstance();
-					Member_info m = service.mSearch(loginid);
+					//LogginService service = LogginService.getInstance();
+					Member_info m = (Member_info)session.getAttribute("member");
 					request.setAttribute("m", m);
-				}
-			} else {
+				}else {
 				response.sendRedirect("mainDisplay.jsp");
 			}
-
-		} else {
+		} 
+			else {
 			response.sendRedirect("mainDisplay.jsp");
 		}
 	}
@@ -88,18 +82,18 @@
 <body>
 	<div name="main_menu" class="container">
 		<ul class="nav nav-pills">
-			<li><a href="mainDisplay.jsp">홈</a></li>
-			<li><a href="update.jsp">마이페이지</a></li>
+			<li><a href="../main/mainDisplay.jsp">홈</a></li>
+			<li><a href="../main/update.jsp">마이페이지</a></li>
 			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
 			<li><a>채용정보검색</a></li>
 			<li><a>스마트매칭</a></li>
 			<li><a>맞춤채용정보</a></li>
-			<li><a>이력서등록</a></li>
+			<li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
 			<li><a>채용등록</a></li>
 		</ul>
 	</div>
 
-	<form action="updateForm.jsp" method="post">
+	<form action="../main/updateForm.jsp" method="post">
 		<!-- 	<div class="container">
 			<div class="row col-md-1">사진:</div>
 			<input type="image" class="col-md-1" value="사진" name="member_img">
@@ -109,9 +103,11 @@
 				name="member_id">
 		</div>
 		<div class="container">
+		<%-- <input type="hidden" class=" col-md-2" value="${m.member_id}"
+				disabled="disabled" name="member_id"> --%>
 			<div class="row col-md-1">아이디:</div>
 			<input type="text" class=" col-md-2" value="${m.member_id}"
-				disabled="disabled">
+				readonly="readonly">
 		</div>
 		<div class="container">
 			<div class="row col-md-1">비밀번호:</div>
@@ -119,9 +115,11 @@
 				required="required" name="member_pwd">
 		</div>
 		<div class="container">
+		<%-- <input type="hidden" class="col-md-2" value="${m.member_name}"
+				disabled="disabled" name="member_name"> --%>
 			<div class="row col-md-1">이름:</div>
 			<input type="text" class="col-md-2" value="${m.member_name}"
-				disabled="disabled" name="member_name">
+				readonly="readonly" name="member_name" >
 		</div>
 		<div class="container">
 			<div class="row col-md-1">생년월일:</div>

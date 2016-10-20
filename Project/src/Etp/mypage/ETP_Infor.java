@@ -2,7 +2,7 @@ package Etp.mypage;
 
 import java.util.Arrays;
 
-public class ETP_Info {
+public class ETP_Infor {
 	private int etp_no;
 	private String etp_name;
 	private String etp_id;
@@ -19,8 +19,8 @@ public class ETP_Info {
 	private int etp_sales;
 	private int clip_number;
 	
-	public ETP_Info(){}
-	public ETP_Info(int etp_no, String etp_name, String etp_id, String pass,
+	public ETP_Infor(){}
+	public ETP_Infor(int etp_no, String etp_name, String etp_id, String pass,
 			String etp_tel, String etp_email, String etp_kind,
 			String etp_registration_num, String delegator_name,
 			String etp_field, int employee_number, String[] etp_location,

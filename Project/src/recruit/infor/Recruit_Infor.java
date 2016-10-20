@@ -1,6 +1,12 @@
 package recruit.infor;
 
-public class Recruit_Infor {
+import java.io.Serializable;
+
+<<<<<<< HEAD
+public class Recruit_Infor implements Serializable{
+=======
+public class Recruit_Infor implements Serializable {
+>>>>>>> branch '20161019' of https://github.com/JoonKyuPark/KostaProject
 
 	int recruit_no;
 	String recruit_title;

@@ -22,7 +22,18 @@
 <body>
   <div class="container">
     <header>
-      <h3>헤더</h3>
+      <div name="main_menu" class="container">
+      <ul class="nav nav-pills">
+         <li><a href="../main/mainDisplay.jsp">홈</a></li>
+         <li><a href="../main/update.jsp">마이페이지</a></li>
+         <li><a href="../ETP_Exam/Etp_Exam_Main.jsp">시험</a></li>
+         <li><a>채용정보검색</a></li>
+         <li><a href="../main/smart.jsp">스마트매칭</a></li>
+         <li><a>맞춤채용정보</a></li>
+         <li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
+         <li><a>채용등록</a></li>
+      </ul>
+   </div>
     </header>
     <div class="row">
       <div class="col-md-2">
@@ -32,7 +43,6 @@
 		  <li><a href="#">맞춤인재검색</a></li>
 		  <li><a href="#">최근본인재정보</a></li>
 		  <li><a href="ETP_info.jsp">기업정보확인</a></li>
-		  <li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
 		</ul>
       </div>
       <div class="col-md-8">

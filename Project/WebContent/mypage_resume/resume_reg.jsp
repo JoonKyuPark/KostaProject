@@ -28,6 +28,8 @@
 <script type="text/javascript" src="../bootstrap/moment.js"></script>
 <script type="text/javascript" src="../bootstrap/daterangepicker.js"></script>
 
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <!-- 개인 설정 -->
 <script type="text/javascript" src="../js/resume.js"></script>
 <link href="../css/resume.css" rel="stylesheet" type="text/css" />
@@ -37,10 +39,12 @@
 <script type="text/javascript" src="../bootstrap/bootstrap-select.min.js"></script>
 <link href="../bootstrap/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 <%
-	SimpleDateFormat format = new SimpleDateFormat("yyyy");
+/* 	SimpleDateFormat format = new SimpleDateFormat("yyyy");
 	Date date = new Date();
 	String strYear = format.format(date);
-	int year = Integer.parseInt(strYear);
+	int year = Integer.parseInt(strYear); */
+	
+	
 %>
 
 <style>
@@ -50,7 +54,7 @@ table.ui-datepicker-calendar {
 </style>
 <title>이력서 등록 페이지</title>
 </head>
-<body>
+<body id="body" style="">
 	<div id="container" class="col-md-12">
 		<div class="left_aside col-md-2">
 			<ul class="aside_ul">
@@ -64,15 +68,22 @@ table.ui-datepicker-calendar {
 		</div>
 
 		<div class="content col-md-8">
-			<form class="resume_form form-horizontal col-md-12" action="resume_reg_action.jsp" method="post" enctype="multipart/form-data">
+			<div class="col-md-12"><br><br></div>
+			<form class="resume_form form-horizontal col-md-12 img-thumbnail" action="resume_reg_action.jsp" method="post">
 				<div class="form-group col-md-12">
-					<br> <br> <br> <br> <br> <br> <label for="resume_title_input" class="glyphicon glyphicon-pencil col-md-2 control-label" aria-label="Left Align">제목</label>
+					<br> <br> <br>
+					
+					<input type="hidden" name=member_no value="${re.aa}">
+					
+					
+					<label for="resume_title_input" class="glyphicon glyphicon-pencil col-md-2 control-label">제목</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="resume_title_input" placeholder="제목을 입력해주세요" name="resume_title" value="12311">
+						<input type="text" class="form-control" id="resume_title_input" placeholder="제목을 입력해주세요" name="resume_title" required=" required">
 					</div>
-					<br> <br> <br> <label for="resume_income_input" class="col-md-2 control-label">희망연봉</label>
+					<br> <br> <br> 
+					<label for="resume_income_input" class="col-md-2 control-label">희망연봉</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="resume_income_input" placeholder="희망연봉" name="hope_income">
+						<input type="text" class="form-control" id="resume_income_input" placeholder="희망연봉" name="hope_income" required=" required">
 					</div>
 					<br> <br> <br>
 
@@ -93,12 +104,10 @@ table.ui-datepicker-calendar {
 					</div>
 					<!-- ~~~resume_volun_field_form 지원분야 체크박스 -->
 					
-					<label class="col-md-2">증명사진</label>
+					<!-- <label class="col-md-2">증명사진</label>
 					<div class="col-md-2">
 						<input type="file" name="resume_img">
-					
-					
-					</div>
+					</div> -->
 
 					<br> <br> <br> <br> <br> <br>
 
@@ -249,13 +258,14 @@ table.ui-datepicker-calendar {
 
 					<div class="form-horizontal col-md-12">
 						<label for="resume_self_intro_cont" class="col-md-12 control-label" style="text-align: left">자기소개</label>
-						<textarea class="form-control col-md-12" id="resume_self_intro_cont" rows="5" name="self_intro_cont"></textarea>
+						<textarea class="form-control col-md-12" id="resume_self_intro_cont" rows="5" name="self_intro_cont" required=" required"></textarea>
 					</div>
 				</div><!-- form-group -->
 
 
 
-				<input type="submit" value="확인" class="btn btn-primary col-md-offset-4 col-md-2"> <input type="reset" value="취소"
+				<input type="submit" value="확인" class="btn btn-primary col-md-offset-4 col-md-2"> 
+				<input type="reset" value="취소"
 					class="btn btn-danger col-md-offset-4 col-md-2">
 
 			</form>
@@ -266,7 +276,7 @@ table.ui-datepicker-calendar {
 
 
 		</div>
-
+		<div class="col-md-12"><br><br></div>
 		<div class="right_aside col-md-2"></div>
 
 

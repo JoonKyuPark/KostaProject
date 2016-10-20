@@ -4,9 +4,9 @@
 
 
 
-<mapper namespace="etp.mypage.ETP_Info_Mapper">
-	<insert id="etp_insert_info" parameterType="ETP_Info">
-	  INSERT INTO etp_info
+<mapper namespace="Etp.mypage.ETP_Info_Mapper">
+	<insert id="etp_insert_info" parameterType="ETP_Infor">
+	  INSERT INTO etp_infor
 	  		(etp_no,etp_name,etp_id,etp_pass,etp_tel,etp_email,etp_kind,etp_registration_num,delegator_name,
 	  		etp_field,employee_number,etp_location,etp_capital,etp_sales,clip_number)
 	  		VALUES(seq_etp_info.NEXTVAL,#{etp_name},0,0,#{etp_tel},#{etp_email},#{etp_kind},#{etp_registration_num},#{delegator_name}
@@ -16,8 +16,8 @@
 	  		</foreach>
 	  		,#{etp_capital},#{etp_sales},#{clip_number})
 	</insert>
-	<update id="etp_update_info" parameterType="ETP_Info">
-	  update ETP_Info set etp_tel=#{etp_tel},etp_email=#{etp_email},etp_kind=#{etp_kind}
+	<update id="etp_update_info" parameterType="ETP_Infor">
+	  update ETP_Infor set etp_tel=#{etp_tel},etp_email=#{etp_email},etp_kind=#{etp_kind}
 	  ,delegator_name=#{delegator_name},etp_field=#{etp_field},employee_number=#{employee_number},
 	  etp_location=
 	  <foreach collection="etp_location" open="'" separator="," close="'" item="item">

@@ -10,17 +10,17 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Etp_Exam_Dao {
-	
+
 	private static Etp_Exam_Dao dao = new Etp_Exam_Dao();
-	
-	public static Etp_Exam_Dao getinstance(){
+
+	public static Etp_Exam_Dao getInstance() {
 		return dao;
 	}
-	
-	public SqlSessionFactory getSqlSessionFactory(){
+
+	public SqlSessionFactory getSqlSessionFactory() {
 		String resource = "mybatis-config.xml";
 		InputStream input = null;
-		
+
 		try {
 			input = Resources.getResourceAsStream(resource);
 		} catch (Exception e) {
@@ -28,115 +28,127 @@ public class Etp_Exam_Dao {
 		}
 		return new SqlSessionFactoryBuilder().build(input);
 	}
-	/****************시험정보입력****************/
-	public int inputExamSchedule(Etp_Exam_Info examInfo){
-		int re  = -1;
+
+	/**************** 시험정보입력 ****************/
+	public int inputExamSchedule(Etp_Exam_Info examInfo) {
+		int re = -1;
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			re=sqlSession.getMapper(Etp_Exam_Mapper.class).insertExamInfo(examInfo);
-			if(re>0){
+			re = sqlSession.getMapper(Etp_Exam_Mapper.class).insertExamInfo(examInfo);
+			if (re > 0) {
 				sqlSession.commit();
-			}else{
+			} else {
 				sqlSession.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			sqlSession.close();
 		}
-		
+
 		return re;
 	}
-	public int countExamNo(){
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		try{
-			if(sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo()==null){
-				return 0;
-			}else{
-				return sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	public List<Etp_Exam_Info> examList(int startRow, int etp_no){
+
+	public int countExamNo() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		try {
-			return sqlSession.getMapper(Etp_Exam_Mapper.class).examList(new RowBounds(startRow,10), etp_no);
+			if (sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo() == null) {
+				return 0;
+			} else {
+				return sqlSession.getMapper(Etp_Exam_Mapper.class).countExamNo();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public List<Etp_Exam_Info> examList(int startRow, int etp_no) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		try {
+			return sqlSession.getMapper(Etp_Exam_Mapper.class).examList(new RowBounds(startRow, 10), etp_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}finally{
+		} finally {
 			sqlSession.close();
 		}
 	}
-	public int countExam(){
+
+	public int countExam() {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
 		int re = 0;
-		try{
-			re=sqlSession.getMapper(Etp_Exam_Mapper.class).countExam();
-			if(re>0){
+		try {
+			re = sqlSession.getMapper(Etp_Exam_Mapper.class).countExam();
+			if (re > 0) {
 				sqlSession.commit();
-			}else{
+			} else {
 				sqlSession.rollback();
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			sqlSession.close();
 		}
 		return re;
 	}
-	public List<Etp_Exam_Info> calendarList(int etp_no){
-		SqlSession sqlSession	= getSqlSessionFactory().openSession();
-				try {
-					return sqlSession.getMapper(Etp_Exam_Mapper.class).calendarList(etp_no);
-				} catch (Exception e) {
-					e.printStackTrace();
-					return null;
-				}finally{
-					sqlSession.close();
-				}
-	}
-	public Etp_Exam_Info selectExam(int exam_no){
+
+	public List<Etp_Exam_Info> calendarList(int etp_no) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-			try {
-				return sqlSession.getMapper(Etp_Exam_Mapper.class).selectExam(exam_no);
-			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
-			}
-	}
-	public void updateExam(Etp_Exam_Info examInfo){
-		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re=-1;
 		try {
-			re = sqlSession.getMapper(Etp_Exam_Mapper.class).updateExam(examInfo);
-			if(re>0){
-				sqlSession.commit();
-			}else{
-				sqlSession.rollback();
-			}
+			return sqlSession.getMapper(Etp_Exam_Mapper.class).calendarList(etp_no);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+			return null;
+		} finally {
 			sqlSession.close();
 		}
 	}
-	public void deleteExam(int exam_no){
+
+	public Etp_Exam_Info selectExam(int exam_no) {
 		SqlSession sqlSession = getSqlSessionFactory().openSession();
-		int re=0;
 		try {
-			re=sqlSession.getMapper(Etp_Exam_Mapper.class).deleteExam(exam_no);
-			if(re>0){
+			return sqlSession.getMapper(Etp_Exam_Mapper.class).selectExam(exam_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public void updateExam(Etp_Exam_Info examInfo) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = -1;
+		try {
+			re = sqlSession.getMapper(Etp_Exam_Mapper.class).updateExam(examInfo);
+			if (re > 0) {
 				sqlSession.commit();
-			}else{
+			} else {
 				sqlSession.rollback();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	public void deleteExam(int exam_no) {
+		SqlSession sqlSession = getSqlSessionFactory().openSession();
+		int re = 0;
+		try {
+			re = sqlSession.getMapper(Etp_Exam_Mapper.class).deleteExam(exam_no);
+			if (re > 0) {
+				sqlSession.commit();
+			} else {
+				sqlSession.rollback();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			sqlSession.close();
 		}
 	}

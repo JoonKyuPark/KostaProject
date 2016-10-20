@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
+<<<<<<< HEAD
 <configuration>
 	<typeAliases>
 	<!--
@@ -49,8 +50,52 @@
 		<mapper resource="etp/mypage/ETP_info.xml"/> -->
 	</mappers>
 	
+=======
+<configuration>
+   <typeAliases>
+      <!-- <typeAlias type="Etp.model.Etp" alias="Etp"/>
+      <typeAlias type="etp.mypage.ETP_Info" alias="ETP_Info"/>
+      <typeAlias type="Etp.model.ETP_mem_log" alias ="ETP_mem_log"/>
+      <typeAlias type="Etp.model.ETP_Exam_Info" alias="ETP_Exam_Info"/> -->
+<!--       <typeAlias type="Etp.model.ListModel" alias="ListModel"/> -->
+      <typeAlias type="job.exam.Etp_Exam_Info" alias="Etp_Exam_Info"/>
+      <typeAlias type="job.exam.Etp_Exam_Question" alias="Etp_Exam_Question"/>
+      <typeAlias type="job.main.Etp_infor" alias="ETP"/>
+      <typeAlias type="job.main.Member_info" alias="M"/>
+<!--       <typeAlias type="recruit.infor.Recruit_Infor" alias="Recruit_infor"/> -->
+<!--       <typeAlias type="recruit.clip.Recruit_Clip" alias="Recruit_Clip"/>
+      <typeAlias type="infor.etp.model.Etp_Infor" alias="Etp_Infor"/> -->
+ <!--      <typeAlias type="job.main.PMember" alias="PM" />
+      <typeAlias type="kosta.model.Recruit_log" alias="Recruit"/>
+      <typeAlias type="kosta.mapper.mapper" alias="Mapper"/>
+      <typeAlias type="job.resume.Resume" alias="Resume" /> -->
+   </typeAliases>
+   
+   <environments default="development">
+      <environment id="development">
+         <transactionManager type="JDBC"/>
+         <dataSource type="JNDI">
+            <property name="data_source" value="java:comp/env/jdbc/oracle"/>
+         </dataSource>
+      </environment>      
+   </environments>
+   
+   <mappers>
+      <mapper resource="/job/exam/Etp_Exam.xml"/>
+      <mapper resource="/job/main/mapper/main.xml"/>
+      <mapper resource="/job/exam/Etp_Question.xml"/>
+      <mapper resource="/job/exam/Mem_Question.xml"/>
+      
+<!--       <mapper resource="recruit/mapper/Recruit_infor.xml"/>
+      <mapper resource="recruit/clip/mapper/Recruit_Clip.xml"/>
+      <mapper resource="infor/etp/mapper/Etp_Infor.xml"/>
+      <mapper resource="kosta/model/receive.xml"/>
+      <mapper resource="job/resume/mapper/resume.xml"/>
+      <mapper resource="etp/mypage/recruit.xml"/>
+      <mapper resource="etp/mypage/ETP_info.xml"/> -->
+   </mappers>
+>>>>>>> branch '20161019' of https://github.com/JoonKyuPark/KostaProject
 </configuration>
-
 
 
 

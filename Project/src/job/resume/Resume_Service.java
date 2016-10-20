@@ -1,5 +1,9 @@
 package job.resume;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.SqlSession;
+
 
 public class Resume_Service {
 	private static Resume_Service service = new Resume_Service();
@@ -33,6 +37,19 @@ public class Resume_Service {
 		return result;
 	}
 	
+	
+	public int UpdateImgService(HttpServletRequest request) throws Exception{
+		
+		
+		int re = 0;
+		
+		re = dao.UpdateResumeImg(request);
+		
+		
+		
+		
+		return re;
+	}
 	
 	
 	

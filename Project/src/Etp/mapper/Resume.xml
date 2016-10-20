@@ -7,7 +7,7 @@
 <mapper namespace="Etp.mapper.ResumeMapper">
 	<cache />
 
-	<select id="Etpselect" resultType="Etp" parameterType="int" >
+	<select id="Etpselect" resultType="Etps" parameterType="int" >
 	
 	select a.mem_logno,a.log_date , b.member_name ,b.member_img,c.etp_name
 	  from MEM_LOG a 
