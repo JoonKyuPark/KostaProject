@@ -12,6 +12,6 @@
 	session.setAttribute("b_id", b_id);
 %>
 	<!--클릭했을때, 회원번호를 넘깁니다.-->
-	<a href = "insertOk.jsp">click here</a>
+	<a href = "recruit_insertOk.jsp">click here</a>
 </body>
 </html>

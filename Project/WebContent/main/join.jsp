@@ -17,12 +17,17 @@
 <!------- JQUERY -------->
 
 <script type="text/javascript">
-	var check = function() {
-		if (document.getElementById("agree").checked) {
-			if (document.getElementById("agree2").checked) {
-				if (document.getElementById(member).checked) {
+	var check = function() 
+	{
+		if (document.getElementById("agree").checked)
+		{
+			if (document.getElementById("agree2").checked) 
+			{
+				if (document.getElementById(member).checked) 
+				{
 					document.getElementById(member).submit
-				} else if (document.getElementById(etp).checked)
+				} 
+				else if (document.getElementById(etp).checked)
 					document.getElementById(etp).submit
 			} else {
 				alert("개인정보이용 약관에 동의해주세요");

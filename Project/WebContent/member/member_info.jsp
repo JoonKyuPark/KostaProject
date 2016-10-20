@@ -1,4 +1,4 @@
-
+<%-- 
 <%@page import="Etp.model.ListModel"%>
 <%@page import="job.exam.Etp_Exam_Service"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -135,4 +135,4 @@ $(document).ready(function(){
 </div><!-- list container -->
     </form>   
 </body>
-</html>
+</html> --%>

@@ -14,7 +14,6 @@ public class Dummy
 		this.memeber_infor = memeber_infor;
 	}
 
-	
 	public String getRecruit_infor() {
 		return recruit_infor;
 	}

@@ -3,11 +3,39 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kosta.mapper.mapper">
-	<select id="getList" resultType="Recruit">
-		select * from recruit_log
+
+	<select id="getList" resultType="Information" parameterType="int">
+		select a.recruit_log_date,b.recruit_title,c.etp_name
+        from recruit_log a
+          INNER JOIN RECRUIT_INFOR b
+            on a.RECRUIT_NO = b.RECRUIT_NO
+          INNER JOIN ETP_INFOR c
+            on b.ETP_NO = c.ETP_NO
+          where member_no = #{member_no}
+ 	</select>
+	
+	<select id="getMember_Number" parameterType="String" resultType="int" >
+		select member_no
+		from member_infor 
+		where member_id = #{b_id}
 	</select>
-	<select id="getMember_Number" parameterType="String" resultType="int">
-		select member_id from member_infor 
-		where member_id = ${ b_id }
+	
+	<insert id="Insert_member" parameterType="int">
+	<!-- 시퀀스 : recruit_log_seq -->
+		insert into recruit_log 
+		( recruit_logno, member_no, recruit_no, recruit_log_date)
+		values
+		(recruit_log_seq.NEXTVAL, #{ member_no },4, sysdate)
+	</insert>
+	
+	<select id="selectlog_id" resultType="Integer">
+  		select count(recruit_logno) from recruit_log
 	</select>
+	
+	<delete id="removeList" parameterType="int">
+		delete 
+ 			from recruit_log 
+   				where recruit_logno = #{remove}
+	</delete>
+	
 </mapper>

@@ -7,9 +7,6 @@ import org.apache.ibatis.session.RowBounds;
 import Etp.model.ETP_mem_log;
 import Etp.model.Etp;
 
-
-
-
 public interface ResumeMapper {
 	
 	public List<Etp> Etpselect(RowBounds row,int gno);
