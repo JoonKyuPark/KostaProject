@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="join.receive.mapper.Join_Receive_Mapper">
+<cache/>
+	
+	<select id="selectJoin_id" resultType="Integer">
+		select max(join_receive_no) from join_receive
+	</select>
+	
+	<insert id="insertJoin" parameterType="Join_Receive">
+		insert into join_receive(
+		join_receive_no, recruit_no, receive_date, reading, first_interview, member_no
+		)values(
+		join_receive_seq.nextval, #{recruit_no}, '2016/10/18','y','y',1
+		)
+	</insert>
+	
+
+	<select id="listJoin" resultType="Join_Receive">
+		select * from join_receive
+	</select>
+		
+</mapper>

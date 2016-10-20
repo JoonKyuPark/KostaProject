@@ -1,6 +1,8 @@
 package infor.etp.model;
 
-public class Etp_Infor {
+import java.io.Serializable;
+
+public class Etp_Infor implements Serializable{
 	
 	int etp_no;
 	String etp_name;
