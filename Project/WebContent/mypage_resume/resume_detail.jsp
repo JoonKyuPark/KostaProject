@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +15,17 @@
 <link href="../css/kfonts2.css" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
 <link href="../css/resume.css" rel="stylesheet" type="text/css" />
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<script type="text/javascript">
+var fnPrint = function() {
+	window.print();
+};
+
+
+</script>
 <%
 	int resume_no = Integer.parseInt(request.getParameter("seq"));
 	System.out.println(resume_no);
@@ -24,7 +36,7 @@
 	request.setAttribute("re", resumeAll);
 	
 %>
-<title>Insert title here</title>
+<title>이력서 상세 페이지</title>
 </head>
 <body>
 <div id="container" class="col-md-12">
@@ -41,14 +53,22 @@
 		
 		<div class="content col-md-8">
 			<form class="resume_form form-horizontal col-md-12" action="resume_reg_action.jsp" method="post">
-				<div class="form-group col-md-12">
-					<br> <br> <br> <br> <br> <br> <label for="resume_title_input" class="glyphicon glyphicon-pencil col-md-2 control-label">제목</label>
-					<div class="col-md-10">
+				<div class="form-group col-md-12" id="selectArea">
+					<br> <br> <br> <br> <br> <br> <label for="resume_title_input" class="col-md-2 control-label">
+						<span  class="glyphicon glyphicon-pencil"></span>제목</label>
+					<div class="col-md-8">
 						<h5>${re.resume_title}</h5>
 					</div>
-					<br> <br> <br> <label for="resume_income_input" class="col-md-2 control-label glyphicon glyphicon-usd">희망연봉</label>
-					<div class="col-md-10">
+					<input type="button" value="인쇄" onClick="fnPrint()" class="col-md-2 btn"/> 
+					<br> <br> <br> 
+					<label for="resume_income_input" class="col-md-2 control-label" style="float: left;">
+						<i class="fa fa-krw"></i>희망연봉</label>
+					<div class="col-md-4">
 						<h5>${re.hope_income}</h5>
+					</div>
+					<label for="resume_income_input" class="col-md-2 control-label glyphicon glyphicon-usd">증명사진</label>
+					<div class="col-md-4">
+						<img src="../resume_img/${re.resume_img}" class="img-thumbnail" style="max-width: '20px'" id="resume_img">
 					</div>
 					<br> <br> <br>
 
@@ -77,7 +97,7 @@
 					
 					
 					<c:choose >
-						<c:when test="${re.career_etp_name==null}">
+						<c:when test="${re.career_no==null}">
 						</c:when>
 						<c:otherwise>
 						<div id="career_wrapper">
@@ -88,12 +108,17 @@
 							<div class="resume_career_etp_name_div col-md-4">
 								<h5>${re.career_etp_name}</h5>
 							</div>
-							<label for="resume_carrer_work_state_label" class="col-md-2 control-label" >재직여부</label>
+							<label for="resume_carrer_work_state_label" class="col-md-2 control-label glyphicon glyphicon-envelope" >재직여부</label>
 							<div class="form-inline col-md-4">
 									<h5>${re.career_work_state}</h5>
 							</div>
 							<br> <br> <br> 
-							<label for="reportrange" class="resume_career_join_date_label col-md-2 control-label glyphicon glyphicon-calendar">입사·퇴사일</label>
+							
+							
+							<label for="reportrange" class="resume_career_join_date_label col-md-2 control-label">
+								
+								입사·퇴사일
+							</label>
 							<div class="col-md-4 form-inline reportrange" style="background: #fff; padding-top: 5px" onclick="cb()">
 								<h5>${re.join_date} ~ ${re.retire_date}</h5>
 							</div>
@@ -113,7 +138,8 @@
 							</div>
 							
 							
-							<br> <br> <label for="resume_work_rank_input" class="col-md-2 control-label">직급</label>
+							<br> <br> 
+							<label for="resume_work_rank_input" class="col-md-2 control-label">직급</label>
 							<div class="resume_work_rank_div col-md-4">
 								<h5>${re.work_rank}</h5>
 							</div>
@@ -135,7 +161,7 @@
 							
 							
 							<br> <br> 
-							<label for="resume_work_income_input" class="col-md-2 control-label">경력연봉</label>
+							<label for="resume_work_income_input" class="col-md-2 control-label"><i class="fa fa-krw"></i>경력연봉</label>
 							<div class="resume_work_income_div col-md-4">
 								<h5>${re.work_income}만원</h5>
 							</div>
@@ -166,7 +192,7 @@
 					<br> <br> <br> <br> <br>
 
 					<div class="form-inline">  <!-- 학력사항~~~ -->
-						<label for="monthpicker" class="col-md-2 control-label glyphicon glyphicon-calendar">입학연월</label>
+						<label for="monthpicker" class="col-md-2 control-label"><i class="fa fa-calendar"></i>입학연월</label>
 						<div class="resume_school_name_div col-md-4">
 							 <h5>${re.enter_date}</h5>
 						</div>
@@ -221,7 +247,7 @@
 
 
 
-				<button class="resume_detail_return_btn col-md-12 btn btn-primary">돌아가기</button>
+				<button class="resume_detail_return_btn col-md-12 btn btn-primary" onclick="location.href='resume_list.jsp'">돌아가기</button>
 				<br><br><br><br><br><br>
 			</form>
 			

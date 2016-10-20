@@ -2,9 +2,10 @@
 <%@page import="java.util.List"%>
 <%@page import="job.resume.Resume_Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="EUC-KR"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+	pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,78 +14,111 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/kfonts2.css" rel="stylesheet">
 <link href="../css/resume.css" rel="stylesheet">
-<script src="jquery.js" type="text/javascript">
-	
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript">
+var fnPrint = function() {
+	document.body.innerHTML = selectArea.innerHTML;
+	window.print();
+};
+
+
 </script>
 <%
 Resume_Dao dao = Resume_Dao.getInstance();
 List<ResumeAll> list = dao.ResumeList();
 request.setAttribute("list", list);
+
+String uploadPath = request.getRealPath("resume_img");
+request.setAttribute("imgPath", uploadPath);
 %>
-<title>¸¶ÀÌÆäÀÌÁö_ÀÌ·Â¼­ ¸®½ºÆ®</title>
+<title>ë§ˆì´íŽ˜ì´ì§€_ì´ë ¥ì„œ ë¦¬ìŠ¤íŠ¸</title>
 </head>
 <body>
-<div name="main_menu" class="container">
-		<ul class="nav nav-pills">
-			<li><a href="../main/mainDisplay.jsp">È¨</a></li>
-			<li><a href="../main/update.jsp">¸¶ÀÌÆäÀÌÁö</a></li>
-			<li><a href="../ETP_Exam/Etp_Exam_Main.jsp">½ÃÇè</a></li>
-			<li><a>Ã¤¿ëÁ¤º¸°Ë»ö</a></li>
-			<li><a>½º¸¶Æ®¸ÅÄª</a></li>
-			<li><a>¸ÂÃãÃ¤¿ëÁ¤º¸</a></li>
-			<li><a href="../mypage_resume/resume_list.jsp">ÀÌ·Â¼­¸ñ·Ï</a></li>
-			<li><a>Ã¤¿ëµî·Ï</a></li>
-		</ul>
-	</div>
-
 	<div id="container" class="col-md-12">
 		<div class="left_aside col-md-2">
 			<ul class="aside_ul">
-				<li>¸Þ´º1</li>
-				<li>¸Þ´º1</li>
-				<li>¸Þ´º1</li>
-				<li>¸Þ´º1</li>
-				<li>¸Þ´º1</li>
-				<li>¸Þ´º1</li>
+				<li>ë©”ë‰´1</li>
+				<li>ë©”ë‰´1</li>
+				<li>ë©”ë‰´1</li>
+				<li>ë©”ë‰´1</li>
+				<li>ë©”ë‰´1</li>
+				<li>ë©”ë‰´1</li>
 			</ul>
 		</div>
 
 		<div class="content col-md-8">
 
-			<h3 class="resume_h3 col-md-12">ÀÌ·Â¼­ °ü¸®</h3>
+			<h3 class="resume_h3 col-md-12">ì´ë ¥ì„œ ê´€ë¦¬</h3>
 
-			<a href="resume_reg.jsp"><button class="resume_reg col-md-offset-10 col-md-2">ÀÌ·Â¼­ µî·Ï</button></a>
+
+
+			<a href="resume_reg.jsp"><button class="resume_reg col-md-offset-10 col-md-2 bg-primary btn-primary btn">ì´ë ¥ì„œ ë“±ë¡</button></a>
+
 
 			<table class="resume_list_table table col-md-12">
 				<tr>
-					<th class="col-md-2">¹øÈ£</th>
-					<th class="col-md-6">Á¦¸ñ</th>
-					<th class="col-md-2">°ü¸®</th>
-					<th class="col-md-2">ÀÛ¼ºÀÏ</th>
+					<th class="col-md-2">ë²ˆí˜¸</th>
+					<th class="col-md-2">ì‚¬ì§„</th>
+					<th class="col-md-4">ì œëª©</th>
+					<th class="col-md-2">ê´€ë¦¬</th>
+					<th class="col-md-2">ìž‘ì„±ì¼</th>
 				</tr>
 				<c:forEach items="${list}" var="i" >
 				<tr>
 				<c:set var="re_date" value="${i.resume_date}"/>
-				<c:set var="re_d" value="${fn:substring(re_date,0,10)}"/>		<!-- 2016-10-17±îÁö -->
+				<c:set var="re_d" value="${fn:substring(re_date,0,10)}"/>		<!-- 2016-10-17ê¹Œì§€ -->
 				<td class="col-md-2">${i.resume_no}</td>
-					<td class="col-md-6">
-						<a href="resume_detail.jsp?seq=${i.resume_no}">
-							${i.resume_title}
+				<td class="col-md-2">
+						<c:choose>
+							<c:when test="${i.resume_img!= null}">
+								<c:set var="head" value="${fn:substring(i.resume_img, 0, fn:length(i.resume_img) - 4) }"/>
+								<c:set var="pattern" value="${fn:substringAfter(i.resume_img, head)}"/>
+								<a href="resume_imgForm.jsp?seq=${i.resume_no}">
+									<img src="../resume_img/${head}_small${pattern}" class="img-thumbnail">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="resume_imgForm.jsp?seq=${i.resume_no}">
+									ì‚¬ì§„ì¶”ê°€
+								</a>
+							</c:otherwise>
+						</c:choose>
+				</td>
+				<td class="col-md-4">
+					<a href="resume_detail.jsp?seq=${i.resume_no}">
+						${i.resume_title}
+					</a>
+				</td>
+				<td class="col-md-2">
+						<a href="resume_update.jsp?seq=${i.resume_no}">
+							ìˆ˜ì •
 						</a>
-					</td>
-					<td class="col-md-2">
-						<a href="resume_update.jsp?seq=${i.resume_no}">¼öÁ¤</a>
-						 | º¹»ç
 					</td>
 					<td class="col-md-2">${re_d}</td>
 				</tr>
 			</c:forEach>
 			</table>
 
-			<button type="button" class="btn btn-info">±âº» ÀÌ·Â¼­ ¼³Á¤</button>
-			<button type="button" class="btn btn-default">ÀÎ¼âÇÏ±â</button>
+			<button type="button" class="btn btn-info">ê¸°ë³¸ ì´ë ¥ì„œ ì„¤ì •</button>
+			<button type="button" class="btn btn-default">ì¸ì‡„í•˜ê¸°</button>
+
+
+
+
+
+
+
 		</div>
-		<div class="right_aside col-md-2">¿À¸¥ÂÊ ³¯°³</div>
+
+		<div class="right_aside col-md-2">ì˜¤ë¥¸ìª½ ë‚ ê°œ</div>
+
+
+
+
+
+
+
+
 
 	</div>
 </body>

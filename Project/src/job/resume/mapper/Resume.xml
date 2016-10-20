@@ -16,7 +16,8 @@
 		career_no,
 		ac_ability_no,
 		self_intro_cont,
-		resume_img
+		resume_img,
+		member_no
 
 		) values(
 		#{resume_no, jdbcType=VARCHAR},
@@ -27,7 +28,8 @@
 		#{career_no, jdbcType=VARCHAR},
 		#{ac_ability_no, jdbcType=VARCHAR},
 		#{self_intro_cont, jdbcType=VARCHAR},
-		#{resume_img, jdbcType=VARCHAR}
+		#{resume_img, jdbcType=VARCHAR},
+		#{member_no, jdbcType=VARCHAR}
 		)
 	</insert>
 
@@ -121,20 +123,22 @@
 
 
 
-	<select id="ResumeList" resultType="ResumeAll">
-		select DISTINCT * 
-		from resume re, career ca, AC_ABILITY ac
-		where re.CAREER_NO = ca.CAREER_NO AND re.AC_ABILITY_NO = ac.AC_ABILITY_NO
-		order by re.resume_no ASC
-	
+	<select id="ResumeList" resultType="Resume">
+		select * 
+		from resume
+		where resume_no is not null
+		order by resume_no ASC
 	</select>
 
 	<select id="ResumeDetail" parameterType="int" resultType="ResumeAll">
-		select * 
-		from resume re, career ca, AC_ABILITY ac
-		where re.CAREER_NO = ca.CAREER_NO AND re.AC_ABILITY_NO = ac.AC_ABILITY_NO AND re.resume_no= #{resume_no}
-		order by re.resume_no ASC
-	
+	  select DISTINCT * 
+	    from resume a 
+		    inner join career b
+		 	on a.CAREER_NO = b.CAREER_NO
+			    inner join AC_ABILITY c
+			   	on a.AC_ABILITY_NO = c.AC_ABILITY_NO 
+	    where RESUME_NO = #{resume_no}
+	 order by a.RESUME_NO asc
 	</select>
 
 
@@ -190,18 +194,9 @@
 	</update>
 
 
-
-
-
+	<update id="UpdateImg" parameterType="resumeImg">
+		update resume
+		set resume_img = #{resume_img}
+		where resume_no = #{resume_no}
+	</update>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-

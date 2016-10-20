@@ -1,7 +1,7 @@
 <%@page import="job.resume.Resume_Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%
     	request.setCharacterEncoding("UTF-8");
     %>
@@ -27,30 +27,35 @@
    <jsp:setProperty property="*" name="resumeCareer"/>
 </jsp:useBean>
 <%
+	int re;
+
+	String career_btn = request.getParameter("career_radio_btn");
+	System.out.println("!@#!@#"+career_btn);
+
+
 	request.setAttribute("resume", resume);
 	request.setAttribute("resumeAbility", resumeAbility);
+	
+	
 	request.setAttribute("resumeCareer", resumeCareer);
-	String career_radio_btn = request.getParameter("career_radio_btn");
 	
 	Resume_Dao dao = Resume_Dao.getInstance();
-	int re;
+	
 	
 	re = dao.insertResumeAbility(resumeAbility);
 	System.out.println("1.ability insert re ?? :" + re);
 	
-
+	if (career_btn.equals("old")){
 	re = dao.insertResumeCareer(resumeCareer);
-	
 	System.out.println("2.career insert re ?? :" + re);
-	
-	String career_year = request.getParameter("career_year");
-	System.out.println("career_year :" + career_year);
-	
-	re = dao.insertResume(resume,request);
+	}
+	re = dao.insertResume(resume,career_btn);
 	System.out.println("3.resume insert re?? :" + re);
 	
+	
+	
 %>
-${resume.volun_field}
+<c:redirect url="resume_list.jsp"></c:redirect>
 
 </body>
 </html>
