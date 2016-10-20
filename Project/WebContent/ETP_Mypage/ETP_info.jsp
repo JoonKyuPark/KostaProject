@@ -1,6 +1,17 @@
+<%@page import="Etp.mypage.ETP_Infor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% 
+	ETP_Infor etp = (ETP_Infor)session.getAttribute("etp");
 
+	String etpName = etp.getEtp_name();
+	String etpId = etp.getEtp_id();
+	
+	System.out.println(etp);
+	
+	request.setAttribute("etpName", etpName);
+	request.setAttribute("etpId", etpId);
+%>
 <!DOCTYPE html>
 <html>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -101,17 +112,30 @@
    </div>
 	</header>
     <div class="row">
-      <div class="col-md-2">
-        <ul class="mypage_bar">
-	  	  <li><a href="ETP_recruit_infor.jsp">채용공고등록</a></li>
-		  <li><a href="ETP_recruit_clip.jsp">채용스크랩</a></li>
-		  <li><a href="#">맞춤인재검색</a></li>
-		  <li><a href="#">최근본인재정보</a></li>
-		  <li><a href="ETP_info.jsp">기업정보확인</a></li>
-		  <li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
-		</ul>
-      </div>
-      <form action="ETP_info_insert.jsp" method="POST" id="actionForm">
+			<div class="col-md-2">
+				<div class="panel-group">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="panel-title"> <a data-toggle="collapse"
+								href="#collapse">메뉴보고싶냐</a>
+							</span>
+						</div>
+						<div id="collapse" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="mypage_bar">
+									<li><a href="ETP_recruit_infor.jsp">채용공고등록</a></li>
+									<li><a href="ETP_recruit_clip.jsp">채용스크랩</a></li>
+									<li><a href="#">맞춤인재검색</a></li>
+									<li><a href="#">최근본인재정보</a></li>
+									<li><a href="ETP_info.jsp">기업정보확인</a></li>
+									<li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form action="ETP_info_insert.jsp" method="POST" id="actionForm">
       <div class="col-md-8">
         <div class="row">
 			<div class="form-group">
@@ -123,7 +147,7 @@
 			<div class="form-group">
 			  <label for="etp_name" class="col-md-3 control-label">기업이름</label>
 			  <div>
-			    <label for="etp_name" class="col-md-9">기업이름받아와</label>
+			    <label for="etp_name" class="col-md-9">${etpName}</label>
 			  </div>
 			</div>
 			<div class="form-group">
@@ -131,7 +155,7 @@
 			    <label for="etp_id">기업아이디</label>
 			  </div>
 			  <div class="col-md-8">
-			    <label id="etp_id">아이디받아와</label>
+			    <label id="etp_id">${etpId}</label>
 			  </div>
 			</div>
 			<div class="form-group">
@@ -222,12 +246,10 @@
 			  <div class="col-md-3"></div>
 			  <div class="col-md-4">
 			    <input type="text" id="sample4_roadAddress" name="etp_location" class="form-control" placeholder="도로명주소">
-<<<<<<< HEAD
 			  </div>
 			  <div class="col-md-4">
 			    <input type="text" id="sample4_jibunAddress" name="etp_location" class="form-control" placeholder="지번주소">
-=======
->>>>>>> branch '20161019' of https://github.com/JoonKyuPark/KostaProject
+
 			  </div>
 			    </div>
 			</div>

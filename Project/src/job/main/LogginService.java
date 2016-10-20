@@ -136,8 +136,7 @@ public class LogginService {
 		int loggin = 0;
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i).getEtp_id().equals(request.getParameter("logid"))) {
-				if (list.get(i).getEtp_pass()
-						.equals(request.getParameter("logpwd"))) {
+				if (list.get(i).getEtp_pass().equals(request.getParameter("logpwd"))) {
 					loggin = 2;
 					request.setAttribute("loginid", list.get(i).getEtp_id());
 					request.setAttribute("loggin", loggin);

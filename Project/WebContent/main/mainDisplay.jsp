@@ -15,6 +15,7 @@
 	if (session.getAttribute("loggin") != null) {
 		int check = (int) session.getAttribute("loggin");
 	}
+	
 	if (request.getParameter("kind") == null) { //로그인 안됨
 
 		if (reg == null) {
@@ -87,8 +88,7 @@
 					response.sendRedirect("../main/loginfail.jsp");
 				} else {
 					System.out.print(log.Elist(request, response));
-					Etp_infor etp = log.Esearch(request
-							.getParameter("logid"));
+					Etp_infor etp = log.Esearch(request.getParameter("logid"));
 					request.setAttribute("loggin", 2);
 					session.setAttribute("loggin", loggin);
 					session.setAttribute("login", true);
@@ -130,20 +130,6 @@
 		</form>
 	</div>
 
-<<<<<<< HEAD
-<div name="main_menu" class="container">
-      <ul class="nav nav-pills">
-         <li><a href="../main/mainDisplay.jsp">홈</a></li>
-         <li><a href="../main/update.jsp">마이페이지</a></li>
-         <li><a href="../Etp_Exam/Etp_Exam_Main.jsp">시험</a></li>
-         <li><a>채용정보검색</a></li>
-         <li><a href="../main/smart.jsp">스마트매칭</a></li>
-         <li><a>맞춤채용정보</a></li>
-         <li><a href="../mypage_resume/resume_list.jsp">이력서목록</a></li>
-         <li><a>채용등록</a></li>
-      </ul>
-   </div>
-=======
 	<div name="main_menu" class="container">
 		<ul class="nav nav-pills">
 			<li><a href="../main/mainDisplay.jsp">홈</a></li>
@@ -156,7 +142,6 @@
 			<li><a href="../ETP_Mypage/ETP_recruit_infor.jsp">채용등록</a></li>
 		</ul>
 	</div>
->>>>>>> branch '20161019' of https://github.com/JoonKyuPark/KostaProject
 	<br>
 	<br>
 	<br>

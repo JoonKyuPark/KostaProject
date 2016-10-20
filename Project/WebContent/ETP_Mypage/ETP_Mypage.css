@@ -4,9 +4,15 @@
 .mypage_bar li{
 	text-decoration: none;
 	list-style-type: none;
-	padding: 7px;
+	padding-bottom: 7px;
 	font-weight: bold;
 }
+
+.panel-body > *{
+	padding-left: 0px;
+	margin-left: 0px;
+}
+
 .mypage_bar li a{
 	color:black;
 }

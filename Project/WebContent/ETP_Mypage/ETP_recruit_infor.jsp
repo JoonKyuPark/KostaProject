@@ -8,9 +8,7 @@
 	ETP_info_Service etp_info_s = ETP_info_Service.getInstance();
 	ETP_Infor etp_infor ;
 	
-	
 	int etp_no = (Integer)session.getAttribute("zz");
-	
 	
 %>
 <!DOCTYPE html>
@@ -100,14 +98,27 @@
 		</header>
 		<div class="row">
 			<div class="col-md-2">
-				<ul class="mypage_bar">
-					<li><a href="ETP_recruit_infor.jsp">채용공고등록</a></li>
-					<li><a href="ETP_recruit_clip.jsp">채용스크랩</a></li>
-					<li><a href="#">맞춤인재검색</a></li>
-					<li><a href="#">최근본인재정보</a></li>
-					<li><a href="ETP_info.jsp">기업정보확인</a></li>
-					<li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
-				</ul>
+				<div class="panel-group">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="panel-title"> <a data-toggle="collapse"
+								href="#collapse">메뉴보고싶냐</a>
+							</span>
+						</div>
+						<div id="collapse" class="panel-collapse collapse">
+							<div class="panel-body">
+								<ul class="mypage_bar">
+									<li><a href="ETP_recruit_infor.jsp">채용공고등록</a></li>
+									<li><a href="ETP_recruit_clip.jsp">채용스크랩</a></li>
+									<li><a href="#">맞춤인재검색</a></li>
+									<li><a href="#">최근본인재정보</a></li>
+									<li><a href="ETP_info.jsp">기업정보확인</a></li>
+									<li><a href="ETP_recruit_condi.jsp">채용모집현황</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<form id="ETP_recruit_insert_form" action="ETP_recruit_insert.jsp" method="POST">
 				<div class="col-md-8">
