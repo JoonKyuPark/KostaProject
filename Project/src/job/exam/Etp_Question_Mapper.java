@@ -7,4 +7,5 @@ public interface Etp_Question_Mapper {
 	public Integer countExamQuestion();
 	public Integer countQuestion(int exam_no);
 	public List<Integer> selectExamNo();
+	public List<Etp_Exam_Question> questionList(int etp_no);
 }

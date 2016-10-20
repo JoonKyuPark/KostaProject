@@ -5,7 +5,7 @@
 <%@page import="job.exam.Etp_Exam_listModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,6 +18,7 @@
 				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
 				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
 				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+				<li><a href="Etp_Question_List.jsp">시험문제목록</a>
 			</ul>
 	</div>
 	<div>
@@ -30,12 +31,14 @@
 			<input type="number" name="question_second" value = 0 min=0 max=59>초
 			<textarea rows="7" cols="70" name="question_content"></textarea>
 			<%
-				Etp_Exam_Dao dao = Etp_Exam_Dao.getinstance();
-				List<Etp_Exam_Info> list = dao.calendarList(1);/* 기업번호 넣자 */
+				Etp_Exam_Dao dao = Etp_Exam_Dao.getInstance();
+				int etp_no=(Integer)session.getAttribute("etp_no");
+				List<Etp_Exam_Info> list = dao.calendarList(etp_no);
 				for(int i = 0; i<list.size(); i++){
 			%>
 			<input type = "radio" name="exam_no" value="<%=list.get(i).getExam_no() %>"><%=list.get(i).getExam_name()%>
-			<%		
+			<input type = "hidden" name="etp_no" value="<%=etp_no%>">
+			<%
 				}
 			%>
 			<input type="submit" value="등록">

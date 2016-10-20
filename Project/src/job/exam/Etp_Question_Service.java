@@ -25,22 +25,18 @@ public class Etp_Question_Service {
 		question.setQuestion_content(request.getParameter("question_content"));
 		question.setExam_no(Integer.parseInt(request.getParameter("exam_no")));
 		for(int i=0; i<list.size(); i++){
-			System.out.println("for");
 			if(list.get(i) == Integer.parseInt(request.getParameter("exam_no"))){
 				question.setQuestion_no(dao.countQuestionNo(Integer.parseInt(request.getParameter("exam_no")))+1);
-				System.out.println(dao.countQuestionNo(Integer.parseInt(request.getParameter("exam_no"))));
-				System.out.println(request.getParameter("exam_no"));
+				break;
 			}else{
-				System.out.println("else");
 				question.setQuestion_no(1);
 			}
 		}
-		question.setEtp_no(1);
-		
-		
-		
-		
+		question.setEtp_no(Integer.parseInt(request.getParameter("etp_no")));
 		return dao.inputQuestion(question);
+	}
+	public List<Etp_Exam_Question> questionListService(int etp_no){
+		return dao.questionList(etp_no);
 	}
 	
 }

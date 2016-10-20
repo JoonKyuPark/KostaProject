@@ -35,7 +35,7 @@
 	int intToday = Integer.parseInt(format.format(todayCal.getTime()));
 	
 	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
-	int etp_no = 1; /* 여기에 기업회원 번호 들어가면 된다 */
+	int etp_no=(Integer)session.getAttribute("etp_no"); /* 여기에 기업회원 번호 들어가면 된다 */
 	List<Etp_Exam_Info> list = service.calendarListService(etp_no);
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -74,6 +74,7 @@
 				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
 				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
 				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+				<li><a href="Etp_Question_List.jsp">시험문제목록</a>
 			</ul>
 		</div>
 		<div class="examTableOuter col-md-8">

@@ -11,6 +11,7 @@
 	String strYear = format.format(date);
 	int year = Integer.parseInt(strYear);
 	int exam_no = Integer.parseInt(request.getParameter("exam_no"));
+	int etp_no=(Integer)session.getAttribute("etp_no");
 	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
 	Etp_Exam_Info selectExam = service.selectExam(exam_no);
 %>
@@ -49,6 +50,7 @@
 				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
 				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
 				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+				<li><a href="Etp_Question_List.jsp">시험문제목록</a>
 			</ul>
 		</div>
 		<div class="col-md-8">
@@ -57,7 +59,7 @@
 			<div class="col-md-2"></div>
 			<div class="inputExamForm col-md-8">
 				<form role="form" action="Etp_Exam_UpdateOk.jsp" method="post">
-					<input type="hidden" name="etp_no" value = "1"> 
+					<input type="hidden" name="etp_no" value="<%=etp_no%>"> 
 					<input type="hidden" name = "exam_no" value=<%=request.getParameter("exam_no") %>>
 					<div class="form-group col-md-12">
 						<label for="inputExamName" class="label col-md-12"><i class="xi-align-justify"></i>시험 이름</label>

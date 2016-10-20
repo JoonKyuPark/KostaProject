@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 public class Etp_Exam_Service {
 	private static Etp_Exam_Dao dao;
@@ -15,7 +16,7 @@ public class Etp_Exam_Service {
 	private static final int PAGE_SIZE = 10;
 
 	public static Etp_Exam_Service getInstance() {
-		dao = Etp_Exam_Dao.getinstance();
+		dao = Etp_Exam_Dao.getInstance();
 		return service;
 	}
 
@@ -106,7 +107,8 @@ public class Etp_Exam_Service {
 		examInfo.setExam_number(Integer.parseInt(request
 				.getParameter("exam_number")));
 		/* 기업번호 넣는 곳 */
-		examInfo.setEtp_no(1);
+		
+		examInfo.setEtp_no(Integer.parseInt(request.getParameter("etp_no")));
 		return dao.inputExamSchedule(examInfo);
 
 	}

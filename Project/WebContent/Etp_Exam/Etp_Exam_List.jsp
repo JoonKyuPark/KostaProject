@@ -20,11 +20,11 @@
 	int requestPage = Integer.parseInt(pageNum);
 	SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd");
 	Etp_Exam_Service service = Etp_Exam_Service.getInstance();
-	int etp_no = 1; /*기업 번호 들어가면된다.*/
+	int etp_no=(Integer)session.getAttribute("etp_no");
 	Etp_Exam_listModel listModel = service.examListService(requestPage, etp_no);
 	request.setAttribute("listModel", listModel);
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <script
@@ -54,6 +54,7 @@
 				<li><a href="Etp_Exam_List.jsp">시험목록</a></li>
 				<li><a href="Etp_Exam_Reg.jsp">시험등록</a></li>
 				<li><a href="Etp_Question_Reg.jsp">시험문제등록</a></li>
+				<li><a href="Etp_Question_List.jsp">시험문제목록</a>
 			</ul>
 	</div>
 	<div class="col-md-8">
@@ -62,6 +63,7 @@
 		<div id="examListOut">
 			<h3> &nbsp; &nbsp;시험일정 목록</h3>
 			<form id="boardForm" action="" method="post">
+			<input type=hidden name="etp_no" value="<%=etp_no%>">
 			<table id="examListTable" class="table table-bordred table-striped">
 				<tr>
 					<th><input type="checkbox" id="checkall" /></th>

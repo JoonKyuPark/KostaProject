@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="job.exam.Mem_Exam_Mapper">
+	<cache />
+<select id="examList" resultType="Etp_Exam_Info">
+	select * from exam_infor
+</select>
+<select id="questionList" resultType="Etp_Exam_Question" parameterType="int">
+	select * from exam_question
+		where exam_no = #{exam_no}
+</select>
+</mapper>

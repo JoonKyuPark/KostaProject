@@ -1,6 +1,8 @@
 package job.exam;
 
-public class Etp_Exam_Question {
+import java.io.Serializable;
+
+public class Etp_Exam_Question implements Serializable{
 	private int exam_question_no;
 	private int question_no;
 	private int question_hour;

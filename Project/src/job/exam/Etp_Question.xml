@@ -21,4 +21,8 @@
 		select max(question_no) from exam_question
 			where exam_no=#{exam_no}
 	</select>
+	<select id="questionList" resultType="Etp_Exam_Question" parameterType="int">
+		select * from exam_question
+			where etp_no=#{etp_no}
+	</select>
 </mapper>
